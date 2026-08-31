@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI × 在宅醫療 (Hospital at Home) 智慧照護落地藍圖 - Howard Liao Ph.D.</title>
+  <title>AI × 在宅醫療與居家照護 (Hospital at Home & Home Care) 智慧落地藍圖 - Howard Liao Ph.D.</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -20,6 +20,7 @@
             accentEmerald: '#10b981',
             accentBlue: '#3b82f6',
             accentAmber: '#f59e0b',
+            accentPurple: '#a855f7',
             accentRose: '#f43f5e'
           },
           fontFamily: {
@@ -99,11 +100,11 @@
       </div>
       <div>
         <div class="flex items-center space-x-2">
-          <span class="text-xs font-bold tracking-wider uppercase text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded">Hospital at Home (HaH)</span>
+          <span class="text-xs font-bold tracking-wider uppercase text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded">Hospital at Home & Home Care</span>
           <span class="text-xs text-slate-400 font-mono">決策者簡報｜臨床 × AI × FHIR × 資安治理</span>
         </div>
         <h1 class="text-base lg:text-lg font-bold text-white tracking-tight flex items-center gap-2">
-          AI × 在宅醫療智慧照護落地藍圖 <span class="text-xs font-normal text-slate-400">by Howard Liao Ph.D.</span>
+          AI × 在宅醫療與居家照護智慧落地藍圖 <span class="text-xs font-normal text-slate-400">by Howard Liao Ph.D.</span>
         </h1>
       </div>
     </div>
@@ -158,13 +159,13 @@
               <span class="text-xs font-bold uppercase tracking-wider text-cyan-300">決策者簡報｜臨床 × AI × FHIR × 資安治理</span>
             </div>
             <h2 class="text-3xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              AI × 在宅醫療<br>
+              AI × 在宅醫療與居家照護<br>
               <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-400 to-blue-400">
-                Hospital at Home（HaH）智慧照護落地藍圖
+                Hospital at Home（HaH）智慧落地藍圖
               </span>
             </h2>
             <p class="text-base lg:text-lg text-slate-300 max-w-3xl leading-relaxed">
-              把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環。
+              把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環。聚焦失能長者、慢性病患及術後返家者之日常照護與訪視減負。
             </p>
           </div>
 
@@ -174,7 +175,7 @@
               <div class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs">HL</div>
               <div>
                 <div class="text-sm font-bold text-white">Howard Liao Ph.D.</div>
-                <div class="text-xs text-slate-400">AI × Hospital at Home 策略全景</div>
+                <div class="text-xs text-slate-400">AI × Hospital at Home & Home Care 策略全景</div>
               </div>
             </div>
             <div class="flex space-x-2 text-xs">
@@ -194,7 +195,6 @@
             <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
           </div>
 
-          <!-- 4 Core Pillars Bento -->
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 my-auto">
             <div class="glass-card-glow p-4 rounded-xl border border-cyan-500/30">
               <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-base mb-2">
@@ -247,7 +247,7 @@
                 <span class="font-bold text-white text-sm">AI Copilot / Agent</span>
               </div>
               <div class="text-slate-300 flex-1 px-6">
-                摘要、交班、衛教、任務派工、排程與照護紀錄自動化
+                摘要、交班、衛教、任務派工、排程與照護紀錄自動化 (Abridge / DAX / NIS LLM)
               </div>
               <span class="text-blue-300 bg-blue-900/50 px-2 py-0.5 rounded">串聯共照網絡</span>
             </div>
@@ -258,7 +258,7 @@
                 <span class="font-bold text-white text-sm">Clinical Decision Support</span>
               </div>
               <div class="text-slate-300 flex-1 px-6">
-                分流、優先級排序、建議追蹤／視訊看診／居家訪視／轉診
+                分流、優先級排序、建議追蹤／視訊看診／居家訪視／轉診 (Biofourmis / Current Health)
               </div>
               <span class="text-amber-300 bg-amber-900/50 px-2 py-0.5 rounded">輔助臨床決策</span>
             </div>
@@ -269,7 +269,7 @@
                 <span class="font-bold text-white text-sm">異常與趨勢判讀</span>
               </div>
               <div class="text-slate-300 flex-1 px-6">
-                個人基線、異常偵測、風險預測、傷口壓傷影像辨識
+                個人基線、異常偵測、風險預測、傷口壓傷 CV 辨識 (Tissue Analytics / Swift Skin)
               </div>
               <span class="text-emerald-300 bg-emerald-900/50 px-2 py-0.5 rounded">萃取臨床意義</span>
             </div>
@@ -280,7 +280,7 @@
                 <span class="font-bold text-white text-sm">健康訊號收集</span>
               </div>
               <div class="text-slate-300 flex-1 px-6">
-                血壓／血氧／血糖／體溫／體重／ECG／睡眠／活動／跌倒
+                血壓／血氧／血糖／體溫／體重／ECG／智慧床墊／毫米波雷達防跌 (Vayyar / 工研院)
               </div>
               <span class="text-cyan-300 bg-cyan-900/50 px-2 py-0.5 rounded">高品質去雜訊</span>
             </div>
@@ -300,7 +300,6 @@
             <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
           </div>
 
-          <!-- 6-Step Workflow -->
           <div class="grid grid-cols-2 md:grid-cols-6 gap-2.5 my-auto text-xs text-center">
             <div class="p-3 rounded-xl bg-slate-900/90 border border-cyan-500/40 space-y-1">
               <span class="text-xs font-bold font-mono text-cyan-400">01 量測</span>
@@ -346,32 +345,32 @@
             <div class="glass-card p-3.5 rounded-xl border border-cyan-500/30 space-y-2">
               <span class="text-cyan-400 font-bold font-mono">01</span>
               <h3 class="font-bold text-white">遠距生理監測</h3>
-              <p class="text-slate-300 text-[11px]">個人基線＋趨勢預警，避免固定閾值告警疲勞。</p>
+              <p class="text-slate-300 text-[11px]">Biofourmis / Current Health 時序預警，個人基線監控。</p>
             </div>
             <div class="glass-card p-3.5 rounded-xl border border-emerald-500/30 space-y-2">
               <span class="text-emerald-400 font-bold font-mono">02</span>
               <h3 class="font-bold text-white">AI 分流預測</h3>
-              <p class="text-slate-300 text-[11px]">每天早晨排出「誰最需要先處理」與再住院風險。</p>
+              <p class="text-slate-300 text-[11px]">每天排出「誰最需要先處理」與 30 日再住院風險。</p>
             </div>
             <div class="glass-card p-3.5 rounded-xl border border-amber-500/30 space-y-2">
               <span class="text-amber-400 font-bold font-mono">03</span>
               <h3 class="font-bold text-white">傷口／皮膚影像</h3>
-              <p class="text-slate-300 text-[11px]">拍攝品質檢查＋面積量測＋前後癒合時序比對。</p>
+              <p class="text-slate-300 text-[11px]">Tissue Analytics / Swift Skin 手機拍攝與分期量測。</p>
             </div>
             <div class="glass-card p-3.5 rounded-xl border border-blue-500/30 space-y-2">
               <span class="text-blue-400 font-bold font-mono">04</span>
               <h3 class="font-bold text-white">GenAI 照護 Copilot</h3>
-              <p class="text-slate-300 text-[11px]">摘要、SOAP、交班、衛教、待辦清單自動化。</p>
+              <p class="text-slate-300 text-[11px]">Abridge / DAX / NIS 訪視語音轉 SOAP 與巴氏量表。</p>
             </div>
             <div class="glass-card p-3.5 rounded-xl border border-purple-500/30 space-y-2">
               <span class="text-purple-400 font-bold font-mono">05</span>
-              <h3 class="font-bold text-white">家屬 AI Agent</h3>
-              <p class="text-slate-300 text-[11px]">提醒、追問、結構化回報、高風險智慧升級防線。</p>
+              <h3 class="font-bold text-white">家屬 AI Agent & 防跌</h3>
+              <p class="text-slate-300 text-[11px]">Vayyar / 工研院毫米波雷達防跌與高風險升級防線。</p>
             </div>
           </div>
 
           <div class="text-slate-400 text-xs flex justify-between">
-            <span>涵蓋生理訊號、影像、語音與文字之 Multimodal 臨床賦能</span>
+            <span>涵蓋生理訊號、環境感知雷達、影像、語音與 LLM 之 Multimodal 臨床賦能</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
         </div>
@@ -387,20 +386,20 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
             <div class="glass-card p-4 rounded-xl border border-cyan-500/30 space-y-2">
               <h3 class="font-bold text-cyan-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-chart-line"></i> 個人化基線</h3>
-              <p class="text-slate-300 leading-relaxed">例如 COPD 病人長期 95% 的血氧，若持續降到 91%，同時呼吸頻率上升，其臨床意義可能遠高於單一固定閾值。</p>
+              <p class="text-slate-300 leading-relaxed">例如 COPD 病人長期 95% 的血氧，若持續降到 91%，同時呼吸頻率上升，其臨床意義遠高於單一固定閾值。</p>
             </div>
             <div class="glass-card p-4 rounded-xl border border-emerald-500/30 space-y-2">
-              <h3 class="font-bold text-emerald-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-network-wired"></i> 多訊號融合</h3>
-              <p class="text-slate-300 leading-relaxed">血氧下降 ＋ 夜間心率上升 ＋ 體重增加 (+1.9kg) ＋ 活動量下降 ➔ 形成可解釋的體液滯留或惡化訊號。</p>
+              <h3 class="font-bold text-emerald-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-network-wired"></i> 多訊號融合 (RPM)</h3>
+              <p class="text-slate-300 leading-relaxed">整合 HRV、血氧、呼吸、體重與活動量，在心衰竭復發、COPD 急性惡化前 <strong>24~48 小時</strong> 發出預警 (Biofourmis / Current Health)。</p>
             </div>
             <div class="glass-card p-4 rounded-xl border border-amber-500/30 space-y-2">
-              <h3 class="font-bold text-amber-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-truck-medical"></i> 臨床行動</h3>
-              <p class="text-slate-300 leading-relaxed">紅／黃／綠分級 ➔ 護理師電話 ➔ 視訊看診 ➔ 居家訪視 ➔ 醫師調整處方／及時轉急診。</p>
+              <h3 class="font-bold text-amber-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-truck-medical"></i> 臨床行動與成效</h3>
+              <p class="text-slate-300 leading-relaxed">紅／黃／綠分級 ➔ 護理師電話 ➔ 視訊 ➔ 居家訪視 ➔ 處方調整。成大智慧安寧在宅善終率高達 <strong>83%</strong>。</p>
             </div>
           </div>
 
           <div class="p-2.5 bg-cyan-950/40 border border-cyan-800/40 rounded-lg text-xs text-cyan-200 flex items-center justify-between">
-            <span><strong>標竿案例：</strong>成大醫院智慧安寧遠距照護整合 ECG、血氧、智慧床墊與視訊，在宅善終率高達 83%。</span>
+            <span><strong>實證支持：</strong><i>JMIR mHealth and uHealth</i> 臨床驗證居家心衰竭與 COPD 機器學習預測模型。</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
         </div>
@@ -454,19 +453,19 @@
         <!-- SLIDE 8: 07｜場景三：GenAI，近期最容易產生 ROI 的地方 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="8">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">07｜場景三：GenAI 行政減負</span>
+            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">07｜場景三：GenAI 行政減負與 Ambient Intelligence</span>
             <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">先從 Copilot 開始，而不是一開始就讓 AI 自動診斷</h2>
             <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3 my-auto text-xs">
             <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">訪視語音 ➔ SOAP 紀錄</strong>
-              <p class="text-slate-300">自動生成護理紀錄初稿，減少重複文書。</p>
+              <strong class="text-emerald-400">訪視語音 ➔ SOAP／長照評估</strong>
+              <p class="text-slate-300">對話轉為 ADLs、巴氏量表與護理紀錄初稿 (Abridge / DAX / NIS)。</p>
             </div>
             <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
               <strong class="text-emerald-400">今日個案摘要</strong>
-              <p class="text-slate-300">整合病歷、檢驗、用藥與近 7 日生命徵象。</p>
+              <p class="text-slate-300">整合病歷、檢驗、用藥與近 7 日生命徵象日報。</p>
             </div>
             <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
               <strong class="text-emerald-400">交班與待辦清單</strong>
@@ -487,15 +486,15 @@
           </div>
 
           <div class="p-2.5 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-300 flex items-center justify-between">
-            <span><strong>核心原則：</strong>所有 AI 草稿 ➔ 專業人員審閱／修正／簽核 ➔ 才能進入正式紀錄或發送病人。</span>
+            <span><strong>實證效益：</strong>中山附醫「醫點家」與本土 NIS 系統驗證，文書時長縮減達 <strong>40%</strong>。</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
         </div>
 
-        <!-- SLIDE 9: 08｜場景四：家屬 AI Agent -->
+        <!-- SLIDE 9: 08｜場景四：家屬 AI Agent 與非接觸感知 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="9">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">08｜場景四：家屬 AI Agent</span>
+            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">08｜場景四：家屬 AI Agent 與環境感知</span>
             <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">不是「醫療聊天機器人」，而是有邊界的數位照護協作者</h2>
             <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
           </div>
@@ -524,18 +523,15 @@
             </div>
 
             <div class="glass-card p-4 rounded-xl border border-amber-500/30 space-y-2">
-              <h3 class="font-bold text-amber-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> 高風險升級情境</h3>
-              <p class="text-slate-300 italic bg-black/40 p-2 rounded">
-                「今天比昨天更喘、躺下會咳、腳也腫」
-              </p>
-              <p class="text-cyan-300">
-                Agent ➔ 追問血氧/體重/胸痛 ➔ 觸發【紅色警示】 ➔ 24/7 值班護理師／醫師介入處置。
+              <h3 class="font-bold text-amber-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-radar"></i> 毫米波非接觸安全監控</h3>
+              <p class="text-slate-300 leading-relaxed">
+                結合 <strong>Vayyar Care / 工研院毫米波雷達</strong>：無需穿戴設備或隱私攝影機，辨識床邊起身、如廁滯留與突發跌倒，即刻啟動醫療升級。
               </p>
             </div>
           </div>
 
           <div class="text-slate-400 text-xs flex justify-between">
-            <span>建立清晰安全邊界，讓 AI Agent 成為家庭端可靠的延伸防線。</span>
+            <span>建立清晰安全邊界與隱私保護，保障長者日常安全與尊嚴。</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
         </div>
@@ -739,15 +735,15 @@
               <span><strong>先投資高頻、可量化、高風險場景：</strong>心衰竭、COPD、傷口、術後、安寧、高齡衰弱。</span>
             </div>
             <div class="p-2.5 bg-slate-900/90 rounded-xl border border-blue-500/40 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-bold font-mono">03</span>
+              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-mono">03</span>
               <span><strong>先用 Copilot 提升醫護產能，</strong>再逐步導入預測模型與 Agent。</span>
             </div>
             <div class="p-2.5 bg-slate-900/90 rounded-xl border border-amber-500/40 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold font-mono">04</span>
+              <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-mono">04</span>
               <span><strong>FHIR、身分驗證、資料治理與 AI 治理，</strong>是核心基礎設施，不是事後補強。</span>
             </div>
             <div class="p-2.5 bg-slate-900/90 rounded-xl border border-purple-500/40 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-400 font-bold font-mono">05</span>
+              <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-400 font-mono">05</span>
               <span><strong>ROI 以「避免一次再住院／急診、縮短處置時間、降低每案人工作業」衡量。</strong></span>
             </div>
           </div>
@@ -771,11 +767,11 @@
             <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [2] CIO Taiwan｜2026 智慧醫療趨勢：生成式 AI 到制度化治理</div>
             <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [3] 安可醫療｜從醫院到客廳：AI 如何重塑在宅照護新模式</div>
             <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [4] 安可醫療｜在宅醫療的智慧轉向：以科技賦能社區照護</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [5] 成大醫院｜無牆化遠距醫療：智慧安寧照護 (善終率83%)</div>
+            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [5] 成大/奇美醫院｜無牆化遠距醫療：智慧安寧與傷口影像</div>
             <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [6] 高醫／HST｜手機影像 AI 傷口辨識與在宅照護應用</div>
             <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [7] 臺北醫學大學 AI 中心｜MEDICA 到 CES: 物理 AI 與穿戴數據</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [8] 日本厚生勞動省｜慢性期・在宅医療での AI 活用について</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [9] FIND｜在宅醫療新革命：AI 如何讓診所走進家庭客廳？</div>
+            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [8] <i>Journal of Wound Care</i> & <i>JMIR</i>｜智慧傷口辨識與心衰竭/COPD 預測</div>
+            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [9] 工研院 (ITRI) & IEEE｜智慧感測照護白皮書與毫米波都卜勒防跌</div>
             <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [10] 數位時代｜北台灣醫界領袖共論 AI 醫療落地三大趨勢</div>
           </div>
 
@@ -864,16 +860,15 @@
       <div class="relative z-10 max-w-4xl space-y-3">
         <div class="inline-flex items-center space-x-2 bg-cyan-950/80 border border-cyan-500/40 px-3 py-1 rounded-full text-xs font-bold text-cyan-300">
           <i class="fa-solid fa-network-wired text-cyan-400"></i>
-          <span>Hospital at Home (HaH) AI Decision & Operations Architecture</span>
+          <span>Hospital at Home (HaH) & Home Care AI Decision Architecture</span>
         </div>
         <h2 class="text-2xl lg:text-4xl font-extrabold text-white">
-          AI × 在宅醫療智慧照護落地藍圖
+          AI × 在宅醫療與居家照護智慧落地藍圖
         </h2>
         <p class="text-slate-300 text-sm lg:text-base leading-relaxed">
-          把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環。由 Howard Liao Ph.D. 規劃之高階決策者架構。
+          把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環。聚焦失能長者、慢性病患及術後返家者日常照護與訪視減負。
         </p>
       </div>
-      <!-- Background Ambient Glow -->
       <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
     </div>
 
@@ -893,14 +888,14 @@
           <i class="fa-solid fa-clock"></i> GenAI 自動 SOAP/交班初稿
         </div>
       </div>
-      <div class="glass-card p-5 rounded-xl border border-surfaceBorder hover:border-blue-500/40 transition">
+      <div class="glass-card p-5 rounded-xl border border-blue-500/40 transition">
         <div class="text-xs text-slate-400 font-medium">成大智慧安寧在宅善終率</div>
         <div class="text-2xl lg:text-3xl font-extrabold text-blue-400 mt-1">83%</div>
         <div class="text-[11px] text-cyan-300 mt-1 flex items-center gap-1">
           <i class="fa-solid fa-house-chimney-medical"></i> 呼吸異常預警與安寧期別預測
         </div>
       </div>
-      <div class="glass-card p-5 rounded-xl border border-surfaceBorder hover:border-amber-500/40 transition">
+      <div class="glass-card p-5 rounded-xl border border-amber-500/40 transition">
         <div class="text-xs text-slate-400 font-medium">HL7 FHIR 互通支援</div>
         <div class="text-2xl lg:text-3xl font-extrabold text-amber-400 mt-1">100%</div>
         <div class="text-[11px] text-amber-300 mt-1 flex items-center gap-1">
@@ -911,7 +906,10 @@
 
     <!-- Dashboard Tabs -->
     <div class="border-b border-surfaceBorder flex space-x-2 overflow-x-auto pb-2 text-xs font-semibold">
-      <button onclick="switchDashTab('tab-layers')" class="dash-tab-btn px-4 py-2 rounded-lg bg-cyan-950/80 text-cyan-400 border border-cyan-800/60" data-tab="tab-layers">
+      <button onclick="switchDashTab('tab-homecare-cases')" class="dash-tab-btn px-4 py-2 rounded-lg bg-cyan-950/80 text-cyan-400 border border-cyan-800/60" data-tab="tab-homecare-cases">
+        <i class="fa-solid fa-house-user mr-1.5"></i> 🏡 居家照護專屬四大場景與標竿案例
+      </button>
+      <button onclick="switchDashTab('tab-layers')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-layers">
         <i class="fa-solid fa-layer-group mr-1.5"></i> 四層架構與數據行動流
       </button>
       <button onclick="switchDashTab('tab-simulator')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-simulator">
@@ -937,8 +935,141 @@
       </button>
     </div>
 
+    <!-- TAB 0: 居家照護 (HOME CARE) 專屬四大核心場景與國際/台灣標竿案例 -->
+    <div id="tab-homecare-cases" class="dash-tab-content space-y-6">
+      <div class="glass-card-glow p-6 rounded-2xl border border-cyan-500/40 space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-xs">Home Care Focus</span>
+            <h3 class="text-lg font-bold text-white">居家照護場域：失能長者、慢性病患與術後返家者之日常賦能</h3>
+          </div>
+          <span class="text-xs font-mono text-slate-400">4大技術領域 × 國際標竿產品 × 臨床文獻實證</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          針對失能長者、長期臥床壓瘡高風險、多重慢性病及術後返家個案，整合電腦視覺 (CV)、環境雷達感知 (mmWave)、時序生理預測 (RPM) 與生成式語音病歷 (Ambient Clinical Intelligence)，落實第一線居護與照服團隊的實質減負。
+        </p>
+      </div>
+
+      <!-- 4 Core Home Care Scenario Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- HC 1: 傷口照護與壓瘡預防 -->
+        <div class="glass-card p-5 rounded-xl border border-amber-500/40 space-y-3.5 hover:border-amber-400 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-amber-950/80 text-amber-400 border border-amber-800">
+              <i class="fa-solid fa-camera mr-1"></i> 電腦視覺 (Computer Vision)
+            </span>
+            <span class="text-[11px] text-slate-400 font-mono">壓瘡・糖尿病足・術後傷口</span>
+          </div>
+          <h4 class="font-bold text-white text-base">傷口照護與壓瘡預防（手機 AI 傷口辨識系統）</h4>
+          
+          <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
+            <div class="text-amber-300 font-semibold"><i class="fa-solid fa-cubes mr-1"></i> 代表產品與研究：</div>
+            <p>• <strong>Tissue Analytics</strong> (Net Health)、<strong>Swift Skin and Wound</strong><br>• 台灣成大醫院／奇美醫療體系居家傷口影像分析系統</p>
+          </div>
+
+          <div class="text-xs text-slate-300 space-y-1.5">
+            <div class="text-white font-semibold"><i class="fa-solid fa-wand-magic-sparkles text-amber-400 mr-1"></i> 核心功能：</div>
+            <p class="leading-relaxed">
+              居家訪視護理師或居服員直接使用智慧型手機拍攝壓瘡、糖尿病足，AI 自動校正光源與拍攝角度、高精準量測長寬面積與邊界、辨識組織分期（壞死組織 Necrosis、肉芽組織比例），自動產出前後癒合時序曲線。
+            </p>
+          </div>
+
+          <div class="p-2.5 bg-amber-950/30 border border-amber-800/40 rounded text-[11px] text-amber-200 flex items-center justify-between">
+            <span><strong>查閱方向：</strong><i>Journal of Wound Care</i> 智慧手機傷口辨識效能臨床驗證</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </div>
+
+        <!-- HC 2: 非接觸式安全監控與跌倒偵測 -->
+        <div class="glass-card p-5 rounded-xl border border-cyan-500/40 space-y-3.5 hover:border-cyan-400 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-cyan-950/80 text-cyan-400 border border-cyan-800">
+              <i class="fa-solid fa-radar mr-1"></i> 環境感知 (Environmental Sensing)
+            </span>
+            <span class="text-[11px] text-slate-400 font-mono">毫米波雷達・隱私保護・防跌</span>
+          </div>
+          <h4 class="font-bold text-white text-base">非接觸式安全監控與跌倒偵測（mmWave 雷達步態）</h4>
+          
+          <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
+            <div class="text-cyan-300 font-semibold"><i class="fa-solid fa-microchip mr-1"></i> 代表技術與案例：</div>
+            <p>• <strong>Vayyar Care</strong>、<strong>Origin Wireless</strong> (WiFi 擾動感知)<br>• <strong>工研院 (ITRI)</strong> 智慧居家照護雷達系統</p>
+          </div>
+
+          <div class="text-xs text-slate-300 space-y-1.5">
+            <div class="text-white font-semibold"><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i> 核心功能：</div>
+            <p class="leading-relaxed">
+              長者在家<strong>無需配戴手環或安裝有隱私疑慮的攝影機</strong>，透過無線微都卜勒訊號反射，精準辨識床邊起身、如廁滯留、步態不穩及突發跌倒，0 秒延遲即時告警家屬或居服管理中心。
+            </p>
+          </div>
+
+          <div class="p-2.5 bg-cyan-950/30 border border-cyan-800/40 rounded text-[11px] text-cyan-200 flex items-center justify-between">
+            <span><strong>查閱方向：</strong>工研院智慧感測照護白皮書、IEEE 微都卜勒雷達演算法論文</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </div>
+
+        <!-- HC 3: 日常連續生理數據監測與惡化預警 -->
+        <div class="glass-card p-5 rounded-xl border border-emerald-500/40 space-y-3.5 hover:border-emerald-400 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">
+              <i class="fa-solid fa-chart-line mr-1"></i> 時序預測 (Time-Series RPM + AI)
+            </span>
+            <span class="text-[11px] text-slate-400 font-mono">心衰竭・COPD・感染預警</span>
+          </div>
+          <h4 class="font-bold text-white text-base">日常連續生理監測與早期惡化預警（RPM + ML）</h4>
+          
+          <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
+            <div class="text-emerald-300 font-semibold"><i class="fa-solid fa-heart-pulse mr-1"></i> 代表技術與架構：</div>
+            <p>• <strong>Current Health</strong> (Best Buy Health 旗下 RPM 平台)<br>• <strong>Biofourmis</strong> 數位生物標記與機器學習預警引擎</p>
+          </div>
+
+          <div class="text-xs text-slate-300 space-y-1.5">
+            <div class="text-white font-semibold"><i class="fa-solid fa-bell-slash text-emerald-400 mr-1"></i> 核心功能：</div>
+            <p class="leading-relaxed">
+              整合心率變異度 (HRV)、連續血氧、呼吸頻率、體溫與活動量，運用 ML 計算早期惡化指標，在心衰竭復發、COPD 急性發作或感染前 <strong>24~48 小時</strong> 發出視訊看診或緊急訪視提醒。
+            </p>
+          </div>
+
+          <div class="p-2.5 bg-emerald-950/30 border border-emerald-800/40 rounded text-[11px] text-emerald-200 flex items-center justify-between">
+            <span><strong>查閱方向：</strong><i>JMIR mHealth and uHealth</i> 居家心衰竭與 COPD 預測臨床實證</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </div>
+
+        <!-- HC 4: 訪視減負與照護計畫生成 -->
+        <div class="glass-card p-5 rounded-xl border border-blue-500/40 space-y-3.5 hover:border-blue-400 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-blue-950/80 text-blue-400 border border-blue-800">
+              <i class="fa-solid fa-microphone-lines mr-1"></i> 語音與 GenAI (Ambient Clinical Intelligence)
+            </span>
+            <span class="text-[11px] text-slate-400 font-mono">巴氏量表・ADLs・SOAP 紀錄</span>
+          </div>
+          <h4 class="font-bold text-white text-base">訪視減負與照護計畫生成（語音環境智慧）</h4>
+          
+          <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
+            <div class="text-blue-300 font-semibold"><i class="fa-solid fa-comments mr-1"></i> 代表應用與系統：</div>
+            <p>• <strong>Abridge</strong>、<strong>Nuance DAX Copilot</strong> (微軟醫療環境智慧)<br>• 本土居家護理資訊系統 (NIS) 導入之 Whisper / 醫學 LLM 套件</p>
+          </div>
+
+          <div class="text-xs text-slate-300 space-y-1.5">
+            <div class="text-white font-semibold"><i class="fa-solid fa-file-signature text-blue-400 mr-1"></i> 核心功能：</div>
+            <p class="leading-relaxed">
+              居家護理師訪視時將對話<strong>即時轉為長照評估表（如 ADLs、巴氏量表描述）</strong>或結構化居家護理紀錄 (SOAP)，徹底根治居家護理師每天下班耗費 2~3 小時繕打文書的痛點。
+            </p>
+          </div>
+
+          <div class="p-2.5 bg-blue-950/30 border border-blue-800/40 rounded text-[11px] text-blue-200 flex items-center justify-between">
+            <span><strong>查閱方向：</strong>長照資訊系統商 (HIS/NIS) 與生成式 AI 自動摘要照護計畫落地案例</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- TAB 1: 4 LAYERS & DATA-TO-ACTION WORKFLOW -->
-    <div id="tab-layers" class="dash-tab-content space-y-6">
+    <div id="tab-layers" class="dash-tab-content hidden space-y-6">
       <!-- 6 Steps workflow -->
       <div class="glass-card p-6 rounded-2xl border border-cyan-500/30 space-y-4">
         <h3 class="text-base font-bold text-white flex items-center gap-2">
@@ -984,7 +1115,7 @@
           <p class="text-xs text-slate-300">收集高信噪比居家生理與環境訊號。</p>
           <div class="text-xs text-slate-400 space-y-1 bg-slate-900/60 p-2.5 rounded-lg">
             <div><strong>能力：</strong>設備資料品質檢查、去雜訊。</div>
-            <div><strong>訊號：</strong>血壓、血氧、心率、血糖、體溫、體重、智慧床墊、毫米波防跌。</div>
+            <div><strong>訊號：</strong>血壓、血氧、心率、血糖、體溫、體重、智慧床墊、毫米波防跌 (Vayyar)。</div>
           </div>
         </div>
 
@@ -997,7 +1128,7 @@
           <p class="text-xs text-slate-300">從多維時間序列資料找出異常與惡化趨勢。</p>
           <div class="text-xs text-slate-400 space-y-1 bg-slate-900/60 p-2.5 rounded-lg">
             <div><strong>能力：</strong>個人化基線偏離分析、風險預測。</div>
-            <div><strong>場景：</strong>心衰竭體液滯留預警、呼吸惡化、壓傷傷口 CV 辨識。</div>
+            <div><strong>場景：</strong>心衰竭體液滯留預警、呼吸惡化、壓傷傷口 CV (Tissue Analytics)。</div>
           </div>
         </div>
 
@@ -1010,7 +1141,7 @@
           <p class="text-xs text-slate-300">臨床決策支援，排序優先級並給出建議處置。</p>
           <div class="text-xs text-slate-400 space-y-1 bg-slate-900/60 p-2.5 rounded-lg">
             <div><strong>能力：</strong>Explainable CDS、再住院風險分級。</div>
-            <div><strong>動作：</strong>電話追蹤、視訊會診、到府訪視、啟動轉急診。</div>
+            <div><strong>動作：</strong>電話追蹤、視訊會診、到府訪視、啟動轉急診 (Biofourmis)。</div>
           </div>
         </div>
 
@@ -1023,7 +1154,7 @@
           <p class="text-xs text-slate-300">串聯病人、家屬、看護與跨專業醫護團隊。</p>
           <div class="text-xs text-slate-400 space-y-1 bg-slate-900/60 p-2.5 rounded-lg">
             <div><strong>能力：</strong>AI Copilot、語音轉 SOAP、交班摘要。</div>
-            <div><strong>工具：</strong>多語衛教生成、訪視排程優化、照顧者 Agent。</div>
+            <div><strong>工具：</strong>多語衛教生成、訪視排程優化、照顧者 Agent (Abridge / DAX)。</div>
           </div>
         </div>
       </div>
@@ -1051,7 +1182,7 @@
             <div class="text-xs text-slate-300 mt-1">長期基線血氧 95%，近 48h 降至 91%，呼吸頻率 26 次/分。</div>
           </button>
           <button onclick="runSimulation('wound')" class="sim-case-btn p-3.5 rounded-xl text-left bg-slate-900 hover:bg-slate-800 border border-slate-700 transition">
-            <div class="text-xs font-bold text-amber-400">案例 C：骶尾部第 3 期壓傷追蹤</div>
+            <div class="text-xs font-bold text-amber-400">案例 C：骶尾部第 3 期壓傷追蹤 (Swift/Tissue)</div>
             <div class="text-xs text-slate-300 mt-1">手機拍攝影像回傳，CV 辨識邊緣紅腫擴大 15%，滲液增加。</div>
           </button>
         </div>
@@ -1060,7 +1191,7 @@
         <div id="sim-output" class="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
           <div class="flex items-center justify-between border-b border-slate-800 pb-3">
             <div class="flex items-center space-x-3">
-              <span id="sim-badge" class="px-2.5 py-1 rounded bg-red-950 border border-red-500 text-red-300 text-xs font-bold">
+              <span id="sim-badge" class="px-2.5 py-1 rounded border text-xs font-bold bg-red-950 border-red-500 text-red-300">
                 🚨 高風險 (Red Tier)
               </span>
               <span id="sim-title" class="font-bold text-white text-sm">心衰竭急症惡化預警 (Heart Failure Decompensation)</span>
@@ -1071,11 +1202,11 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
             <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
               <span class="text-slate-400 font-semibold">🔍 驅動因子 (Explainable Drivers)：</span>
-              <p id="sim-drivers" class="text-slate-200">48h 體重由 62.0kg 增至 63.9kg (+3.06%)；夜間平躺靜息心率持續升高；個人化基線偏離顯著。</p>
+              <p id="sim-drivers" class="text-slate-200">48h 體重由 62.0kg 增至 63.9kg (+1.9kg / +3.06%)；夜間平躺靜息心率 96bpm；個人化基線偏離顯著。</p>
             </div>
             <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
               <span class="text-slate-400 font-semibold">📋 建議處置 (CDS Actions)：</span>
-              <p id="sim-action" class="text-cyan-300">1. 個管師 1 小時內進行視訊評估<br>2. 責任醫師評估口服利尿劑 (Furosemide) 劑量調整<br>3. 若血氧續跌建議轉送急診</p>
+              <p id="sim-action" class="text-cyan-300">1. 個管師 1 小時內進行視訊評估<br>2. 責任醫師評估口服利尿劑 (Furosemide) 劑量調整<br>3. 若血氧續跌即刻啟動急診轉送</p>
             </div>
             <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 space-y-2 flex flex-col justify-between">
               <div>
@@ -1099,7 +1230,7 @@
             <i class="fa-solid fa-heart-pulse"></i>
             <span>01 遠距生理監測與早期預警</span>
           </div>
-          <p class="text-xs text-slate-300">串接血壓、血氧、血糖、智慧床墊與 ECG，以「個人化基線 (Personal Baseline)」偵測偏離趨勢。</p>
+          <p class="text-xs text-slate-300">串接血壓、血氧、血糖、智慧床墊與 ECG，以「個人化基線 (Personal Baseline)」偵測偏離趨勢 (Biofourmis)。</p>
           <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
             <strong>典範案例：</strong>成大醫院智慧安寧遠距照護，在宅善終率達 83%。
           </div>
@@ -1121,7 +1252,7 @@
             <i class="fa-solid fa-camera"></i>
             <span>03 傷口／皮膚影像照護</span>
           </div>
-          <p class="text-xs text-slate-300">手機拍攝指引、品質檢核、面積深度量測、壞死感染識別，以時序前後序列呈現癒合軌跡。</p>
+          <p class="text-xs text-slate-300">手機拍攝指引、品質檢核、面積深度量測、壞死感染識別，以時序前後序列呈現癒合軌跡 (Swift Skin / Tissue Analytics)。</p>
           <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
             <strong>典範案例：</strong>高醫在宅手機傷口 AI 追蹤，嚴守臨床遠端輔助紅線。
           </div>
@@ -1132,18 +1263,18 @@
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>04 GenAI 照護 Copilot</span>
           </div>
-          <p class="text-xs text-slate-300">訪視語音轉 SOAP、個案日報、跨班交接、多語衛教（台語/印尼語/越語），文書時長減少 40%。</p>
+          <p class="text-xs text-slate-300">訪視語音轉 SOAP、ADLs/巴氏量表、個案日報、跨班交接、多語衛教（台語/印尼語/越語），文書時長減少 40%。</p>
           <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
-            <strong>典範案例：</strong>中山附醫「醫點家」臨床摘要小幫手。
+            <strong>代表產品：</strong>Abridge / Nuance DAX / 中山附醫「醫點家」。
           </div>
         </div>
 
         <div class="glass-card p-5 rounded-xl border border-purple-500/30 space-y-3">
           <div class="flex items-center space-x-2 text-purple-400 font-bold text-sm">
             <i class="fa-solid fa-robot"></i>
-            <span>05 家屬與照顧者 AI Agent</span>
+            <span>05 家屬與照顧者 AI Agent & 防跌</span>
           </div>
-          <p class="text-xs text-slate-300">用藥排程提醒、多語日常照護引導、非結構對話轉臨床症狀，偵測危險關鍵字即刻啟動醫療升級。</p>
+          <p class="text-xs text-slate-300">用藥排程提醒、多語日常照護引導、非接觸式毫米波雷達防跌 (Vayyar / 工研院)，偵測危險關鍵字即刻啟動醫療升級。</p>
           <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
             <strong>安全防線：</strong>Escalation Guardrail 避免自主診斷，快速連線值班團隊。
           </div>
@@ -1162,7 +1293,7 @@
           <div class="p-4 bg-slate-900 rounded-xl border border-cyan-500/40 space-y-2">
             <div class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center mx-auto"><i class="fa-solid fa-bed-pulse"></i></div>
             <span class="font-bold text-white text-sm">1. 居家端</span>
-            <p class="text-slate-300 text-[11px]">BP／SpO₂／ECG／血糖／體重／影像／語音</p>
+            <p class="text-slate-300 text-[11px]">BP／SpO₂／ECG／血糖／體重／影像／語音／雷達</p>
           </div>
           <div class="p-4 bg-slate-900 rounded-xl border border-emerald-500/40 space-y-2">
             <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto"><i class="fa-solid fa-network-wired"></i></div>
@@ -1238,7 +1369,7 @@
             <div>• 醫院—診所—居護—長照—藥局共照網</div>
             <div>• 部署分角色 AI Agent</div>
             <div>• 建立可複製病種模板</div>
-            <div>• ISO 42001 AI 模型與資料治理</div>
+            <div>• ISO 42001 模型與資料治理</div>
             <div>• 對接健保給付與商保長照支付</div>
           </div>
         </div>
@@ -1251,7 +1382,7 @@
         <div>
           <h3 class="text-lg font-bold text-white flex items-center gap-2">
             <i class="fa-solid fa-calculator text-emerald-400"></i>
-            在宅醫療 AI 效益與 ROI 試算器 (Interactive ROI Estimator)
+            在宅醫療與居家照護 AI 效益與 ROI 試算器 (Interactive ROI Estimator)
           </h3>
           <p class="text-xs text-slate-300 mt-1">調整預計管理之在宅個案數與效益參數，即時估算每年避免之非必要住院成本與醫護人力釋放效益。</p>
         </div>
@@ -1372,8 +1503,8 @@
           <li>• [5] 成大醫院智慧醫院 (2024/2026). 無牆化的遠距醫療照護新模式-建構多元感測融合之智慧安寧照護服務. (善終率 83%)</li>
           <li>• [6] 高雄醫學大學附設中和紀念醫院 (2025). 不用再跑醫院！高醫用「一支手機」重寫醫療模式在宅照護正式進入 AI 時代. <i>醫策會 HST / 風傳媒</i>.</li>
           <li>• [7] 臺北醫學大學校級人工智慧醫療研究中心 (2026). 從 MEDICA 到 CES: 在宅醫療、穿戴式數據與物理 AI.</li>
-          <li>• [8] 日本厚生勞動省 (MHLW). 慢性期・在宅医療での AI 活用について.</li>
-          <li>• [9] 資策會數位轉型研究院 (FIND). 在宅醫療新革命：AI如何讓診所走進家庭客廳？</li>
+          <li>• [8] <i>Journal of Wound Care</i> & <i>JMIR mHealth and uHealth</i>: 智慧手機傷口辨識 (Tissue Analytics/Swift) 與居家心衰竭/COPD 機器學習預測臨床實證.</li>
+          <li>• [9] 工研院 (ITRI) 智慧感測照護白皮書 & IEEE 論文: 毫米波 (mmWave) 微都卜勒雷達室內防跌與步態分析技術.</li>
           <li>• [10] 數位時代 / 臺灣AZ (2025). 從減負到在宅：北台灣醫界領袖共論 AI 醫療落地藍圖三大趨勢.</li>
         </ul>
       </div>
@@ -1383,7 +1514,7 @@
 
   <!-- Footer -->
   <footer class="border-t border-surfaceBorder bg-obsidian py-4 px-6 text-center text-xs text-slate-500">
-    AI × Hospital at Home (HaH) Decision Framework • by Howard Liao Ph.D. • 2026 All Rights Reserved.
+    AI × Hospital at Home & Home Care Decision Framework • by Howard Liao Ph.D. • 2026 All Rights Reserved.
   </footer>
 
   <!-- Interactive JavaScript Engine -->
@@ -1393,21 +1524,21 @@
     const totalSlides = 15;
 
     const speakerNotes = {
-      1: "開場說明：AI 在在宅醫療（Hospital at Home, HaH）的核心戰略定位。由 Howard Liao Ph.D. 主筆之決策者架構——將碎片化居家訊號轉化為高可靠臨床閉環。",
+      1: "開場說明：AI 在在宅醫療與居家照護（HaH & Home Care）的核心戰略定位。由 Howard Liao Ph.D. 主筆之決策者架構——將碎片化居家訊號轉化為高可靠臨床閉環。",
       2: "01 Executive Summary：AI 的價值不是取代醫護，而是讓照護團隊更早看到、更快行動、更少文書。4 大核心能力：可預警、可分流、可協作、可追蹤。",
       3: "02 AI 應用全景：四層架構由感知層、判讀層、決策層到協作層，底層全面以 HL7 FHIR 貫通數據流。",
       4: "03 資料到行動：居家端真正挑戰不是沒有資料，而是資料沒有進入臨床工作流。透過 6 步閉環：量測 ➔ 整合 ➔ 判讀 ➔ 分流 ➔ 處置 ➔ 追蹤。",
-      5: "04 五大高價值場景：遠距生理監測、AI分流預測、傷口影像CV、GenAI照護Copilot、家屬AI Agent。",
-      6: "05 場景一：不要只問有沒有超標，要問是否偏離個人正常狀態（個人化基線）。成大智慧安寧在宅善終率達 83%。",
+      5: "04 五大高價值場景：遠距生理監測 (Biofourmis/Current Health)、AI分流預測、傷口影像CV (Swift/Tissue)、GenAI照護Copilot (Abridge/DAX)、家屬AI Agent (Vayyar雷達)。",
+      6: "05 場景一：不要只問有沒有超標，要問是否偏離個人正常狀態（個人化基線）。RPM 在心衰竭/COPD 惡化前 24-48h 預警，成大智慧安寧在宅善終率達 83%。",
       7: "06 場景二：風險分數不是答案，風險＋驅動因子＋建議動作＋證據才是可用 CDS。堅持 Human-in-the-loop 原則。",
-      8: "07 場景三：GenAI 近期最高 ROI 在行政減負（SOAP初稿、交班、摘要），所有草稿須經專業人員簽核覆核。",
-      9: "08 場景四：家屬 AI Agent 是有邊界的數位協作者，建立高風險 Escalation 智慧升級防線，嚴禁自行下達診斷指令。",
+      8: "07 場景三：GenAI 近期最高 ROI 在行政減負（語音即時轉 SOAP、ADLs/巴氏量表描述），所有草稿須經專業人員簽核覆核。",
+      9: "08 場景四：家屬 AI Agent 是有邊界的數位協作者，結合毫米波雷達防跌 (Vayyar/工研院)，建立高風險 Escalation 智慧升級防線。",
       10: "09 落地藍圖：推動三階段策略——0-90天單病種MVP ➔ 3-9個月平台化與FHIR ➔ 9-18個月制度化共照網。",
       11: "10 Target Architecture：居家端 ➔ 資料與互通 ➔ AI Layer ➔ Clinical Workflow ➔ Governance，形成完整可稽核閉環。",
       12: "11 KPI 衡量：不可單看 AI Accuracy，應從臨床品質、即時性、照護效率、病人體驗、財務價值與治理指標全面評估。",
       13: "12 資安與治理：高風險系統預設安全，以 ISO 27001、ISO 42001 與 NIST AI RMF 為底座，落實 8 大控制項與斷網失效安全。",
       14: "13 決策者優先序：照護閉環做對、高頻高風險場景優先、Copilot先行、FHIR治理為基石、以再住院減少量為 ROI 主軸。",
-      15: "14 參考來源：彙整行政院、CIO Taiwan、安可醫療、成大、高醫、北醫、日本厚勞省、FIND與數位時代等前瞻文獻。"
+      15: "14 參考來源：彙整行政院、CIO Taiwan、Journal of Wound Care、JMIR、工研院、IEEE、成大、高醫、北醫等前瞻文獻。"
     };
 
     function showSlide(index) {
@@ -1534,7 +1665,7 @@
       wound: {
         badge: "🔍 密切追蹤 (Yellow Tier)",
         badgeClass: "bg-amber-950 border-amber-500 text-amber-300",
-        title: "骶尾部壓傷邊緣微幅擴大 (Pressure Injury Progression)",
+        title: "骶尾部壓傷邊緣微幅擴大 (Tissue Analytics / Swift Skin)",
         drivers: "手機影像辨識面積 3.2cm × 2.8cm，邊緣紅腫區域較前次擴增 15%，滲液增加但尚未見深層壞死組織。",
         action: "1. 護理師遠端審閱影像並複核分級<br>2. 衛教外籍看護增加每 2 小時翻身次數與減壓氣墊床設定<br>3. 調整泡棉敷料更換頻率",
       }
