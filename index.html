@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="dark">
+<html lang="zh-TW" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +12,18 @@
       theme: {
         extend: {
           colors: {
-            obsidian: '#070b14',
-            surface: '#0f172a',
-            surfaceCard: '#131e36',
-            surfaceBorder: '#1e293b',
-            accentCyan: '#06b6d4',
-            accentEmerald: '#10b981',
-            accentBlue: '#3b82f6',
-            accentAmber: '#f59e0b',
-            accentPurple: '#a855f7',
-            accentRose: '#f43f5e'
+            brandBlue: '#0284c7',
+            brandNavy: '#0f172a',
+            brandSlate: '#f8fafc',
+            brandCard: '#ffffff',
+            brandBorder: '#e2e8f0',
+            brandEmerald: '#059669',
+            brandAmber: '#d97706',
+            brandPurple: '#7c3aed',
+            brandRose: '#e11d48'
           },
           fontFamily: {
-            sans: ['"Noto Sans TC"', 'Inter', 'system-ui', 'sans-serif'],
+            sans: ['"Noto Sans TC"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
           }
         }
       }
@@ -39,26 +38,21 @@
   
   <style>
     body {
-      background-color: #070b14;
-      color: #f1f5f9;
+      background-color: #f8fafc;
+      color: #0f172a;
       font-family: 'Noto Sans TC', 'Inter', sans-serif;
     }
-    .glass-card {
-      background: rgba(19, 30, 54, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .clean-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
     }
-    .glass-card-glow {
-      background: rgba(19, 30, 54, 0.9);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(6, 182, 212, 0.25);
-      box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.15);
+    .clean-card-hover {
+      transition: all 0.2s ease-in-out;
     }
-    .glow-cyan {
-      box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.3);
-    }
-    .glow-emerald {
-      box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.3);
+    .clean-card-hover:hover {
+      border-color: #0284c7;
+      box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.1), 0 2px 4px -2px rgba(2, 132, 199, 0.1);
     }
     /* Custom scrollbar */
     ::-webkit-scrollbar {
@@ -66,14 +60,14 @@
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #070b14;
+      background: #f1f5f9;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1e293b;
+      background: #cbd5e1;
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #06b6d4;
+      background: #0284c7;
     }
     .slide-active {
       display: flex !important;
@@ -81,30 +75,23 @@
     .slide-inactive {
       display: none !important;
     }
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.8; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.02); }
-    }
-    .animate-pulse-subtle {
-      animation: pulse-glow 3s infinite ease-in-out;
-    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white bg-slate-50 text-slate-900">
 
   <!-- Top Global Navigation Header -->
-  <header class="sticky top-0 z-50 border-b border-surfaceBorder bg-obsidian/95 backdrop-blur-md px-4 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4 shadow-sm">
     <div class="flex items-center space-x-3">
-      <div class="h-9 w-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center text-obsidian font-black text-lg shadow-lg shadow-cyan-500/20">
+      <div class="h-9 w-9 rounded-lg bg-gradient-to-tr from-sky-600 to-teal-500 flex items-center justify-center text-white font-black text-lg shadow-sm">
         <i class="fa-solid fa-house-medical"></i>
       </div>
       <div>
         <div class="flex items-center space-x-2">
-          <span class="text-xs font-bold tracking-wider uppercase text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded">Hospital at Home & Home Care</span>
-          <span class="text-xs text-slate-400 font-mono">決策者簡報｜臨床 × AI × FHIR × 資安治理</span>
+          <span class="text-xs font-bold tracking-wider uppercase text-sky-700 bg-sky-50 border border-sky-200 px-2 py-0.5 rounded">Hospital at Home & Home Care</span>
+          <span class="text-xs text-slate-500 font-mono">決策者簡報｜臨床 × AI × FHIR × 資安治理</span>
         </div>
-        <h1 class="text-base lg:text-lg font-bold text-white tracking-tight flex items-center gap-2">
-          AI × 在宅醫療與居家照護智慧落地藍圖 <span class="text-xs font-normal text-slate-400">by Howard Liao Ph.D.</span>
+        <h1 class="text-base lg:text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
+          AI × 在宅醫療與居家照護智慧落地藍圖 <span class="text-xs font-normal text-slate-500">by Howard Liao Ph.D.</span>
         </h1>
       </div>
     </div>
@@ -112,77 +99,77 @@
     <!-- View Mode Switcher & Actions -->
     <div class="flex items-center flex-wrap gap-2.5">
       <!-- Mode Toggle -->
-      <div class="bg-surfaceCard p-1 rounded-xl border border-surfaceBorder flex items-center text-xs">
-        <button id="btn-mode-presentation" onclick="setAppMode('presentation')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md">
+      <div class="bg-slate-100 p-1 rounded-xl border border-slate-200 flex items-center text-xs">
+        <button id="btn-mode-presentation" onclick="setAppMode('presentation')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-sky-600 text-white shadow-sm">
           <i class="fa-solid fa-person-chalkboard"></i>
           <span>15頁 簡報投影模式</span>
         </button>
-        <button id="btn-mode-dashboard" onclick="setAppMode('dashboard')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white transition-all">
+        <button id="btn-mode-dashboard" onclick="setAppMode('dashboard')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-600 hover:text-slate-900 transition-all">
           <i class="fa-solid fa-chart-pie"></i>
           <span>全景互動儀表板</span>
         </button>
       </div>
 
       <!-- PPTX Download Link Bound Directly to Howard Liao's Source Deck -->
-      <a href="AI_Hospital_at_Home_HaH_智慧在宅醫療藍圖_Howard_Liao.pptx" download="AI_Hospital_at_Home_HaH_智慧在宅醫療藍圖_Howard_Liao.pptx" class="flex items-center gap-1.5 bg-gradient-to-r from-emerald-600/30 to-teal-600/30 hover:from-emerald-600/40 hover:to-teal-600/40 text-emerald-300 border border-emerald-500/40 px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all">
-        <i class="fa-solid fa-file-powerpoint text-emerald-400"></i>
+      <a href="AI_Hospital_at_Home_HaH_智慧在宅醫療藍圖_Howard_Liao.pptx" download="AI_Hospital_at_Home_HaH_智慧在宅醫療藍圖_Howard_Liao.pptx" class="flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all">
+        <i class="fa-solid fa-file-powerpoint text-emerald-600"></i>
         <span>下載 PPTX 簡報</span>
       </a>
       
-      <button onclick="window.print()" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-700 transition-all">
+      <button onclick="window.print()" class="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-300 transition-all">
         <i class="fa-solid fa-print"></i>
         <span>列印 / 匯出</span>
       </button>
 
-      <button id="btn-fullscreen" onclick="toggleFullscreen()" title="切換全螢幕 (快速鍵: F)" class="h-8 w-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center border border-slate-700 transition-all">
+      <button id="btn-fullscreen" onclick="toggleFullscreen()" title="切換全螢幕 (快速鍵: F)" class="h-8 w-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center border border-slate-300 transition-all">
         <i class="fa-solid fa-expand"></i>
       </button>
     </div>
   </header>
 
   <!-- ========================================================================= -->
-  <!-- VIEW MODE 1: 簡報投影模式 (Slide Deck Presentation Mode - 15 Full Slides) -->
+  <!-- VIEW MODE 1: 簡報投影模式 (Slide Deck Presentation Mode - Clean Light Theme) -->
   <!-- ========================================================================= -->
   <main id="presentation-container" class="flex-1 flex flex-col items-center justify-center p-4 lg:p-6 max-w-7xl mx-auto w-full">
     
     <!-- Slide Box -->
-    <div class="w-full aspect-[16/9] max-h-[82vh] min-h-[530px] rounded-2xl glass-card relative overflow-hidden flex flex-col border border-surfaceBorder shadow-2xl">
+    <div class="w-full aspect-[16/9] max-h-[82vh] min-h-[530px] rounded-2xl clean-card relative overflow-hidden flex flex-col shadow-lg border border-slate-200">
       
       <!-- Slide Content Viewport -->
-      <div id="slides-viewport" class="flex-1 p-6 lg:p-10 flex flex-col justify-between overflow-y-auto relative">
+      <div id="slides-viewport" class="flex-1 p-6 lg:p-10 flex flex-col justify-between overflow-y-auto relative bg-white">
 
         <!-- SLIDE 1: Title Slide -->
         <div class="slide slide-active flex flex-col justify-between h-full" data-slide="1">
           <div class="space-y-4">
-            <div class="inline-flex items-center space-x-2 bg-cyan-950/70 border border-cyan-500/40 px-3.5 py-1 rounded-full">
-              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-              <span class="text-xs font-bold uppercase tracking-wider text-cyan-300">決策者簡報｜臨床 × AI × FHIR × 資安治理</span>
+            <div class="inline-flex items-center space-x-2 bg-sky-50 border border-sky-200 px-3.5 py-1 rounded-full">
+              <span class="w-2 h-2 rounded-full bg-sky-600 animate-ping"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-800">決策者簡報｜臨床 × AI × FHIR × 資安治理</span>
             </div>
-            <h2 class="text-3xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            <h2 class="text-3xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
               AI × 在宅醫療與居家照護<br>
-              <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-400 to-blue-400">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-600 via-teal-600 to-blue-700">
                 Hospital at Home（HaH）智慧落地藍圖
               </span>
             </h2>
-            <p class="text-base lg:text-lg text-slate-300 max-w-3xl leading-relaxed">
+            <p class="text-base lg:text-lg text-slate-600 max-w-3xl leading-relaxed">
               把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環。聚焦失能長者、慢性病患及術後返家者之日常照護與訪視減負。
             </p>
           </div>
 
           <!-- Presenter Footer -->
-          <div class="flex items-center justify-between border-t border-slate-800/80 pt-4 mt-6">
+          <div class="flex items-center justify-between border-t border-slate-200 pt-4 mt-6">
             <div class="flex items-center space-x-3">
-              <div class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs">HL</div>
+              <div class="w-8 h-8 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-xs">HL</div>
               <div>
-                <div class="text-sm font-bold text-white">Howard Liao Ph.D.</div>
-                <div class="text-xs text-slate-400">AI × Hospital at Home & Home Care 策略全景</div>
+                <div class="text-sm font-bold text-slate-900">Howard Liao Ph.D.</div>
+                <div class="text-xs text-slate-500">AI × Hospital at Home & Home Care 策略全景</div>
               </div>
             </div>
             <div class="flex space-x-2 text-xs">
-              <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-cyan-300">可預警</span>
-              <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-emerald-300">可分流</span>
-              <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-blue-300">可協作</span>
-              <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-amber-300">可追蹤</span>
+              <span class="px-2.5 py-1 rounded bg-sky-50 border border-sky-200 text-sky-700 font-medium">可預警</span>
+              <span class="px-2.5 py-1 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-medium">可分流</span>
+              <span class="px-2.5 py-1 rounded bg-blue-50 border border-blue-200 text-blue-700 font-medium">可協作</span>
+              <span class="px-2.5 py-1 rounded bg-amber-50 border border-amber-200 text-amber-700 font-medium">可追蹤</span>
             </div>
           </div>
         </div>
@@ -190,103 +177,103 @@
         <!-- SLIDE 2: 01｜Executive Summary -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="2">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">01｜Executive Summary</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">AI 的價值不是取代醫護，而是讓照護團隊更早看到、更快行動、更少文書</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">01｜Executive Summary</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">AI 的價值不是取代醫護，而是讓照護團隊更早看到、更快行動、更少文書</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 my-auto">
-            <div class="glass-card-glow p-4 rounded-xl border border-cyan-500/30">
-              <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-base mb-2">
+            <div class="clean-card p-4 rounded-xl border border-sky-200 bg-sky-50/50">
+              <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center text-base mb-2">
                 <i class="fa-solid fa-bell"></i>
               </div>
-              <h3 class="font-bold text-white text-sm">可預警</h3>
-              <p class="text-xs text-slate-300 mt-1">從單點量測 ➔ 個人基線＋趨勢異常 ➔ 早期介入。</p>
+              <h3 class="font-bold text-slate-900 text-sm">可預警</h3>
+              <p class="text-xs text-slate-600 mt-1">從單點量測 ➔ 個人基線＋趨勢異常 ➔ 早期介入。</p>
             </div>
-            <div class="glass-card-glow p-4 rounded-xl border border-emerald-500/30">
-              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-base mb-2">
+            <div class="clean-card p-4 rounded-xl border border-emerald-200 bg-emerald-50/50">
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-base mb-2">
                 <i class="fa-solid fa-filter-circle-dollar"></i>
               </div>
-              <h3 class="font-bold text-white text-sm">可分流</h3>
-              <p class="text-xs text-slate-300 mt-1">把有限的醫護訪視資源，優先給真正高風險個案。</p>
+              <h3 class="font-bold text-slate-900 text-sm">可分流</h3>
+              <p class="text-xs text-slate-600 mt-1">把有限的醫護訪視資源，優先給真正高風險個案。</p>
             </div>
-            <div class="glass-card-glow p-4 rounded-xl border border-blue-500/30">
-              <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-base mb-2">
+            <div class="clean-card p-4 rounded-xl border border-blue-200 bg-blue-50/50">
+              <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-base mb-2">
                 <i class="fa-solid fa-users-gear"></i>
               </div>
-              <h3 class="font-bold text-white text-sm">可協作</h3>
-              <p class="text-xs text-slate-300 mt-1">AI Copilot 串起病人、家屬、護理師、個管師與醫師。</p>
+              <h3 class="font-bold text-slate-900 text-sm">可協作</h3>
+              <p class="text-xs text-slate-600 mt-1">AI Copilot 串起病人、家屬、護理師、個管師與醫師。</p>
             </div>
-            <div class="glass-card-glow p-4 rounded-xl border border-amber-500/30">
-              <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-base mb-2">
+            <div class="clean-card p-4 rounded-xl border border-amber-200 bg-amber-50/50">
+              <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-base mb-2">
                 <i class="fa-solid fa-shield-halved"></i>
               </div>
-              <h3 class="font-bold text-white text-sm">可追蹤</h3>
-              <p class="text-xs text-slate-300 mt-1">FHIR／資料治理／稽核軌跡，形成可持續改善的照護閉環。</p>
+              <h3 class="font-bold text-slate-900 text-sm">可追蹤</h3>
+              <p class="text-xs text-slate-600 mt-1">FHIR／資料治理／稽核軌跡，形成可持續改善的照護閉環。</p>
             </div>
           </div>
 
-          <div class="p-3 bg-cyan-950/40 border border-cyan-800/40 rounded-lg text-xs text-cyan-200 flex items-center justify-between">
+          <div class="p-3 bg-sky-50 border border-sky-200 rounded-lg text-xs text-sky-900 flex items-center justify-between">
             <span><strong>核心目標：</strong>讓病人更安全地留在家中，同時降低非必要急診、再住院與照護團隊行政負擔。</span>
-            <span class="text-slate-400 font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
+            <span class="text-slate-500 font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
         </div>
 
         <!-- SLIDE 3: 02｜AI 應用全景 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="3">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">02｜AI 應用全景</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">四層架構：從感知資料，到臨床行動，再回饋治理</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">02｜AI 應用全景</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">四層架構：從感知資料，到臨床行動，再回饋治理</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="space-y-2.5 my-auto text-xs">
-            <div class="p-3.5 rounded-xl bg-gradient-to-r from-blue-950/70 to-slate-900 border border-blue-500/40 flex items-center justify-between">
+            <div class="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200 flex items-center justify-between">
               <div class="flex items-center space-x-3">
-                <span class="px-2.5 py-1 rounded bg-blue-500/20 text-blue-400 font-mono font-bold">協作層</span>
-                <span class="font-bold text-white text-sm">AI Copilot / Agent</span>
+                <span class="px-2.5 py-1 rounded bg-blue-100 text-blue-700 font-mono font-bold">協作層</span>
+                <span class="font-bold text-slate-900 text-sm">AI Copilot / Agent</span>
               </div>
-              <div class="text-slate-300 flex-1 px-6">
+              <div class="text-slate-600 flex-1 px-6">
                 摘要、交班、衛教、任務派工、排程與照護紀錄自動化 (Abridge / DAX / NIS LLM)
               </div>
-              <span class="text-blue-300 bg-blue-900/50 px-2 py-0.5 rounded">串聯共照網絡</span>
+              <span class="text-blue-700 bg-blue-100 px-2 py-0.5 rounded font-medium">串聯共照網絡</span>
             </div>
 
-            <div class="p-3.5 rounded-xl bg-gradient-to-r from-amber-950/70 to-slate-900 border border-amber-500/40 flex items-center justify-between">
+            <div class="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 flex items-center justify-between">
               <div class="flex items-center space-x-3">
-                <span class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-400 font-mono font-bold">決策層</span>
-                <span class="font-bold text-white text-sm">Clinical Decision Support</span>
+                <span class="px-2.5 py-1 rounded bg-amber-100 text-amber-800 font-mono font-bold">決策層</span>
+                <span class="font-bold text-slate-900 text-sm">Clinical Decision Support</span>
               </div>
-              <div class="text-slate-300 flex-1 px-6">
+              <div class="text-slate-600 flex-1 px-6">
                 分流、優先級排序、建議追蹤／視訊看診／居家訪視／轉診 (Biofourmis / Current Health)
               </div>
-              <span class="text-amber-300 bg-amber-900/50 px-2 py-0.5 rounded">輔助臨床決策</span>
+              <span class="text-amber-800 bg-amber-100 px-2 py-0.5 rounded font-medium">輔助臨床決策</span>
             </div>
 
-            <div class="p-3.5 rounded-xl bg-gradient-to-r from-emerald-950/70 to-slate-900 border border-emerald-500/40 flex items-center justify-between">
+            <div class="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200 flex items-center justify-between">
               <div class="flex items-center space-x-3">
-                <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 font-mono font-bold">判讀層</span>
-                <span class="font-bold text-white text-sm">異常與趨勢判讀</span>
+                <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 font-mono font-bold">判讀層</span>
+                <span class="font-bold text-slate-900 text-sm">異常與趨勢判讀</span>
               </div>
-              <div class="text-slate-300 flex-1 px-6">
+              <div class="text-slate-600 flex-1 px-6">
                 個人基線、異常偵測、風險預測、傷口壓傷 CV 辨識 (Tissue Analytics / Swift Skin)
               </div>
-              <span class="text-emerald-300 bg-emerald-900/50 px-2 py-0.5 rounded">萃取臨床意義</span>
+              <span class="text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded font-medium">萃取臨床意義</span>
             </div>
 
-            <div class="p-3.5 rounded-xl bg-gradient-to-r from-cyan-950/70 to-slate-900 border border-cyan-500/40 flex items-center justify-between">
+            <div class="p-3.5 rounded-xl bg-sky-50/80 border border-sky-200 flex items-center justify-between">
               <div class="flex items-center space-x-3">
-                <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-400 font-mono font-bold">感知層</span>
-                <span class="font-bold text-white text-sm">健康訊號收集</span>
+                <span class="px-2.5 py-1 rounded bg-sky-100 text-sky-800 font-mono font-bold">感知層</span>
+                <span class="font-bold text-slate-900 text-sm">健康訊號收集</span>
               </div>
-              <div class="text-slate-300 flex-1 px-6">
+              <div class="text-slate-600 flex-1 px-6">
                 血壓／血氧／血糖／體溫／體重／ECG／智慧床墊／毫米波雷達防跌 (Vayyar / 工研院)
               </div>
-              <span class="text-cyan-300 bg-cyan-900/50 px-2 py-0.5 rounded">高品質去雜訊</span>
+              <span class="text-sky-800 bg-sky-100 px-2 py-0.5 rounded font-medium">高品質去雜訊</span>
             </div>
           </div>
 
-          <div class="text-slate-400 text-xs flex justify-between">
+          <div class="text-slate-500 text-xs flex justify-between">
             <span>底層資料流貫穿：HL7 FHIR Resource 標準互通</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -295,40 +282,40 @@
         <!-- SLIDE 4: 03｜真正的核心：資料 → 行動 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="4">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">03｜真正的核心：資料 → 行動</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">居家端真正的挑戰不是沒有資料，而是資料沒有進入臨床工作流</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">03｜真正的核心：資料 → 行動</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">居家端真正的挑戰不是沒有資料，而是資料沒有進入臨床工作流</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-6 gap-2.5 my-auto text-xs text-center">
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-cyan-500/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-cyan-400">01 量測</span>
-              <p class="text-slate-300 text-[11px]">裝置／語音／影像／病人回報</p>
+            <div class="p-3 rounded-xl clean-card border border-sky-200 bg-sky-50/40 space-y-1">
+              <span class="text-xs font-bold font-mono text-sky-700">01 量測</span>
+              <p class="text-slate-600 text-[11px]">裝置／語音／影像／病人回報</p>
             </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-emerald-500/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-emerald-400">02 整合</span>
-              <p class="text-slate-300 text-[11px]">EMR／HIS／FHIR／用藥／病史</p>
+            <div class="p-3 rounded-xl clean-card border border-emerald-200 bg-emerald-50/40 space-y-1">
+              <span class="text-xs font-bold font-mono text-emerald-700">02 整合</span>
+              <p class="text-slate-600 text-[11px]">EMR／HIS／FHIR／用藥／病史</p>
             </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-blue-500/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-blue-400">03 判讀</span>
-              <p class="text-slate-300 text-[11px]">基線＋趨勢＋風險模型</p>
+            <div class="p-3 rounded-xl clean-card border border-blue-200 bg-blue-50/40 space-y-1">
+              <span class="text-xs font-bold font-mono text-blue-700">03 判讀</span>
+              <p class="text-slate-600 text-[11px]">基線＋趨勢＋風險模型</p>
             </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-amber-500/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-amber-400">04 分流</span>
-              <p class="text-slate-300 text-[11px]">紅／黃／綠＋SLA</p>
+            <div class="p-3 rounded-xl clean-card border border-amber-200 bg-amber-50/40 space-y-1">
+              <span class="text-xs font-bold font-mono text-amber-700">04 分流</span>
+              <p class="text-slate-600 text-[11px]">紅／黃／綠＋SLA</p>
             </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-purple-500/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-purple-400">05 處置</span>
-              <p class="text-slate-300 text-[11px]">電話／視訊／訪視／急診</p>
+            <div class="p-3 rounded-xl clean-card border border-purple-200 bg-purple-50/40 space-y-1">
+              <span class="text-xs font-bold font-mono text-purple-700">05 處置</span>
+              <p class="text-slate-600 text-[11px]">電話／視訊／訪視／急診</p>
             </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-rose-500/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-rose-400">06 追蹤</span>
-              <p class="text-slate-300 text-[11px]">結果回寫＋模型治理</p>
+            <div class="p-3 rounded-xl clean-card border border-rose-200 bg-rose-50/40 space-y-1">
+              <span class="text-xs font-bold font-mono text-rose-700">06 追蹤</span>
+              <p class="text-slate-600 text-[11px]">結果回寫＋模型治理</p>
             </div>
           </div>
 
-          <div class="p-3.5 bg-slate-900/90 border border-slate-700 rounded-lg text-xs text-slate-200">
-            <strong class="text-cyan-400"><i class="fa-solid fa-link mr-1"></i> FHIR 的價值：</strong>
+          <div class="p-3.5 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-700">
+            <strong class="text-sky-700"><i class="fa-solid fa-link mr-1"></i> FHIR 的價值：</strong>
             讓感測、病歷、用藥與照護紀錄形成「可用的共照資訊流」，而不是孤立 App／設備資料。
           </div>
         </div>
@@ -336,40 +323,40 @@
         <!-- SLIDE 5: 04｜五大高價值 AI 場景 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="5">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">04｜五大高價值 AI 場景</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">聚焦高頻、高風險、高痛點的五大落地應用</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">04｜五大高價值 AI 場景</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">聚焦高頻、高風險、高痛點的五大落地應用</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-5 gap-3 my-auto text-xs">
-            <div class="glass-card p-3.5 rounded-xl border border-cyan-500/30 space-y-2">
-              <span class="text-cyan-400 font-bold font-mono">01</span>
-              <h3 class="font-bold text-white">遠距生理監測</h3>
-              <p class="text-slate-300 text-[11px]">Biofourmis / Current Health 時序預警，個人基線監控。</p>
+            <div class="clean-card p-3.5 rounded-xl border border-sky-200 space-y-2">
+              <span class="text-sky-600 font-bold font-mono">01</span>
+              <h3 class="font-bold text-slate-900">遠距生理監測</h3>
+              <p class="text-slate-600 text-[11px]">Biofourmis / Current Health 時序預警，個人基線監控。</p>
             </div>
-            <div class="glass-card p-3.5 rounded-xl border border-emerald-500/30 space-y-2">
-              <span class="text-emerald-400 font-bold font-mono">02</span>
-              <h3 class="font-bold text-white">AI 分流預測</h3>
-              <p class="text-slate-300 text-[11px]">每天排出「誰最需要先處理」與 30 日再住院風險。</p>
+            <div class="clean-card p-3.5 rounded-xl border border-emerald-200 space-y-2">
+              <span class="text-emerald-600 font-bold font-mono">02</span>
+              <h3 class="font-bold text-slate-900">AI 分流預測</h3>
+              <p class="text-slate-600 text-[11px]">每天排出「誰最需要先處理」與 30 日再住院風險。</p>
             </div>
-            <div class="glass-card p-3.5 rounded-xl border border-amber-500/30 space-y-2">
-              <span class="text-amber-400 font-bold font-mono">03</span>
-              <h3 class="font-bold text-white">傷口／皮膚影像</h3>
-              <p class="text-slate-300 text-[11px]">Tissue Analytics / Swift Skin 手機拍攝與分期量測。</p>
+            <div class="clean-card p-3.5 rounded-xl border border-amber-200 space-y-2">
+              <span class="text-amber-600 font-bold font-mono">03</span>
+              <h3 class="font-bold text-slate-900">傷口／皮膚影像</h3>
+              <p class="text-slate-600 text-[11px]">Tissue Analytics / Swift Skin 手機拍攝與分期量測。</p>
             </div>
-            <div class="glass-card p-3.5 rounded-xl border border-blue-500/30 space-y-2">
-              <span class="text-blue-400 font-bold font-mono">04</span>
-              <h3 class="font-bold text-white">GenAI 照護 Copilot</h3>
-              <p class="text-slate-300 text-[11px]">Abridge / DAX / NIS 訪視語音轉 SOAP 與巴氏量表。</p>
+            <div class="clean-card p-3.5 rounded-xl border border-blue-200 space-y-2">
+              <span class="text-blue-600 font-bold font-mono">04</span>
+              <h3 class="font-bold text-slate-900">GenAI 照護 Copilot</h3>
+              <p class="text-slate-600 text-[11px]">Abridge / DAX / NIS 訪視語音轉 SOAP 與巴氏量表。</p>
             </div>
-            <div class="glass-card p-3.5 rounded-xl border border-purple-500/30 space-y-2">
-              <span class="text-purple-400 font-bold font-mono">05</span>
-              <h3 class="font-bold text-white">家屬 AI Agent & 防跌</h3>
-              <p class="text-slate-300 text-[11px]">Vayyar / 工研院毫米波雷達防跌與高風險升級防線。</p>
+            <div class="clean-card p-3.5 rounded-xl border border-purple-200 space-y-2">
+              <span class="text-purple-600 font-bold font-mono">05</span>
+              <h3 class="font-bold text-slate-900">家屬 Agent & 防跌</h3>
+              <p class="text-slate-600 text-[11px]">Vayyar / 工研院毫米波雷達防跌與高風險升級防線。</p>
             </div>
           </div>
 
-          <div class="text-slate-400 text-xs flex justify-between">
+          <div class="text-slate-500 text-xs flex justify-between">
             <span>涵蓋生理訊號、環境感知雷達、影像、語音與 LLM 之 Multimodal 臨床賦能</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -378,27 +365,27 @@
         <!-- SLIDE 6: 05｜場景一：遠距生理監測與早期預警 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="6">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">05｜場景一：遠距生理監測與早期預警</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">不要只問「有沒有超標」，要問「是否偏離這個人的正常狀態」</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">05｜場景一：遠距生理監測與早期預警</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">不要只問「有沒有超標」，要問「是否偏離這個人的正常狀態」</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
-            <div class="glass-card p-4 rounded-xl border border-cyan-500/30 space-y-2">
-              <h3 class="font-bold text-cyan-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-chart-line"></i> 個人化基線</h3>
-              <p class="text-slate-300 leading-relaxed">例如 COPD 病人長期 95% 的血氧，若持續降到 91%，同時呼吸頻率上升，其臨床意義遠高於單一固定閾值。</p>
+            <div class="clean-card p-4 rounded-xl border border-sky-200 space-y-2">
+              <h3 class="font-bold text-sky-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-chart-line"></i> 個人化基線</h3>
+              <p class="text-slate-600 leading-relaxed">例如 COPD 病人長期 95% 的血氧，若持續降到 91%，同時呼吸頻率上升，其臨床意義遠高於單一固定閾值。</p>
             </div>
-            <div class="glass-card p-4 rounded-xl border border-emerald-500/30 space-y-2">
-              <h3 class="font-bold text-emerald-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-network-wired"></i> 多訊號融合 (RPM)</h3>
-              <p class="text-slate-300 leading-relaxed">整合 HRV、血氧、呼吸、體重與活動量，在心衰竭復發、COPD 急性惡化前 <strong>24~48 小時</strong> 發出預警 (Biofourmis / Current Health)。</p>
+            <div class="clean-card p-4 rounded-xl border border-emerald-200 space-y-2">
+              <h3 class="font-bold text-emerald-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-network-wired"></i> 多訊號融合 (RPM)</h3>
+              <p class="text-slate-600 leading-relaxed">整合 HRV、血氧、呼吸、體重與活動量，在心衰竭復發、COPD 急性惡化前 <strong>24~48 小時</strong> 發出預警 (Biofourmis / Current Health)。</p>
             </div>
-            <div class="glass-card p-4 rounded-xl border border-amber-500/30 space-y-2">
-              <h3 class="font-bold text-amber-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-truck-medical"></i> 臨床行動與成效</h3>
-              <p class="text-slate-300 leading-relaxed">紅／黃／綠分級 ➔ 護理師電話 ➔ 視訊 ➔ 居家訪視 ➔ 處方調整。成大智慧安寧在宅善終率高達 <strong>83%</strong>。</p>
+            <div class="clean-card p-4 rounded-xl border border-amber-200 space-y-2">
+              <h3 class="font-bold text-amber-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-truck-medical"></i> 臨床行動與成效</h3>
+              <p class="text-slate-600 leading-relaxed">紅／黃／綠分級 ➔ 護理師電話 ➔ 視訊 ➔ 居家訪視 ➔ 處方調整。成大智慧安寧在宅善終率高達 <strong>83%</strong>。</p>
             </div>
           </div>
 
-          <div class="p-2.5 bg-cyan-950/40 border border-cyan-800/40 rounded-lg text-xs text-cyan-200 flex items-center justify-between">
+          <div class="p-2.5 bg-sky-50 border border-sky-200 rounded-lg text-xs text-sky-900 flex items-center justify-between">
             <span><strong>實證支持：</strong><i>JMIR mHealth and uHealth</i> 臨床驗證居家心衰竭與 COPD 機器學習預測模型。</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -407,15 +394,15 @@
         <!-- SLIDE 7: 06｜場景二：AI 分流與再住院風險 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="7">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">06｜場景二：AI 分流與再住院風險</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">風險分數不是答案；「風險＋驅動因子＋建議動作＋證據」才是臨床可用輸出</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">06｜場景二：AI 分流與再住院風險</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">風險分數不是答案；「風險＋驅動因子＋建議動作＋證據」才是臨床可用輸出</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
-            <div class="glass-card p-4 rounded-xl border border-blue-500/30 space-y-2">
-              <h3 class="font-bold text-blue-400 text-sm">輸入特徵</h3>
-              <ul class="space-y-1 text-slate-300">
+            <div class="clean-card p-4 rounded-xl border border-blue-200 space-y-2">
+              <h3 class="font-bold text-blue-700 text-sm">輸入特徵</h3>
+              <ul class="space-y-1 text-slate-600">
                 <li>• 生命徵象趨勢與變異</li>
                 <li>• 共病／Frailty 衰弱度</li>
                 <li>• 急診／住院史與再入院紀錄</li>
@@ -424,27 +411,27 @@
                 <li>• 照顧能力與地理可近性</li>
               </ul>
             </div>
-            <div class="glass-card p-4 rounded-xl border border-amber-500/30 space-y-2">
-              <h3 class="font-bold text-amber-400 text-sm">CDS 可解釋輸出</h3>
-              <div class="space-y-1.5 text-slate-300">
-                <div><strong class="text-amber-300">風險等級：</strong>低／中／高</div>
-                <div><strong class="text-amber-300">驅動因子：</strong>血氧下滑、食慾下降、利尿劑調整後體重仍上升</div>
-                <div><strong class="text-amber-300">建議動作：</strong>2 小時內電訪／今日視訊／醫師評估處方</div>
+            <div class="clean-card p-4 rounded-xl border border-amber-200 space-y-2">
+              <h3 class="font-bold text-amber-700 text-sm">CDS 可解釋輸出</h3>
+              <div class="space-y-1.5 text-slate-600">
+                <div><strong class="text-amber-800">風險等級：</strong>低／中／高</div>
+                <div><strong class="text-amber-800">驅動因子：</strong>血氧下滑、食慾下降、利尿劑調整後體重仍上升</div>
+                <div><strong class="text-amber-800">建議動作：</strong>2 小時內電訪／今日視訊／醫師評估處方</div>
               </div>
             </div>
-            <div class="glass-card p-4 rounded-xl border border-emerald-500/30 space-y-2">
-              <h3 class="font-bold text-emerald-400 text-sm">治理與原則</h3>
-              <ul class="space-y-1 text-slate-300">
+            <div class="clean-card p-4 rounded-xl border border-emerald-200 space-y-2">
+              <h3 class="font-bold text-emerald-700 text-sm">治理與原則</h3>
+              <ul class="space-y-1 text-slate-600">
                 <li>• 顯示資料來源與時間戳</li>
                 <li>• 模型版本可追蹤</li>
                 <li>• <strong>Human-in-the-loop：</strong></li>
-                <li class="pl-3 text-cyan-300">AI 提醒人，人決定怎麼做</li>
+                <li class="pl-3 text-sky-700 font-semibold">AI 提醒人，人決定怎麼做</li>
                 <li>• 最終處置留痕與審計</li>
               </ul>
             </div>
           </div>
 
-          <div class="text-slate-400 text-xs flex justify-between">
+          <div class="text-slate-500 text-xs flex justify-between">
             <span>絕不以黑盒子風險分數取代專業判斷，保障醫護最終臨床自主權。</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -453,39 +440,39 @@
         <!-- SLIDE 8: 07｜場景三：GenAI，近期最容易產生 ROI 的地方 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="8">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">07｜場景三：GenAI 行政減負與 Ambient Intelligence</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">先從 Copilot 開始，而不是一開始就讓 AI 自動診斷</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">07｜場景三：GenAI 行政減負與 Ambient Intelligence</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">先從 Copilot 開始，而不是一開始就讓 AI 自動診斷</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3 my-auto text-xs">
-            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">訪視語音 ➔ SOAP／長照評估</strong>
-              <p class="text-slate-300">對話轉為 ADLs、巴氏量表與護理紀錄初稿 (Abridge / DAX / NIS)。</p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <strong class="text-emerald-700">訪視語音 ➔ SOAP／長照評估</strong>
+              <p class="text-slate-600">對話轉為 ADLs、巴氏量表與護理紀錄初稿 (Abridge / DAX / NIS)。</p>
             </div>
-            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">今日個案摘要</strong>
-              <p class="text-slate-300">整合病歷、檢驗、用藥與近 7 日生命徵象日報。</p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <strong class="text-emerald-700">今日個案摘要</strong>
+              <p class="text-slate-600">整合病歷、檢驗、用藥與近 7 日生命徵象日報。</p>
             </div>
-            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">交班與待辦清單</strong>
-              <p class="text-slate-300">自動整理跨班重點與未完成待辦事項。</p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <strong class="text-emerald-700">交班與待辦清單</strong>
+              <p class="text-slate-600">自動整理跨班重點與未完成待辦事項。</p>
             </div>
-            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">多語病人衛教</strong>
-              <p class="text-slate-300">轉成台語、印尼語、越語等易懂通俗單張。</p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <strong class="text-emerald-700">多語病人衛教</strong>
+              <p class="text-slate-600">轉成台語、印尼語、越語等易懂通俗單張。</p>
             </div>
-            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">電話追蹤問題清單</strong>
-              <p class="text-slate-300">依個案狀況產生標準化追問提綱。</p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <strong class="text-emerald-700">電話追蹤問題清單</strong>
+              <p class="text-slate-600">依個案狀況產生標準化追問提綱。</p>
             </div>
-            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">訪視排程輔助</strong>
-              <p class="text-slate-300">AI 輔助排序；個管師依病情確認出訪路線。</p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <strong class="text-emerald-700">訪視排程輔助</strong>
+              <p class="text-slate-600">AI 輔助排序；個管師依病情確認出訪路線。</p>
             </div>
           </div>
 
-          <div class="p-2.5 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-300 flex items-center justify-between">
+          <div class="p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-700 flex items-center justify-between">
             <span><strong>實證效益：</strong>中山附醫「醫點家」與本土 NIS 系統驗證，文書時長縮減達 <strong>40%</strong>。</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -494,15 +481,15 @@
         <!-- SLIDE 9: 08｜場景四：家屬 AI Agent 與非接觸感知 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="9">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">08｜場景四：家屬 AI Agent 與環境感知</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">不是「醫療聊天機器人」，而是有邊界的數位照護協作者</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">08｜場景四：家屬 AI Agent 與環境感知</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">不是「醫療聊天機器人」，而是有邊界的數位照護協作者</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
-            <div class="glass-card p-4 rounded-xl border border-emerald-500/30 space-y-2">
-              <h3 class="font-bold text-emerald-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-check-circle"></i> 可以做 (Permitted)</h3>
-              <ul class="space-y-1 text-slate-300">
+            <div class="clean-card p-4 rounded-xl border border-emerald-200 space-y-2">
+              <h3 class="font-bold text-emerald-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-check-circle"></i> 可以做 (Permitted)</h3>
+              <ul class="space-y-1 text-slate-600">
                 <li>• 提醒藥物／量測／回診</li>
                 <li>• 語音／多語操作引導</li>
                 <li>• 依核准照護計畫回答 FAQ</li>
@@ -511,9 +498,9 @@
               </ul>
             </div>
 
-            <div class="glass-card p-4 rounded-xl border border-red-500/30 space-y-2">
-              <h3 class="font-bold text-red-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-ban"></i> 不應做 (Prohibited)</h3>
-              <ul class="space-y-1 text-slate-300">
+            <div class="clean-card p-4 rounded-xl border border-rose-200 space-y-2">
+              <h3 class="font-bold text-rose-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-ban"></i> 不應做 (Prohibited)</h3>
+              <ul class="space-y-1 text-slate-600">
                 <li>• 自行下達臨床診斷</li>
                 <li>• 自行調整藥物處方</li>
                 <li>• 自行判定「不用就醫」</li>
@@ -522,15 +509,15 @@
               </ul>
             </div>
 
-            <div class="glass-card p-4 rounded-xl border border-amber-500/30 space-y-2">
-              <h3 class="font-bold text-amber-400 text-sm flex items-center gap-1.5"><i class="fa-solid fa-radar"></i> 毫米波非接觸安全監控</h3>
-              <p class="text-slate-300 leading-relaxed">
+            <div class="clean-card p-4 rounded-xl border border-amber-200 space-y-2">
+              <h3 class="font-bold text-amber-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-radar"></i> 毫米波非接觸安全監控</h3>
+              <p class="text-slate-600 leading-relaxed">
                 結合 <strong>Vayyar Care / 工研院毫米波雷達</strong>：無需穿戴設備或隱私攝影機，辨識床邊起身、如廁滯留與突發跌倒，即刻啟動醫療升級。
               </p>
             </div>
           </div>
 
-          <div class="text-slate-400 text-xs flex justify-between">
+          <div class="text-slate-500 text-xs flex justify-between">
             <span>建立清晰安全邊界與隱私保護，保障長者日常安全與尊嚴。</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -539,19 +526,19 @@
         <!-- SLIDE 10: 09｜落地藍圖：先工作流，後模型；先閉環，後規模化 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="10">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">09｜落地推動藍圖</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">先工作流，後模型；先閉環，後規模化</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">09｜落地推動藍圖</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">先工作流，後模型；先閉環，後規模化</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
-            <div class="glass-card p-4 rounded-xl border border-cyan-500/40 space-y-2">
+            <div class="clean-card p-4 rounded-xl border border-sky-200 space-y-2">
               <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 font-bold">Phase 1</span>
-                <span class="text-cyan-300 font-mono">0–90 天</span>
+                <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">Phase 1</span>
+                <span class="text-sky-700 font-mono">0–90 天</span>
               </div>
-              <h3 class="font-bold text-white text-sm">單病種 MVP 驗證</h3>
-              <ul class="space-y-1 text-slate-300">
+              <h3 class="font-bold text-slate-900 text-sm">單病種 MVP 驗證</h3>
+              <ul class="space-y-1 text-slate-600">
                 <li>• 一個族群＋一個臨床問題</li>
                 <li>• 紅黃綠警示＋處置 SLA</li>
                 <li>• 少量高可靠 IoT 設備</li>
@@ -561,13 +548,13 @@
               </ul>
             </div>
 
-            <div class="glass-card p-4 rounded-xl border border-emerald-500/40 space-y-2">
+            <div class="clean-card p-4 rounded-xl border border-emerald-200 space-y-2">
               <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 font-bold">Phase 2</span>
-                <span class="text-emerald-300 font-mono">3–9 個月</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Phase 2</span>
+                <span class="text-emerald-700 font-mono">3–9 個月</span>
               </div>
-              <h3 class="font-bold text-white text-sm">平台化與多模態擴展</h3>
-              <ul class="space-y-1 text-slate-300">
+              <h3 class="font-bold text-slate-900 text-sm">平台化與多模態擴展</h3>
+              <ul class="space-y-1 text-slate-600">
                 <li>• 串接 EMR/HIS 與 HL7 FHIR</li>
                 <li>• 多病種個人化預警模型</li>
                 <li>• Multimodal 多模態 AI (語音/影像)</li>
@@ -577,13 +564,13 @@
               </ul>
             </div>
 
-            <div class="glass-card p-4 rounded-xl border border-blue-500/40 space-y-2">
+            <div class="clean-card p-4 rounded-xl border border-blue-200 space-y-2">
               <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 font-bold">Phase 3</span>
-                <span class="text-blue-300 font-mono">9–18 個月</span>
+                <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">Phase 3</span>
+                <span class="text-blue-700 font-mono">9–18 個月</span>
               </div>
-              <h3 class="font-bold text-white text-sm">區域生態與制度常態化</h3>
-              <ul class="space-y-1 text-slate-300">
+              <h3 class="font-bold text-slate-900 text-sm">區域生態與制度常態化</h3>
+              <ul class="space-y-1 text-slate-600">
                 <li>• 醫院—診所—居護—長照—藥局共照網</li>
                 <li>• 部署分角色 AI Agent</li>
                 <li>• 標準化病種複製模板</li>
@@ -593,7 +580,7 @@
             </div>
           </div>
 
-          <div class="text-slate-400 text-xs flex justify-between">
+          <div class="text-slate-500 text-xs flex justify-between">
             <span>從 90 天閉環到 18 個月區域共照生態系</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -602,75 +589,75 @@
         <!-- SLIDE 11: 10｜Target Architecture -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="11">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">10｜Target Architecture</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">裝置 ➔ 資料平台 ➔ AI ➔ 臨床工作流 ➔ 治理，形成可稽核閉環</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">10｜Target Architecture</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">裝置 ➔ 資料平台 ➔ AI ➔ 臨床工作流 ➔ 治理，形成可稽核閉環</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-5 gap-2.5 my-auto text-xs text-center">
-            <div class="p-3 bg-slate-900 rounded-xl border border-cyan-500/30 space-y-1">
-              <span class="text-cyan-400 font-bold">居家端</span>
-              <p class="text-slate-300 text-[11px]">BP／SpO₂／ECG／血糖／體重／影像／語音</p>
+            <div class="p-3 clean-card border border-sky-200 bg-sky-50/40 space-y-1">
+              <span class="text-sky-700 font-bold">居家端</span>
+              <p class="text-slate-600 text-[11px]">BP／SpO₂／ECG／血糖／體重／影像／語音／雷達</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-emerald-500/30 space-y-1">
-              <span class="text-emerald-400 font-bold">資料與互通</span>
-              <p class="text-slate-300 text-[11px]">FHIR／API／EMR／HIS／Identity</p>
+            <div class="p-3 clean-card border border-emerald-200 bg-emerald-50/40 space-y-1">
+              <span class="text-emerald-700 font-bold">資料與互通</span>
+              <p class="text-slate-600 text-[11px]">FHIR／API／EMR／HIS／Identity</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-amber-500/30 space-y-1">
-              <span class="text-amber-400 font-bold">AI Layer</span>
-              <p class="text-slate-300 text-[11px]">異常偵測／預測／CV／LLM／Agent</p>
+            <div class="p-3 clean-card border border-amber-200 bg-amber-50/40 space-y-1">
+              <span class="text-amber-700 font-bold">AI Layer</span>
+              <p class="text-slate-600 text-[11px]">異常偵測／預測／CV／LLM／Agent</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-blue-500/30 space-y-1">
-              <span class="text-blue-400 font-bold">Clinical Workflow</span>
-              <p class="text-slate-300 text-[11px]">Dashboard／SLA／派工／視訊／訪視／轉診</p>
+            <div class="p-3 clean-card border border-blue-200 bg-blue-50/40 space-y-1">
+              <span class="text-blue-700 font-bold">Clinical Workflow</span>
+              <p class="text-slate-600 text-[11px]">Dashboard／SLA／派工／視訊／訪視／轉診</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-purple-500/30 space-y-1">
-              <span class="text-purple-400 font-bold">Governance</span>
-              <p class="text-slate-300 text-[11px]">ISO 27001／ISO 42001／NIST AI RMF／Audit</p>
+            <div class="p-3 clean-card border border-purple-200 bg-purple-50/40 space-y-1">
+              <span class="text-purple-700 font-bold">Governance</span>
+              <p class="text-slate-600 text-[11px]">ISO 27001／ISO 42001／NIST AI RMF／Audit</p>
             </div>
           </div>
 
-          <div class="p-3 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-200">
-            <strong class="text-cyan-300">關鍵審計原則：</strong>每一次 AI 輸出，都必須能回到「資料來源 ➔ 模型版本 ➔ 人工覆核 ➔ 最終處置 ➔ 臨床結果」完整追溯。
+          <div class="p-3 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-700">
+            <strong class="text-sky-700">關鍵審計原則：</strong>每一次 AI 輸出，都必須能回到「資料來源 ➔ 模型版本 ➔ 人工覆核 ➔ 最終處置 ➔ 臨床結果」完整追溯。
           </div>
         </div>
 
         <!-- SLIDE 12: 11｜KPI：不要只看 AI Accuracy -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="12">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">11｜KPI 價值衡量</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">真正的成功，是高風險個案更早被正確處置，同時降低人工作業</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-3"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">11｜KPI 價值衡量</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">真正的成功，是高風險個案更早被正確處置，同時降低人工作業</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-3"></div>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3 my-auto text-xs">
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-red-400">臨床品質</strong>
-              <p class="text-slate-300 text-[11px]">30 日再住院率、非計畫急診率、平均住院日、跌倒、壓傷、感染升級率。</p>
+            <div class="p-3 clean-card border border-rose-200 space-y-1">
+              <strong class="text-rose-700">臨床品質</strong>
+              <p class="text-slate-600 text-[11px]">30 日再住院率、非計畫急診率、平均住院日、跌倒、壓傷、感染升級率。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-amber-400">即時性</strong>
-              <p class="text-slate-300 text-[11px]">異常➔人工覆核時間、警示➔首次聯繫時間、紅色緊急警示 SLA。</p>
+            <div class="p-3 clean-card border border-amber-200 space-y-1">
+              <strong class="text-amber-700">即時性</strong>
+              <p class="text-slate-600 text-[11px]">異常➔人工覆核時間、警示➔首次聯繫時間、紅色緊急警示 SLA。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-cyan-400">照護效率</strong>
-              <p class="text-slate-300 text-[11px]">每位護理師管理個案數 (1.5x~2x)、每案文書時間 (-40%)、無效警示率。</p>
+            <div class="p-3 clean-card border border-sky-200 space-y-1">
+              <strong class="text-sky-700">照護效率</strong>
+              <p class="text-slate-600 text-[11px]">每位護理師管理個案數 (1.5x~2x)、每案文書時間 (-40%)、無效警示率。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">病人／家屬</strong>
-              <p class="text-slate-300 text-[11px]">滿意度 (>90%)、照顧者負荷、居家療養天數、數據主動回報依從性。</p>
+            <div class="p-3 clean-card border border-emerald-200 space-y-1">
+              <strong class="text-emerald-700">病人／家屬</strong>
+              <p class="text-slate-600 text-[11px]">滿意度 (>90%)、照顧者負荷、居家療養天數、數據主動回報依從性。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-yellow-400">財務／價值</strong>
-              <p class="text-slate-300 text-[11px]">單案照護成本 (-20%~30%)、避免住院/急診淨節省、設備使用率。</p>
+            <div class="p-3 clean-card border border-yellow-200 space-y-1">
+              <strong class="text-yellow-700">財務／價值</strong>
+              <p class="text-slate-600 text-[11px]">單案照護成本 (-20%~30%)、避免住院/急診淨節省、設備使用率。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-purple-400">AI 治理</strong>
-              <p class="text-slate-300 text-[11px]">模型漂移 (Drift)、偏差、人工覆核率 (100%)、錯誤建議率、資安事件零違規。</p>
+            <div class="p-3 clean-card border border-purple-200 space-y-1">
+              <strong class="text-purple-700">AI 治理</strong>
+              <p class="text-slate-600 text-[11px]">模型漂移 (Drift)、偏差、人工覆核率 (100%)、錯誤建議率、資安事件零違規。</p>
             </div>
           </div>
 
-          <div class="text-slate-400 text-xs flex justify-between">
+          <div class="text-slate-500 text-xs flex justify-between">
             <span>多維度平衡計分卡：兼顧臨床、營運、體驗、財務與資安</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -679,39 +666,39 @@
         <!-- SLIDE 13: 12｜資安與 AI 治理：高風險系統要預設安全 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="13">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">12｜資安與 AI 治理</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">高風險系統要預設安全：四大標準 × 六大控制面向</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-3"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">12｜資安與 AI 治理</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">高風險系統要預設安全：四大標準 × 六大控制面向</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-3"></div>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3 my-auto text-xs">
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-cyan-400">資料最小化</strong>
-              <p class="text-slate-300 text-[11px]">只蒐集直接相關資料；居家影像優先採 Edge／毫米波／非辨識性骨架。</p>
+            <div class="p-3 clean-card border border-slate-200 space-y-1">
+              <strong class="text-sky-700">資料最小化</strong>
+              <p class="text-slate-600 text-[11px]">只蒐集直接相關資料；居家影像優先採 Edge／毫米波／非辨識性骨架。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-cyan-400">同意與可撤回</strong>
-              <p class="text-slate-300 text-[11px]">用途、保存期間、存取對象、模型訓練用途透明且可隨時撤銷授權。</p>
+            <div class="p-3 clean-card border border-slate-200 space-y-1">
+              <strong class="text-sky-700">同意與可撤回</strong>
+              <p class="text-slate-600 text-[11px]">用途、保存期間、存取對象、模型訓練用途透明且可隨時撤銷授權。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-emerald-400">端到端資安</strong>
-              <p class="text-slate-300 text-[11px]">裝置身分、加密傳輸儲存、MDM、韌體、Zero Trust、API Security。</p>
+            <div class="p-3 clean-card border border-emerald-200 space-y-1">
+              <strong class="text-emerald-700">端到端資安</strong>
+              <p class="text-slate-600 text-[11px]">裝置身分、加密傳輸儲存、MDM、韌體、Zero Trust、API Security。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-emerald-400">
-              <strong class="text-emerald-400">第三方風險 SBOM</strong>
-              <p class="text-slate-300 text-[11px]">供應商責任分界、DPA、SBOM、弱點修補 SLA、模型資料聲明。</p>
+            <div class="p-3 clean-card border border-emerald-200 space-y-1">
+              <strong class="text-emerald-700">第三方風險 SBOM</strong>
+              <p class="text-slate-600 text-[11px]">供應商責任分界、DPA、SBOM、弱點修補 SLA、模型資料聲明。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-amber-400">可監測／可稽核</strong>
-              <p class="text-slate-300 text-[11px]">模型版本、資料來源、輸出、人工覆核、處置軌跡、偏差與漂移。</p>
+            <div class="p-3 clean-card border border-amber-200 space-y-1">
+              <strong class="text-amber-700">可監測／可稽核</strong>
+              <p class="text-slate-600 text-[11px]">模型版本、資料來源、輸出、人工覆核、處置軌跡、偏差與漂移。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-              <strong class="text-amber-400">失效安全 (Fail-Safe)</strong>
-              <p class="text-slate-300 text-[11px]">網路／裝置／模型故障時自動回到人工電話、離線紙本 SOP。</p>
+            <div class="p-3 clean-card border border-amber-200 space-y-1">
+              <strong class="text-amber-700">失效安全 (Fail-Safe)</strong>
+              <p class="text-slate-600 text-[11px]">網路／裝置／模型故障時自動回到人工電話、離線紙本 SOP。</p>
             </div>
           </div>
 
-          <div class="p-2 bg-cyan-950/40 border border-cyan-800/40 rounded-lg text-xs text-cyan-200 flex justify-between">
+          <div class="p-2 bg-sky-50 border border-sky-200 rounded-lg text-xs text-sky-900 flex justify-between">
             <span><strong>治理底座：</strong>ISO 27001 × ISO 42001 (AI 管理系統) × NIST AI RMF × Privacy by Design</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -720,62 +707,62 @@
         <!-- SLIDE 14: 13｜給決策者的五個優先順序 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="14">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">13｜決策者戰略建議</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">給決策者的五個投資優先順序</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-4"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">13｜決策者戰略建議</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">給決策者的五個投資優先順序</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
           </div>
 
           <div class="space-y-2.5 my-auto text-xs lg:text-sm">
-            <div class="p-2.5 bg-slate-900/90 rounded-xl border border-cyan-500/40 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400 font-bold font-mono">01</span>
+            <div class="p-2.5 clean-card border border-sky-200 flex items-center gap-3">
+              <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold font-mono">01</span>
               <span><strong>先把資料與照護閉環做對：</strong>量測 ➔ 警示 ➔ 覆核 ➔ 處置 ➔ 回寫。</span>
             </div>
-            <div class="p-2.5 bg-slate-900/90 rounded-xl border border-emerald-500/40 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold font-mono">02</span>
+            <div class="p-2.5 clean-card border border-emerald-200 flex items-center gap-3">
+              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold font-mono">02</span>
               <span><strong>先投資高頻、可量化、高風險場景：</strong>心衰竭、COPD、傷口、術後、安寧、高齡衰弱。</span>
             </div>
-            <div class="p-2.5 bg-slate-900/90 rounded-xl border border-blue-500/40 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-mono">03</span>
+            <div class="p-2.5 clean-card border border-blue-200 flex items-center gap-3">
+              <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold font-mono">03</span>
               <span><strong>先用 Copilot 提升醫護產能，</strong>再逐步導入預測模型與 Agent。</span>
             </div>
-            <div class="p-2.5 bg-slate-900/90 rounded-xl border border-amber-500/40 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-mono">04</span>
+            <div class="p-2.5 clean-card border border-amber-200 flex items-center gap-3">
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold font-mono">04</span>
               <span><strong>FHIR、身分驗證、資料治理與 AI 治理，</strong>是核心基礎設施，不是事後補強。</span>
             </div>
-            <div class="p-2.5 bg-slate-900/90 rounded-xl border border-purple-500/40 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-400 font-mono">05</span>
+            <div class="p-2.5 clean-card border border-purple-200 flex items-center gap-3">
+              <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold font-mono">05</span>
               <span><strong>ROI 以「避免一次再住院／急診、縮短處置時間、降低每案人工作業」衡量。</strong></span>
             </div>
           </div>
 
-          <div class="p-3 bg-gradient-to-r from-cyan-950 to-slate-900 border border-cyan-800 rounded-lg text-xs text-white flex justify-between items-center">
-            <span class="font-bold text-cyan-300">「AI 不替醫師做決定；AI 讓醫療團隊更早看見、更加精準地行動。」</span>
-            <span class="font-mono text-slate-400">Howard Liao Ph.D.</span>
+          <div class="p-3 bg-gradient-to-r from-sky-50 to-slate-100 border border-sky-200 rounded-lg text-xs text-slate-800 flex justify-between items-center">
+            <span class="font-bold text-sky-800">「AI 不替醫師做決定；AI 讓醫療團隊更早看見、更加精準地行動。」</span>
+            <span class="font-mono text-slate-500">Howard Liao Ph.D.</span>
           </div>
         </div>
 
         <!-- SLIDE 15: 14｜參考來源 -->
         <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="15">
           <div>
-            <span class="text-xs font-bold tracking-wider text-cyan-400 uppercase">14｜參考來源與政策鏈結</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-white mt-1">文獻、政策與標竿案例索引</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded mt-2 mb-3"></div>
+            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">14｜參考來源與政策鏈結</span>
+            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">文獻、政策與標竿案例索引</h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-3"></div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 my-auto text-[11px] text-slate-300">
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [1] 行政院｜在宅醫療科技願景與行動｜ey.gov.tw</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [2] CIO Taiwan｜2026 智慧醫療趨勢：生成式 AI 到制度化治理</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [3] 安可醫療｜從醫院到客廳：AI 如何重塑在宅照護新模式</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [4] 安可醫療｜在宅醫療的智慧轉向：以科技賦能社區照護</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [5] 成大/奇美醫院｜無牆化遠距醫療：智慧安寧與傷口影像</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [6] 高醫／HST｜手機影像 AI 傷口辨識與在宅照護應用</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [7] 臺北醫學大學 AI 中心｜MEDICA 到 CES: 物理 AI 與穿戴數據</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [8] <i>Journal of Wound Care</i> & <i>JMIR</i>｜智慧傷口辨識與心衰竭/COPD 預測</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [9] 工研院 (ITRI) & IEEE｜智慧感測照護白皮書與毫米波都卜勒防跌</div>
-            <div class="p-2 bg-slate-900/80 rounded border border-slate-800">• [10] 數位時代｜北台灣醫界領袖共論 AI 醫療落地三大趨勢</div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 my-auto text-[11px] text-slate-600">
+            <div class="p-2 clean-card rounded border border-slate-200">• [1] 行政院｜在宅醫療科技願景與行動｜ey.gov.tw</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [2] CIO Taiwan｜2026 智慧醫療趨勢：生成式 AI 到制度化治理</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [3] 安可醫療｜從醫院到客廳：AI 如何重塑在宅照護新模式</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [4] 安可醫療｜在宅醫療的智慧轉向：以科技賦能社區照護</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [5] 成大/奇美醫院｜無牆化遠距醫療：智慧安寧與傷口影像</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [6] 高醫／HST｜手機影像 AI 傷口辨識與在宅照護應用</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [7] 臺北醫學大學 AI 中心｜MEDICA 到 CES: 物理 AI 與穿戴數據</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [8] <i>Journal of Wound Care</i> & <i>JMIR</i>｜智慧傷口辨識與心衰竭/COPD 預測</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [9] 工研院 (ITRI) & IEEE｜智慧感測照護白皮書與毫米波都卜勒防跌</div>
+            <div class="p-2 clean-card rounded border border-slate-200">• [10] 數位時代｜北台灣醫界領袖共論 AI 醫療落地三大趨勢</div>
           </div>
 
-          <div class="text-slate-400 text-xs flex justify-between">
+          <div class="text-slate-500 text-xs flex justify-between">
             <span>正式對外簡報前建議再次核對政策與案例最新法規版本</span>
             <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
           </div>
@@ -784,23 +771,23 @@
       </div>
 
       <!-- Presentation Bottom Navigation Bar -->
-      <div class="h-14 border-t border-surfaceBorder bg-surface/90 backdrop-blur-md px-6 flex items-center justify-between">
+      <div class="h-14 border-t border-slate-200 bg-slate-50 px-6 flex items-center justify-between">
         <div class="flex items-center space-x-3">
-          <button onclick="prevSlide()" class="p-2 rounded-lg bg-surfaceCard hover:bg-slate-800 text-slate-200 border border-slate-700 transition">
+          <button onclick="prevSlide()" class="p-2 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition">
             <i class="fa-solid fa-chevron-left"></i>
           </button>
-          <span id="slide-indicator" class="text-xs font-mono font-bold text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2.5 py-1 rounded">
+          <span id="slide-indicator" class="text-xs font-mono font-bold text-sky-800 bg-sky-100 border border-sky-200 px-2.5 py-1 rounded">
             01 / 15
           </span>
-          <button onclick="nextSlide()" class="p-2 rounded-lg bg-surfaceCard hover:bg-slate-800 text-slate-200 border border-slate-700 transition">
+          <button onclick="nextSlide()" class="p-2 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition">
             <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
 
         <!-- Jump to Slide Select -->
         <div class="hidden sm:flex items-center space-x-2">
-          <label for="slide-select" class="text-xs text-slate-400 font-medium">跳轉章節：</label>
-          <select id="slide-select" onchange="goToSlide(parseInt(this.value))" class="bg-surfaceCard text-xs text-slate-200 border border-slate-700 rounded-lg px-2 py-1 outline-none focus:border-cyan-500 max-w-[240px]">
+          <label for="slide-select" class="text-xs text-slate-600 font-medium">跳轉章節：</label>
+          <select id="slide-select" onchange="goToSlide(parseInt(this.value))" class="bg-white text-xs text-slate-700 border border-slate-300 rounded-lg px-2 py-1 outline-none focus:border-sky-500 max-w-[240px]">
             <option value="1">01. 封面：AI × 在宅醫療落地藍圖</option>
             <option value="2">02. 01｜Executive Summary</option>
             <option value="3">03. 02｜AI 應用全景（四層架構）</option>
@@ -819,8 +806,8 @@
           </select>
         </div>
 
-        <div class="flex items-center space-x-2 text-xs text-slate-400">
-          <button onclick="toggleNotes()" class="px-2.5 py-1 rounded bg-surfaceCard hover:bg-slate-800 text-slate-300 border border-slate-700 transition flex items-center gap-1">
+        <div class="flex items-center space-x-2 text-xs text-slate-600">
+          <button onclick="toggleNotes()" class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition flex items-center gap-1">
             <i class="fa-regular fa-comment-dots"></i>
             <span>演講備忘</span>
           </button>
@@ -829,19 +816,19 @@
       </div>
 
       <!-- Slide Progress Bar -->
-      <div class="w-full h-1 bg-slate-800">
-        <div id="slide-progress" class="h-full bg-gradient-to-r from-cyan-500 to-emerald-500 transition-all duration-300 w-[6.66%]"></div>
+      <div class="w-full h-1 bg-slate-200">
+        <div id="slide-progress" class="h-full bg-gradient-to-r from-sky-500 to-teal-500 transition-all duration-300 w-[6.66%]"></div>
       </div>
 
       <!-- Speaker Notes Drawer (Togglable) -->
-      <div id="speaker-notes-drawer" class="hidden absolute bottom-14 left-0 right-0 max-h-48 bg-obsidian/95 border-t border-cyan-500/40 p-4 text-xs text-slate-300 overflow-y-auto backdrop-blur-xl shadow-2xl z-30">
+      <div id="speaker-notes-drawer" class="hidden absolute bottom-14 left-0 right-0 max-h-48 bg-white border-t border-sky-200 p-4 text-xs text-slate-700 overflow-y-auto shadow-xl z-30">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-bold text-cyan-400 flex items-center gap-1.5">
+          <span class="font-bold text-sky-800 flex items-center gap-1.5">
             <i class="fa-solid fa-microphone"></i> 演講者備忘錄 (Speaker Notes)
           </span>
-          <button onclick="toggleNotes()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+          <button onclick="toggleNotes()" class="text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <p id="speaker-notes-text" class="leading-relaxed text-slate-200">
+        <p id="speaker-notes-text" class="leading-relaxed text-slate-700">
           AI 不是取代醫護，而是將碎片化居家訊號轉化為高可靠臨床閉環，減輕行政負擔並降低再住院率。
         </p>
       </div>
@@ -851,101 +838,100 @@
 
 
   <!-- ========================================================================= -->
-  <!-- VIEW MODE 2: 全景互動儀表板模式 (Executive Dashboard View) -->
+  <!-- VIEW MODE 2: 全景互動儀表板模式 (Executive Dashboard View - Clean Light Theme) -->
   <!-- ========================================================================= -->
   <section id="dashboard-container" class="hidden flex-1 max-w-7xl mx-auto w-full p-4 lg:p-8 space-y-8">
     
     <!-- Hero Banner -->
-    <div class="glass-card-glow p-6 lg:p-8 rounded-2xl border border-cyan-500/30 relative overflow-hidden">
+    <div class="clean-card p-6 lg:p-8 rounded-2xl border border-sky-200 bg-gradient-to-br from-white via-sky-50/40 to-teal-50/30 relative overflow-hidden shadow-sm">
       <div class="relative z-10 max-w-4xl space-y-3">
-        <div class="inline-flex items-center space-x-2 bg-cyan-950/80 border border-cyan-500/40 px-3 py-1 rounded-full text-xs font-bold text-cyan-300">
-          <i class="fa-solid fa-network-wired text-cyan-400"></i>
+        <div class="inline-flex items-center space-x-2 bg-sky-100 border border-sky-200 px-3 py-1 rounded-full text-xs font-bold text-sky-800">
+          <i class="fa-solid fa-network-wired text-sky-600"></i>
           <span>Hospital at Home (HaH) & Home Care AI Decision Architecture</span>
         </div>
-        <h2 class="text-2xl lg:text-4xl font-extrabold text-white">
+        <h2 class="text-2xl lg:text-4xl font-extrabold text-slate-900">
           AI × 在宅醫療與居家照護智慧落地藍圖
         </h2>
-        <p class="text-slate-300 text-sm lg:text-base leading-relaxed">
+        <p class="text-slate-600 text-sm lg:text-base leading-relaxed">
           把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環。聚焦失能長者、慢性病患及術後返家者日常照護與訪視減負。
         </p>
       </div>
-      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
     </div>
 
     <!-- Top Bento KPI Metrics -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="glass-card p-5 rounded-xl border border-surfaceBorder hover:border-cyan-500/40 transition">
-        <div class="text-xs text-slate-400 font-medium">預估降低 30 日再住院率</div>
-        <div class="text-2xl lg:text-3xl font-extrabold text-cyan-400 mt-1">20% ~ 30%</div>
-        <div class="text-[11px] text-emerald-400 mt-1 flex items-center gap-1">
+      <div class="clean-card p-5 rounded-xl border border-slate-200 hover:border-sky-300 transition">
+        <div class="text-xs text-slate-500 font-medium">預估降低 30 日再住院率</div>
+        <div class="text-2xl lg:text-3xl font-extrabold text-sky-600 mt-1">20% ~ 30%</div>
+        <div class="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
           <i class="fa-solid fa-arrow-trend-down"></i> 阻斷急性惡化再入院
         </div>
       </div>
-      <div class="glass-card p-5 rounded-xl border border-surfaceBorder hover:border-emerald-500/40 transition">
-        <div class="text-xs text-slate-400 font-medium">醫護每案文書耗時減降</div>
-        <div class="text-2xl lg:text-3xl font-extrabold text-emerald-400 mt-1">-40%</div>
-        <div class="text-[11px] text-emerald-400 mt-1 flex items-center gap-1">
+      <div class="clean-card p-5 rounded-xl border border-slate-200 hover:border-emerald-300 transition">
+        <div class="text-xs text-slate-500 font-medium">醫護每案文書耗時減降</div>
+        <div class="text-2xl lg:text-3xl font-extrabold text-emerald-600 mt-1">-40%</div>
+        <div class="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
           <i class="fa-solid fa-clock"></i> GenAI 自動 SOAP/交班初稿
         </div>
       </div>
-      <div class="glass-card p-5 rounded-xl border border-blue-500/40 transition">
-        <div class="text-xs text-slate-400 font-medium">成大智慧安寧在宅善終率</div>
-        <div class="text-2xl lg:text-3xl font-extrabold text-blue-400 mt-1">83%</div>
-        <div class="text-[11px] text-cyan-300 mt-1 flex items-center gap-1">
+      <div class="clean-card p-5 rounded-xl border border-slate-200 hover:border-blue-300 transition">
+        <div class="text-xs text-slate-500 font-medium">成大智慧安寧在宅善終率</div>
+        <div class="text-2xl lg:text-3xl font-extrabold text-blue-600 mt-1">83%</div>
+        <div class="text-[11px] text-sky-700 mt-1 flex items-center gap-1 font-medium">
           <i class="fa-solid fa-house-chimney-medical"></i> 呼吸異常預警與安寧期別預測
         </div>
       </div>
-      <div class="glass-card p-5 rounded-xl border border-amber-500/40 transition">
-        <div class="text-xs text-slate-400 font-medium">HL7 FHIR 互通支援</div>
-        <div class="text-2xl lg:text-3xl font-extrabold text-amber-400 mt-1">100%</div>
-        <div class="text-[11px] text-amber-300 mt-1 flex items-center gap-1">
+      <div class="clean-card p-5 rounded-xl border border-slate-200 hover:border-amber-300 transition">
+        <div class="text-xs text-slate-500 font-medium">HL7 FHIR 互通支援</div>
+        <div class="text-2xl lg:text-3xl font-extrabold text-amber-600 mt-1">100%</div>
+        <div class="text-[11px] text-amber-700 mt-1 flex items-center gap-1 font-medium">
           <i class="fa-solid fa-link"></i> 健保雲端與跨機構生態串接
         </div>
       </div>
     </div>
 
     <!-- Dashboard Tabs -->
-    <div class="border-b border-surfaceBorder flex space-x-2 overflow-x-auto pb-2 text-xs font-semibold">
-      <button onclick="switchDashTab('tab-homecare-cases')" class="dash-tab-btn px-4 py-2 rounded-lg bg-cyan-950/80 text-cyan-400 border border-cyan-800/60" data-tab="tab-homecare-cases">
+    <div class="border-b border-slate-200 flex space-x-2 overflow-x-auto pb-2 text-xs font-semibold">
+      <button onclick="switchDashTab('tab-homecare-cases')" class="dash-tab-btn px-4 py-2 rounded-lg bg-sky-600 text-white border border-sky-600" data-tab="tab-homecare-cases">
         <i class="fa-solid fa-house-user mr-1.5"></i> 🏡 居家照護專屬四大場景與標竿案例
       </button>
-      <button onclick="switchDashTab('tab-layers')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-layers">
+      <button onclick="switchDashTab('tab-layers')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-layers">
         <i class="fa-solid fa-layer-group mr-1.5"></i> 四層架構與數據行動流
       </button>
-      <button onclick="switchDashTab('tab-simulator')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-simulator">
+      <button onclick="switchDashTab('tab-simulator')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-simulator">
         <i class="fa-solid fa-flask-vial mr-1.5"></i> 臨床分流互動模擬器
       </button>
-      <button onclick="switchDashTab('tab-scenarios')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-scenarios">
+      <button onclick="switchDashTab('tab-scenarios')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-scenarios">
         <i class="fa-solid fa-stethoscope mr-1.5"></i> 五大高價值場景矩陣
       </button>
-      <button onclick="switchDashTab('tab-target-arch')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-target-arch">
+      <button onclick="switchDashTab('tab-target-arch')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-target-arch">
         <i class="fa-solid fa-sitemap mr-1.5"></i> Target Architecture 目標架構
       </button>
-      <button onclick="switchDashTab('tab-roadmap')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-roadmap">
+      <button onclick="switchDashTab('tab-roadmap')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-roadmap">
         <i class="fa-solid fa-timeline mr-1.5"></i> 三階段落地藍圖
       </button>
-      <button onclick="switchDashTab('tab-calculator')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-calculator">
+      <button onclick="switchDashTab('tab-calculator')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-calculator">
         <i class="fa-solid fa-calculator mr-1.5"></i> ROI 價值計算器
       </button>
-      <button onclick="switchDashTab('tab-governance')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-governance">
+      <button onclick="switchDashTab('tab-governance')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-governance">
         <i class="fa-solid fa-shield-halved mr-1.5"></i> 資安與治理檢核
       </button>
-      <button onclick="switchDashTab('tab-references')" class="dash-tab-btn px-4 py-2 rounded-lg bg-surfaceCard text-slate-400 hover:text-white border border-transparent" data-tab="tab-references">
+      <button onclick="switchDashTab('tab-references')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-references">
         <i class="fa-solid fa-book-medical mr-1.5"></i> 政策與文獻來源
       </button>
     </div>
 
     <!-- TAB 0: 居家照護 (HOME CARE) 專屬四大核心場景與國際/台灣標竿案例 -->
     <div id="tab-homecare-cases" class="dash-tab-content space-y-6">
-      <div class="glass-card-glow p-6 rounded-2xl border border-cyan-500/40 space-y-4">
+      <div class="clean-card p-6 rounded-2xl border border-sky-200 bg-sky-50/40 space-y-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-2">
-            <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold text-xs">Home Care Focus</span>
-            <h3 class="text-lg font-bold text-white">居家照護場域：失能長者、慢性病患與術後返家者之日常賦能</h3>
+            <span class="px-2.5 py-1 rounded bg-sky-100 text-sky-800 font-bold text-xs">Home Care Focus</span>
+            <h3 class="text-lg font-bold text-slate-900">居家照護場域：失能長者、慢性病患與術後返家者之日常賦能</h3>
           </div>
-          <span class="text-xs font-mono text-slate-400">4大技術領域 × 國際標竿產品 × 臨床文獻實證</span>
+          <span class="text-xs font-mono text-slate-500">4大技術領域 × 國際標竿產品 × 臨床文獻實證</span>
         </div>
-        <p class="text-xs text-slate-300 leading-relaxed">
+        <p class="text-xs text-slate-600 leading-relaxed">
           針對失能長者、長期臥床壓瘡高風險、多重慢性病及術後返家個案，整合電腦視覺 (CV)、環境雷達感知 (mmWave)、時序生理預測 (RPM) 與生成式語音病歷 (Ambient Clinical Intelligence)，落實第一線居護與照服團隊的實質減負。
         </p>
       </div>
@@ -954,112 +940,112 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         
         <!-- HC 1: 傷口照護與壓瘡預防 -->
-        <div class="glass-card p-5 rounded-xl border border-amber-500/40 space-y-3.5 hover:border-amber-400 transition">
+        <div class="clean-card p-5 rounded-xl border border-amber-200 space-y-3.5 clean-card-hover">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-amber-950/80 text-amber-400 border border-amber-800">
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
               <i class="fa-solid fa-camera mr-1"></i> 電腦視覺 (Computer Vision)
             </span>
-            <span class="text-[11px] text-slate-400 font-mono">壓瘡・糖尿病足・術後傷口</span>
+            <span class="text-[11px] text-slate-500 font-mono">壓瘡・糖尿病足・術後傷口</span>
           </div>
-          <h4 class="font-bold text-white text-base">傷口照護與壓瘡預防（手機 AI 傷口辨識系統）</h4>
+          <h4 class="font-bold text-slate-900 text-base">傷口照護與壓瘡預防（手機 AI 傷口辨識系統）</h4>
           
-          <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
-            <div class="text-amber-300 font-semibold"><i class="fa-solid fa-cubes mr-1"></i> 代表產品與研究：</div>
+          <div class="p-3 bg-amber-50/50 rounded-lg border border-amber-100 space-y-1.5 text-xs text-slate-700">
+            <div class="text-amber-800 font-semibold"><i class="fa-solid fa-cubes mr-1"></i> 代表產品與研究：</div>
             <p>• <strong>Tissue Analytics</strong> (Net Health)、<strong>Swift Skin and Wound</strong><br>• 台灣成大醫院／奇美醫療體系居家傷口影像分析系統</p>
           </div>
 
-          <div class="text-xs text-slate-300 space-y-1.5">
-            <div class="text-white font-semibold"><i class="fa-solid fa-wand-magic-sparkles text-amber-400 mr-1"></i> 核心功能：</div>
+          <div class="text-xs text-slate-600 space-y-1.5">
+            <div class="text-slate-900 font-semibold"><i class="fa-solid fa-wand-magic-sparkles text-amber-600 mr-1"></i> 核心功能：</div>
             <p class="leading-relaxed">
               居家訪視護理師或居服員直接使用智慧型手機拍攝壓瘡、糖尿病足，AI 自動校正光源與拍攝角度、高精準量測長寬面積與邊界、辨識組織分期（壞死組織 Necrosis、肉芽組織比例），自動產出前後癒合時序曲線。
             </p>
           </div>
 
-          <div class="p-2.5 bg-amber-950/30 border border-amber-800/40 rounded text-[11px] text-amber-200 flex items-center justify-between">
+          <div class="p-2.5 bg-amber-50 border border-amber-200 rounded text-[11px] text-amber-800 flex items-center justify-between">
             <span><strong>查閱方向：</strong><i>Journal of Wound Care</i> 智慧手機傷口辨識效能臨床驗證</span>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </div>
         </div>
 
         <!-- HC 2: 非接觸式安全監控與跌倒偵測 -->
-        <div class="glass-card p-5 rounded-xl border border-cyan-500/40 space-y-3.5 hover:border-cyan-400 transition">
+        <div class="clean-card p-5 rounded-xl border border-sky-200 space-y-3.5 clean-card-hover">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-cyan-950/80 text-cyan-400 border border-cyan-800">
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-200">
               <i class="fa-solid fa-radar mr-1"></i> 環境感知 (Environmental Sensing)
             </span>
-            <span class="text-[11px] text-slate-400 font-mono">毫米波雷達・隱私保護・防跌</span>
+            <span class="text-[11px] text-slate-500 font-mono">毫米波雷達・隱私保護・防跌</span>
           </div>
-          <h4 class="font-bold text-white text-base">非接觸式安全監控與跌倒偵測（mmWave 雷達步態）</h4>
+          <h4 class="font-bold text-slate-900 text-base">非接觸式安全監控與跌倒偵測（mmWave 雷達步態）</h4>
           
-          <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
-            <div class="text-cyan-300 font-semibold"><i class="fa-solid fa-microchip mr-1"></i> 代表技術與案例：</div>
+          <div class="p-3 bg-sky-50/50 rounded-lg border border-sky-100 space-y-1.5 text-xs text-slate-700">
+            <div class="text-sky-800 font-semibold"><i class="fa-solid fa-microchip mr-1"></i> 代表技術與案例：</div>
             <p>• <strong>Vayyar Care</strong>、<strong>Origin Wireless</strong> (WiFi 擾動感知)<br>• <strong>工研院 (ITRI)</strong> 智慧居家照護雷達系統</p>
           </div>
 
-          <div class="text-xs text-slate-300 space-y-1.5">
-            <div class="text-white font-semibold"><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i> 核心功能：</div>
+          <div class="text-xs text-slate-600 space-y-1.5">
+            <div class="text-slate-900 font-semibold"><i class="fa-solid fa-shield-halved text-sky-600 mr-1"></i> 核心功能：</div>
             <p class="leading-relaxed">
               長者在家<strong>無需配戴手環或安裝有隱私疑慮的攝影機</strong>，透過無線微都卜勒訊號反射，精準辨識床邊起身、如廁滯留、步態不穩及突發跌倒，0 秒延遲即時告警家屬或居服管理中心。
             </p>
           </div>
 
-          <div class="p-2.5 bg-cyan-950/30 border border-cyan-800/40 rounded text-[11px] text-cyan-200 flex items-center justify-between">
+          <div class="p-2.5 bg-sky-50 border border-sky-200 rounded text-[11px] text-sky-800 flex items-center justify-between">
             <span><strong>查閱方向：</strong>工研院智慧感測照護白皮書、IEEE 微都卜勒雷達演算法論文</span>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </div>
         </div>
 
         <!-- HC 3: 日常連續生理數據監測與惡化預警 -->
-        <div class="glass-card p-5 rounded-xl border border-emerald-500/40 space-y-3.5 hover:border-emerald-400 transition">
+        <div class="clean-card p-5 rounded-xl border border-emerald-200 space-y-3.5 clean-card-hover">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
               <i class="fa-solid fa-chart-line mr-1"></i> 時序預測 (Time-Series RPM + AI)
             </span>
-            <span class="text-[11px] text-slate-400 font-mono">心衰竭・COPD・感染預警</span>
+            <span class="text-[11px] text-slate-500 font-mono">心衰竭・COPD・感染預警</span>
           </div>
-          <h4 class="font-bold text-white text-base">日常連續生理監測與早期惡化預警（RPM + ML）</h4>
+          <h4 class="font-bold text-slate-900 text-base">日常連續生理監測與早期惡化預警（RPM + ML）</h4>
           
-          <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
-            <div class="text-emerald-300 font-semibold"><i class="fa-solid fa-heart-pulse mr-1"></i> 代表技術與架構：</div>
+          <div class="p-3 bg-emerald-50/50 rounded-lg border border-emerald-100 space-y-1.5 text-xs text-slate-700">
+            <div class="text-emerald-800 font-semibold"><i class="fa-solid fa-heart-pulse mr-1"></i> 代表技術與架構：</div>
             <p>• <strong>Current Health</strong> (Best Buy Health 旗下 RPM 平台)<br>• <strong>Biofourmis</strong> 數位生物標記與機器學習預警引擎</p>
           </div>
 
-          <div class="text-xs text-slate-300 space-y-1.5">
-            <div class="text-white font-semibold"><i class="fa-solid fa-bell-slash text-emerald-400 mr-1"></i> 核心功能：</div>
+          <div class="text-xs text-slate-600 space-y-1.5">
+            <div class="text-slate-900 font-semibold"><i class="fa-solid fa-bell-slash text-emerald-600 mr-1"></i> 核心功能：</div>
             <p class="leading-relaxed">
               整合心率變異度 (HRV)、連續血氧、呼吸頻率、體溫與活動量，運用 ML 計算早期惡化指標，在心衰竭復發、COPD 急性發作或感染前 <strong>24~48 小時</strong> 發出視訊看診或緊急訪視提醒。
             </p>
           </div>
 
-          <div class="p-2.5 bg-emerald-950/30 border border-emerald-800/40 rounded text-[11px] text-emerald-200 flex items-center justify-between">
+          <div class="p-2.5 bg-emerald-50 border border-emerald-200 rounded text-[11px] text-emerald-800 flex items-center justify-between">
             <span><strong>查閱方向：</strong><i>JMIR mHealth and uHealth</i> 居家心衰竭與 COPD 預測臨床實證</span>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </div>
         </div>
 
         <!-- HC 4: 訪視減負與照護計畫生成 -->
-        <div class="glass-card p-5 rounded-xl border border-blue-500/40 space-y-3.5 hover:border-blue-400 transition">
+        <div class="clean-card p-5 rounded-xl border border-blue-200 space-y-3.5 clean-card-hover">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-blue-950/80 text-blue-400 border border-blue-800">
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
               <i class="fa-solid fa-microphone-lines mr-1"></i> 語音與 GenAI (Ambient Clinical Intelligence)
             </span>
-            <span class="text-[11px] text-slate-400 font-mono">巴氏量表・ADLs・SOAP 紀錄</span>
+            <span class="text-[11px] text-slate-500 font-mono">巴氏量表・ADLs・SOAP 紀錄</span>
           </div>
-          <h4 class="font-bold text-white text-base">訪視減負與照護計畫生成（語音環境智慧）</h4>
+          <h4 class="font-bold text-slate-900 text-base">訪視減負與照護計畫生成（語音環境智慧）</h4>
           
-          <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
-            <div class="text-blue-300 font-semibold"><i class="fa-solid fa-comments mr-1"></i> 代表應用與系統：</div>
+          <div class="p-3 bg-blue-50/50 rounded-lg border border-blue-100 space-y-1.5 text-xs text-slate-700">
+            <div class="text-blue-800 font-semibold"><i class="fa-solid fa-comments mr-1"></i> 代表應用與系統：</div>
             <p>• <strong>Abridge</strong>、<strong>Nuance DAX Copilot</strong> (微軟醫療環境智慧)<br>• 本土居家護理資訊系統 (NIS) 導入之 Whisper / 醫學 LLM 套件</p>
           </div>
 
-          <div class="text-xs text-slate-300 space-y-1.5">
-            <div class="text-white font-semibold"><i class="fa-solid fa-file-signature text-blue-400 mr-1"></i> 核心功能：</div>
+          <div class="text-xs text-slate-600 space-y-1.5">
+            <div class="text-slate-900 font-semibold"><i class="fa-solid fa-file-signature text-blue-600 mr-1"></i> 核心功能：</div>
             <p class="leading-relaxed">
               居家護理師訪視時將對話<strong>即時轉為長照評估表（如 ADLs、巴氏量表描述）</strong>或結構化居家護理紀錄 (SOAP)，徹底根治居家護理師每天下班耗費 2~3 小時繕打文書的痛點。
             </p>
           </div>
 
-          <div class="p-2.5 bg-blue-950/30 border border-blue-800/40 rounded text-[11px] text-blue-200 flex items-center justify-between">
+          <div class="p-2.5 bg-blue-50 border border-blue-200 rounded text-[11px] text-blue-800 flex items-center justify-between">
             <span><strong>查閱方向：</strong>長照資訊系統商 (HIS/NIS) 與生成式 AI 自動摘要照護計畫落地案例</span>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </div>
@@ -1070,89 +1056,88 @@
 
     <!-- TAB 1: 4 LAYERS & DATA-TO-ACTION WORKFLOW -->
     <div id="tab-layers" class="dash-tab-content hidden space-y-6">
-      <!-- 6 Steps workflow -->
-      <div class="glass-card p-6 rounded-2xl border border-cyan-500/30 space-y-4">
-        <h3 class="text-base font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-arrow-right-arrow-left text-cyan-400"></i>
+      <div class="clean-card p-6 rounded-2xl border border-sky-200 space-y-4">
+        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-arrow-right-arrow-left text-sky-600"></i>
           核心流程：從「居家端量測」到「臨床可行動處置」的 6 步閉環
         </h3>
         <div class="grid grid-cols-2 md:grid-cols-6 gap-3 text-xs text-center">
-          <div class="p-3 rounded-xl bg-slate-900 border border-cyan-500/30">
-            <span class="font-bold font-mono text-cyan-400 text-sm">01 量測</span>
-            <p class="text-slate-300 mt-1">裝置／語音／影像／病人回報</p>
+          <div class="p-3 rounded-xl clean-card border border-sky-200 bg-sky-50/40">
+            <span class="font-bold font-mono text-sky-700 text-sm">01 量測</span>
+            <p class="text-slate-600 mt-1">裝置／語音／影像／病人回報</p>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900 border border-emerald-500/30">
-            <span class="font-bold font-mono text-emerald-400 text-sm">02 整合</span>
-            <p class="text-slate-300 mt-1">EMR／HIS／FHIR／用藥／病史</p>
+          <div class="p-3 rounded-xl clean-card border border-emerald-200 bg-emerald-50/40">
+            <span class="font-bold font-mono text-emerald-700 text-sm">02 整合</span>
+            <p class="text-slate-600 mt-1">EMR／HIS／FHIR／用藥／病史</p>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900 border border-blue-500/30">
-            <span class="font-bold font-mono text-blue-400 text-sm">03 判讀</span>
-            <p class="text-slate-300 mt-1">個人基線＋趨勢＋風險模型</p>
+          <div class="p-3 rounded-xl clean-card border border-blue-200 bg-blue-50/40">
+            <span class="font-bold font-mono text-blue-700 text-sm">03 判讀</span>
+            <p class="text-slate-600 mt-1">個人基線＋趨勢＋風險模型</p>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900 border border-amber-500/30">
-            <span class="font-bold font-mono text-amber-400 text-sm">04 分流</span>
-            <p class="text-slate-300 mt-1">紅／黃／綠分級＋處置 SLA</p>
+          <div class="p-3 rounded-xl clean-card border border-amber-200 bg-amber-50/40">
+            <span class="font-bold font-mono text-amber-700 text-sm">04 分流</span>
+            <p class="text-slate-600 mt-1">紅／黃／綠分級＋處置 SLA</p>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900 border border-purple-500/30">
-            <span class="font-bold font-mono text-purple-400 text-sm">05 處置</span>
-            <p class="text-slate-300 mt-1">電話／視訊／訪視／急診</p>
+          <div class="p-3 rounded-xl clean-card border border-purple-200 bg-purple-50/40">
+            <span class="font-bold font-mono text-purple-700 text-sm">05 處置</span>
+            <p class="text-slate-600 mt-1">電話／視訊／訪視／急診</p>
           </div>
-          <div class="p-3 rounded-xl bg-slate-900 border border-rose-500/30">
-            <span class="font-bold font-mono text-rose-400 text-sm">06 追蹤</span>
-            <p class="text-slate-300 mt-1">結果回寫＋模型治理稽核</p>
+          <div class="p-3 rounded-xl clean-card border border-rose-200 bg-rose-50/40">
+            <span class="font-bold font-mono text-rose-700 text-sm">06 追蹤</span>
+            <p class="text-slate-600 mt-1">結果回寫＋模型治理稽核</p>
           </div>
         </div>
       </div>
 
       <!-- 4 Layers Cards -->
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div class="glass-card p-5 rounded-xl border border-cyan-500/30 space-y-3">
+        <div class="clean-card p-5 rounded-xl border border-sky-200 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400 font-bold text-xs">Layer 1</span>
-            <i class="fa-solid fa-wave-square text-cyan-400"></i>
+            <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold text-xs">Layer 1</span>
+            <i class="fa-solid fa-wave-square text-sky-600"></i>
           </div>
-          <h3 class="font-bold text-white text-base">感知層 (Perception)</h3>
-          <p class="text-xs text-slate-300">收集高信噪比居家生理與環境訊號。</p>
-          <div class="text-xs text-slate-400 space-y-1 bg-slate-900/60 p-2.5 rounded-lg">
+          <h3 class="font-bold text-slate-900 text-base">感知層 (Perception)</h3>
+          <p class="text-xs text-slate-600">收集高信噪比居家生理與環境訊號。</p>
+          <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
             <div><strong>能力：</strong>設備資料品質檢查、去雜訊。</div>
             <div><strong>訊號：</strong>血壓、血氧、心率、血糖、體溫、體重、智慧床墊、毫米波防跌 (Vayyar)。</div>
           </div>
         </div>
 
-        <div class="glass-card p-5 rounded-xl border border-emerald-500/30 space-y-3">
+        <div class="clean-card p-5 rounded-xl border border-emerald-200 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-xs">Layer 2</span>
-            <i class="fa-solid fa-chart-line text-emerald-400"></i>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-xs">Layer 2</span>
+            <i class="fa-solid fa-chart-line text-emerald-600"></i>
           </div>
-          <h3 class="font-bold text-white text-base">判讀層 (Interpretation)</h3>
-          <p class="text-xs text-slate-300">從多維時間序列資料找出異常與惡化趨勢。</p>
-          <div class="text-xs text-slate-400 space-y-1 bg-slate-900/60 p-2.5 rounded-lg">
+          <h3 class="font-bold text-slate-900 text-base">判讀層 (Interpretation)</h3>
+          <p class="text-xs text-slate-600">從多維時間序列資料找出異常與惡化趨勢。</p>
+          <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
             <div><strong>能力：</strong>個人化基線偏離分析、風險預測。</div>
             <div><strong>場景：</strong>心衰竭體液滯留預警、呼吸惡化、壓傷傷口 CV (Tissue Analytics)。</div>
           </div>
         </div>
 
-        <div class="glass-card p-5 rounded-xl border border-amber-500/30 space-y-3">
+        <div class="clean-card p-5 rounded-xl border border-amber-200 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold text-xs">Layer 3</span>
-            <i class="fa-solid fa-clipboard-check text-amber-400"></i>
+            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-xs">Layer 3</span>
+            <i class="fa-solid fa-clipboard-check text-amber-600"></i>
           </div>
-          <h3 class="font-bold text-white text-base">決策層 (CDS & Triage)</h3>
-          <p class="text-xs text-slate-300">臨床決策支援，排序優先級並給出建議處置。</p>
-          <div class="text-xs text-slate-400 space-y-1 bg-slate-900/60 p-2.5 rounded-lg">
+          <h3 class="font-bold text-slate-900 text-base">決策層 (CDS & Triage)</h3>
+          <p class="text-xs text-slate-600">臨床決策支援，排序優先級並給出建議處置。</p>
+          <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
             <div><strong>能力：</strong>Explainable CDS、再住院風險分級。</div>
             <div><strong>動作：</strong>電話追蹤、視訊會診、到府訪視、啟動轉急診 (Biofourmis)。</div>
           </div>
         </div>
 
-        <div class="glass-card p-5 rounded-xl border border-blue-500/30 space-y-3">
+        <div class="clean-card p-5 rounded-xl border border-blue-200 space-y-3">
           <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-bold text-xs">Layer 4</span>
-            <i class="fa-solid fa-users-viewfinder text-blue-400"></i>
+            <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-xs">Layer 4</span>
+            <i class="fa-solid fa-users-viewfinder text-blue-600"></i>
           </div>
-          <h3 class="font-bold text-white text-base">協作層 (Collaboration)</h3>
-          <p class="text-xs text-slate-300">串聯病人、家屬、看護與跨專業醫護團隊。</p>
-          <div class="text-xs text-slate-400 space-y-1 bg-slate-900/60 p-2.5 rounded-lg">
+          <h3 class="font-bold text-slate-900 text-base">協作層 (Collaboration)</h3>
+          <p class="text-xs text-slate-600">串聯病人、家屬、看護與跨專業醫護團隊。</p>
+          <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
             <div><strong>能力：</strong>AI Copilot、語音轉 SOAP、交班摘要。</div>
             <div><strong>工具：</strong>多語衛教生成、訪視排程優化、照顧者 Agent (Abridge / DAX)。</div>
           </div>
@@ -1162,58 +1147,58 @@
 
     <!-- TAB 2: LIVE CLINICAL SIMULATOR -->
     <div id="tab-simulator" class="dash-tab-content hidden space-y-6">
-      <div class="glass-card p-6 rounded-2xl border border-cyan-500/30 space-y-6">
+      <div class="clean-card p-6 rounded-2xl border border-sky-200 space-y-6">
         <div>
-          <h3 class="text-lg font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-laptop-medical text-cyan-400"></i>
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-laptop-medical text-sky-600"></i>
             在宅臨床 AI 分流與決策支援模擬器 (Live CDS Simulator)
           </h3>
-          <p class="text-xs text-slate-300 mt-1">選擇臨床案例，即時體驗 AI 如何辨識個人基線、輸出 CDS 建議並進行 Human-in-the-loop 覆核。</p>
+          <p class="text-xs text-slate-600 mt-1">選擇臨床案例，即時體驗 AI 如何辨識個人基線、輸出 CDS 建議並進行 Human-in-the-loop 覆核。</p>
         </div>
 
         <!-- Case Selector Buttons -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <button onclick="runSimulation('hf')" class="sim-case-btn p-3.5 rounded-xl text-left bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 transition">
-            <div class="text-xs font-bold text-cyan-400">案例 A：心衰竭 (HF) 出院個案</div>
-            <div class="text-xs text-slate-300 mt-1">連續 3 日體重上升 1.9kg，夜間心率 96bpm，自述平躺呼吸喘。</div>
+          <button onclick="runSimulation('hf')" class="sim-case-btn p-3.5 rounded-xl text-left clean-card hover:bg-sky-50 border border-sky-200 transition">
+            <div class="text-xs font-bold text-sky-700">案例 A：心衰竭 (HF) 出院個案</div>
+            <div class="text-xs text-slate-600 mt-1">連續 3 日體重上升 1.9kg，夜間心率 96bpm，自述平躺呼吸喘。</div>
           </button>
-          <button onclick="runSimulation('copd')" class="sim-case-btn p-3.5 rounded-xl text-left bg-slate-900 hover:bg-slate-800 border border-slate-700 transition">
-            <div class="text-xs font-bold text-emerald-400">案例 B：COPD 慢性呼吸道病患</div>
-            <div class="text-xs text-slate-300 mt-1">長期基線血氧 95%，近 48h 降至 91%，呼吸頻率 26 次/分。</div>
+          <button onclick="runSimulation('copd')" class="sim-case-btn p-3.5 rounded-xl text-left clean-card hover:bg-emerald-50 border border-slate-200 transition">
+            <div class="text-xs font-bold text-emerald-700">案例 B：COPD 慢性呼吸道病患</div>
+            <div class="text-xs text-slate-600 mt-1">長期基線血氧 95%，近 48h 降至 91%，呼吸頻率 26 次/分。</div>
           </button>
-          <button onclick="runSimulation('wound')" class="sim-case-btn p-3.5 rounded-xl text-left bg-slate-900 hover:bg-slate-800 border border-slate-700 transition">
-            <div class="text-xs font-bold text-amber-400">案例 C：骶尾部第 3 期壓傷追蹤 (Swift/Tissue)</div>
-            <div class="text-xs text-slate-300 mt-1">手機拍攝影像回傳，CV 辨識邊緣紅腫擴大 15%，滲液增加。</div>
+          <button onclick="runSimulation('wound')" class="sim-case-btn p-3.5 rounded-xl text-left clean-card hover:bg-amber-50 border border-slate-200 transition">
+            <div class="text-xs font-bold text-amber-700">案例 C：壓傷時序影像辨識 (Tissue Analytics/Swift)</div>
+            <div class="text-xs text-slate-600 mt-1">手機拍攝影像回傳，CV 辨識邊緣紅腫擴大 15%，滲液增加。</div>
           </button>
         </div>
 
         <!-- Simulation Output Display -->
-        <div id="sim-output" class="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div id="sim-output" class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-3">
             <div class="flex items-center space-x-3">
-              <span id="sim-badge" class="px-2.5 py-1 rounded border text-xs font-bold bg-red-950 border-red-500 text-red-300">
+              <span id="sim-badge" class="px-2.5 py-1 rounded border text-xs font-bold bg-rose-50 border-rose-300 text-rose-800">
                 🚨 高風險 (Red Tier)
               </span>
-              <span id="sim-title" class="font-bold text-white text-sm">心衰竭急症惡化預警 (Heart Failure Decompensation)</span>
+              <span id="sim-title" class="font-bold text-slate-900 text-sm">心衰竭急症惡化預警 (Heart Failure Decompensation)</span>
             </div>
-            <span class="text-xs font-mono text-slate-400">CDS Engine v2.6 • HL7 FHIR Observation Processed</span>
+            <span class="text-xs font-mono text-slate-500">CDS Engine v2.6 • HL7 FHIR Observation Processed</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
-              <span class="text-slate-400 font-semibold">🔍 驅動因子 (Explainable Drivers)：</span>
-              <p id="sim-drivers" class="text-slate-200">48h 體重由 62.0kg 增至 63.9kg (+1.9kg / +3.06%)；夜間平躺靜息心率 96bpm；個人化基線偏離顯著。</p>
+            <div class="p-3 bg-white rounded-lg border border-slate-200 space-y-1">
+              <span class="text-slate-500 font-semibold">🔍 驅動因子 (Explainable Drivers)：</span>
+              <p id="sim-drivers" class="text-slate-800">48h 體重由 62.0kg 增至 63.9kg (+1.9kg / +3.06%)；夜間平躺靜息心率 96bpm；個人化基線偏離顯著。</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
-              <span class="text-slate-400 font-semibold">📋 建議處置 (CDS Actions)：</span>
-              <p id="sim-action" class="text-cyan-300">1. 個管師 1 小時內進行視訊評估<br>2. 責任醫師評估口服利尿劑 (Furosemide) 劑量調整<br>3. 若血氧續跌即刻啟動急診轉送</p>
+            <div class="p-3 bg-white rounded-lg border border-slate-200 space-y-1">
+              <span class="text-slate-500 font-semibold">📋 建議處置 (CDS Actions)：</span>
+              <p id="sim-action" class="text-sky-700 font-medium">1. 個管師 1 小時內進行視訊評估<br>2. 責任醫師評估口服利尿劑 (Furosemide) 劑量調整<br>3. 若血氧續跌即刻啟動急診轉送</p>
             </div>
-            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 space-y-2 flex flex-col justify-between">
+            <div class="p-3 bg-white rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
               <div>
-                <span class="text-slate-400 font-semibold">✍️ 人機協作 (Human-in-the-Loop)：</span>
-                <p id="sim-status" class="text-amber-400">待值班護理師覆核確認...</p>
+                <span class="text-slate-500 font-semibold">✍️ 人機協作 (Human-in-the-Loop)：</span>
+                <p id="sim-status" class="text-amber-700 font-medium">待值班護理師覆核確認...</p>
               </div>
-              <button id="sim-btn-approve" onclick="approveSimAction()" class="w-full py-1.5 rounded bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition">
+              <button id="sim-btn-approve" onclick="approveSimAction()" class="w-full py-1.5 rounded bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs transition">
                 <i class="fa-solid fa-signature mr-1"></i> 護理師審閱簽核並派工
               </button>
             </div>
@@ -1225,57 +1210,57 @@
     <!-- TAB 3: 5 SCENARIOS DEEP DIVE -->
     <div id="tab-scenarios" class="dash-tab-content hidden space-y-6">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="glass-card p-5 rounded-xl border border-cyan-500/30 space-y-3">
-          <div class="flex items-center space-x-2 text-cyan-400 font-bold text-sm">
+        <div class="clean-card p-5 rounded-xl border border-sky-200 space-y-3 clean-card-hover">
+          <div class="flex items-center space-x-2 text-sky-700 font-bold text-sm">
             <i class="fa-solid fa-heart-pulse"></i>
             <span>01 遠距生理監測與早期預警</span>
           </div>
-          <p class="text-xs text-slate-300">串接血壓、血氧、血糖、智慧床墊與 ECG，以「個人化基線 (Personal Baseline)」偵測偏離趨勢 (Biofourmis)。</p>
-          <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
+          <p class="text-xs text-slate-600">串接血壓、血氧、血糖、智慧床墊與 ECG，以「個人化基線 (Personal Baseline)」偵測偏離趨勢 (Biofourmis)。</p>
+          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
             <strong>典範案例：</strong>成大醫院智慧安寧遠距照護，在宅善終率達 83%。
           </div>
         </div>
 
-        <div class="glass-card p-5 rounded-xl border border-emerald-500/30 space-y-3">
-          <div class="flex items-center space-x-2 text-emerald-400 font-bold text-sm">
+        <div class="clean-card p-5 rounded-xl border border-emerald-200 space-y-3 clean-card-hover">
+          <div class="flex items-center space-x-2 text-emerald-700 font-bold text-sm">
             <i class="fa-solid fa-filter"></i>
             <span>02 AI 分流與再住院預測</span>
           </div>
-          <p class="text-xs text-slate-300">整合生命徵象、共病衰弱、用藥與社會支持力，輸出具備驅動因子、動作與審計之透明 CDS。</p>
-          <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
+          <p class="text-xs text-slate-600">整合生命徵象、共病衰弱、用藥與社會支持力，輸出具備驅動因子、動作與審計之透明 CDS。</p>
+          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
             <strong>核心原則：</strong>AI 提醒人，人決定怎麼做 (Human-in-the-loop)。
           </div>
         </div>
 
-        <div class="glass-card p-5 rounded-xl border border-amber-500/30 space-y-3">
-          <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm">
+        <div class="clean-card p-5 rounded-xl border border-amber-200 space-y-3 clean-card-hover">
+          <div class="flex items-center space-x-2 text-amber-700 font-bold text-sm">
             <i class="fa-solid fa-camera"></i>
             <span>03 傷口／皮膚影像照護</span>
           </div>
-          <p class="text-xs text-slate-300">手機拍攝指引、品質檢核、面積深度量測、壞死感染識別，以時序前後序列呈現癒合軌跡 (Swift Skin / Tissue Analytics)。</p>
-          <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
+          <p class="text-xs text-slate-600">手機拍攝指引、品質檢核、面積深度量測、壞死感染識別，以時序前後序列呈現癒合軌跡 (Swift Skin / Tissue Analytics)。</p>
+          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
             <strong>典範案例：</strong>高醫在宅手機傷口 AI 追蹤，嚴守臨床遠端輔助紅線。
           </div>
         </div>
 
-        <div class="glass-card p-5 rounded-xl border border-blue-500/30 space-y-3">
-          <div class="flex items-center space-x-2 text-blue-400 font-bold text-sm">
+        <div class="clean-card p-5 rounded-xl border border-blue-200 space-y-3 clean-card-hover">
+          <div class="flex items-center space-x-2 text-blue-700 font-bold text-sm">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>04 GenAI 照護 Copilot</span>
           </div>
-          <p class="text-xs text-slate-300">訪視語音轉 SOAP、ADLs/巴氏量表、個案日報、跨班交接、多語衛教（台語/印尼語/越語），文書時長減少 40%。</p>
-          <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
+          <p class="text-xs text-slate-600">訪視語音轉 SOAP、ADLs/巴氏量表、個案日報、跨班交接、多語衛教（台語/印尼語/越語），文書時長減少 40%。</p>
+          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
             <strong>代表產品：</strong>Abridge / Nuance DAX / 中山附醫「醫點家」。
           </div>
         </div>
 
-        <div class="glass-card p-5 rounded-xl border border-purple-500/30 space-y-3">
-          <div class="flex items-center space-x-2 text-purple-400 font-bold text-sm">
+        <div class="clean-card p-5 rounded-xl border border-purple-200 space-y-3 clean-card-hover">
+          <div class="flex items-center space-x-2 text-purple-700 font-bold text-sm">
             <i class="fa-solid fa-robot"></i>
             <span>05 家屬與照顧者 AI Agent & 防跌</span>
           </div>
-          <p class="text-xs text-slate-300">用藥排程提醒、多語日常照護引導、非接觸式毫米波雷達防跌 (Vayyar / 工研院)，偵測危險關鍵字即刻啟動醫療升級。</p>
-          <div class="p-2 bg-slate-900 rounded text-[11px] text-slate-400">
+          <p class="text-xs text-slate-600">用藥排程提醒、多語日常照護引導、非接觸式毫米波雷達防跌 (Vayyar / 工研院)，偵測危險關鍵字即刻啟動醫療升級。</p>
+          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
             <strong>安全防線：</strong>Escalation Guardrail 避免自主診斷，快速連線值班團隊。
           </div>
         </div>
@@ -1284,41 +1269,41 @@
 
     <!-- TAB 4: TARGET ARCHITECTURE -->
     <div id="tab-target-arch" class="dash-tab-content hidden space-y-6">
-      <div class="glass-card p-6 rounded-2xl border border-cyan-500/30 space-y-6">
-        <h3 class="text-base font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-sitemap text-cyan-400"></i>
+      <div class="clean-card p-6 rounded-2xl border border-sky-200 space-y-6">
+        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-sitemap text-sky-600"></i>
           Target Architecture 全鏈路目標架構與資料閉環
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs text-center">
-          <div class="p-4 bg-slate-900 rounded-xl border border-cyan-500/40 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center mx-auto"><i class="fa-solid fa-bed-pulse"></i></div>
-            <span class="font-bold text-white text-sm">1. 居家端</span>
-            <p class="text-slate-300 text-[11px]">BP／SpO₂／ECG／血糖／體重／影像／語音／雷達</p>
+          <div class="p-4 clean-card rounded-xl border border-sky-200 bg-sky-50/30 space-y-2">
+            <div class="w-8 h-8 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-bed-pulse"></i></div>
+            <span class="font-bold text-slate-900 text-sm">1. 居家端</span>
+            <p class="text-slate-600 text-[11px]">BP／SpO₂／ECG／血糖／體重／影像／語音／雷達</p>
           </div>
-          <div class="p-4 bg-slate-900 rounded-xl border border-emerald-500/40 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto"><i class="fa-solid fa-network-wired"></i></div>
-            <span class="font-bold text-white text-sm">2. 資料與互通</span>
-            <p class="text-slate-300 text-[11px]">HL7 FHIR／API Gateway／EMR／HIS／Identity</p>
+          <div class="p-4 clean-card rounded-xl border border-emerald-200 bg-emerald-50/30 space-y-2">
+            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-network-wired"></i></div>
+            <span class="font-bold text-slate-900 text-sm">2. 資料與互通</span>
+            <p class="text-slate-600 text-[11px]">HL7 FHIR／API Gateway／EMR／HIS／Identity</p>
           </div>
-          <div class="p-4 bg-slate-900 rounded-xl border border-amber-500/40 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto"><i class="fa-solid fa-brain"></i></div>
-            <span class="font-bold text-white text-sm">3. AI Layer</span>
-            <p class="text-slate-300 text-[11px]">異常偵測／預測模型／CV／LLM／Agent</p>
+          <div class="p-4 clean-card rounded-xl border border-amber-200 bg-amber-50/30 space-y-2">
+            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-brain"></i></div>
+            <span class="font-bold text-slate-900 text-sm">3. AI Layer</span>
+            <p class="text-slate-600 text-[11px]">異常偵測／預測模型／CV／LLM／Agent</p>
           </div>
-          <div class="p-4 bg-slate-900 rounded-xl border border-blue-500/40 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center mx-auto"><i class="fa-solid fa-user-doctor"></i></div>
-            <span class="font-bold text-white text-sm">4. Clinical Workflow</span>
-            <p class="text-slate-300 text-[11px]">Dashboard／SLA／派工／視訊／訪視／轉診</p>
+          <div class="p-4 clean-card rounded-xl border border-blue-200 bg-blue-50/30 space-y-2">
+            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-user-doctor"></i></div>
+            <span class="font-bold text-slate-900 text-sm">4. Clinical Workflow</span>
+            <p class="text-slate-600 text-[11px]">Dashboard／SLA／派工／視訊／訪視／轉診</p>
           </div>
-          <div class="p-4 bg-slate-900 rounded-xl border border-purple-500/40 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center mx-auto"><i class="fa-solid fa-gavel"></i></div>
-            <span class="font-bold text-white text-sm">5. Governance</span>
-            <p class="text-slate-300 text-[11px]">ISO 27001／ISO 42001／NIST AI RMF／Audit</p>
+          <div class="p-4 clean-card rounded-xl border border-purple-200 bg-purple-50/30 space-y-2">
+            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-gavel"></i></div>
+            <span class="font-bold text-slate-900 text-sm">5. Governance</span>
+            <p class="text-slate-600 text-[11px]">ISO 27001／ISO 42001／NIST AI RMF／Audit</p>
           </div>
         </div>
 
-        <div class="p-4 bg-slate-900/90 border border-slate-700 rounded-xl text-xs text-slate-200">
-          <strong class="text-cyan-400">關鍵審計閉環：</strong>每一次 AI 輸出，都必須能回到「資料來源 ➔ 模型版本 ➔ 人工覆核 ➔ 最終處置 ➔ 結果」全鏈路審查紀錄。
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700">
+          <strong class="text-sky-700">關鍵審計閉環：</strong>每一次 AI 輸出，都必須能回到「資料來源 ➔ 模型版本 ➔ 人工覆核 ➔ 最終處置 ➔ 結果」全鏈路審查紀錄。
         </div>
       </div>
     </div>
@@ -1326,14 +1311,14 @@
     <!-- TAB 5: 3-PHASE ROADMAP -->
     <div id="tab-roadmap" class="dash-tab-content hidden space-y-6">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-card p-6 rounded-2xl border border-cyan-500/40 space-y-4">
+        <div class="clean-card p-6 rounded-2xl border border-sky-200 space-y-4">
           <div class="flex items-center justify-between">
-            <span class="px-3 py-1 rounded bg-cyan-950 border border-cyan-800 text-cyan-400 font-bold text-xs">Phase 1</span>
-            <span class="text-xs font-mono text-cyan-300">0 ~ 90 天</span>
+            <span class="px-3 py-1 rounded bg-sky-100 text-sky-800 font-bold text-xs">Phase 1</span>
+            <span class="text-xs font-mono text-sky-700">0 ~ 90 天</span>
           </div>
-          <h3 class="text-lg font-bold text-white">單病種 MVP 驗證</h3>
-          <p class="text-xs text-slate-300">聚焦心衰竭出院 30 天或壓傷追蹤，建立 SLA 與 Dashboard。</p>
-          <div class="space-y-1.5 text-xs text-slate-300">
+          <h3 class="text-lg font-bold text-slate-900">單病種 MVP 驗證</h3>
+          <p class="text-xs text-slate-600">聚焦心衰竭出院 30 天或壓傷追蹤，建立 SLA 與 Dashboard。</p>
+          <div class="space-y-1.5 text-xs text-slate-600">
             <div>• 一個族群＋一個明確臨床問題</div>
             <div>• 定義紅黃綠警示與處置 SLA</div>
             <div>• 少量高可靠 IoT 設備</div>
@@ -1342,14 +1327,14 @@
           </div>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl border border-emerald-500/40 space-y-4">
+        <div class="clean-card p-6 rounded-2xl border border-emerald-200 space-y-4">
           <div class="flex items-center justify-between">
-            <span class="px-3 py-1 rounded bg-emerald-950 border border-emerald-800 text-emerald-400 font-bold text-xs">Phase 2</span>
-            <span class="text-xs font-mono text-emerald-300">3 ~ 9 個月</span>
+            <span class="px-3 py-1 rounded bg-emerald-100 text-emerald-800 font-bold text-xs">Phase 2</span>
+            <span class="text-xs font-mono text-emerald-700">3 ~ 9 個月</span>
           </div>
-          <h3 class="text-lg font-bold text-white">平台化與多模態擴展</h3>
-          <p class="text-xs text-slate-300">串接 EMR/HIS 系統與 HL7 FHIR，建立多模態 AI。</p>
-          <div class="space-y-1.5 text-xs text-slate-300">
+          <h3 class="text-lg font-bold text-slate-900">平台化與多模態擴展</h3>
+          <p class="text-xs text-slate-600">串接 EMR/HIS 系統與 HL7 FHIR，建立多模態 AI。</p>
+          <div class="space-y-1.5 text-xs text-slate-600">
             <div>• 採用 HL7 FHIR 串聯處方與檢驗</div>
             <div>• 擴展多病種個人化預警模型</div>
             <div>• 導入影像/語音 Multimodal AI</div>
@@ -1358,14 +1343,14 @@
           </div>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl border border-blue-500/40 space-y-4">
+        <div class="clean-card p-6 rounded-2xl border border-blue-200 space-y-4">
           <div class="flex items-center justify-between">
-            <span class="px-3 py-1 rounded bg-blue-950 border border-blue-800 text-blue-400 font-bold text-xs">Phase 3</span>
-            <span class="text-xs font-mono text-blue-300">9 ~ 18 個月</span>
+            <span class="px-3 py-1 rounded bg-blue-100 text-blue-800 font-bold text-xs">Phase 3</span>
+            <span class="text-xs font-mono text-blue-700">9 ~ 18 個月</span>
           </div>
-          <h3 class="text-lg font-bold text-white">生態制度化與健保對接</h3>
-          <p class="text-xs text-slate-300">建立區域共照網與支付模式融合。</p>
-          <div class="space-y-1.5 text-xs text-slate-300">
+          <h3 class="text-lg font-bold text-slate-900">生態制度化與健保對接</h3>
+          <p class="text-xs text-slate-600">建立區域共照網與支付模式融合。</p>
+          <div class="space-y-1.5 text-xs text-slate-600">
             <div>• 醫院—診所—居護—長照—藥局共照網</div>
             <div>• 部署分角色 AI Agent</div>
             <div>• 建立可複製病種模板</div>
@@ -1378,61 +1363,61 @@
 
     <!-- TAB 6: ROI CALCULATOR -->
     <div id="tab-calculator" class="dash-tab-content hidden space-y-6">
-      <div class="glass-card p-6 lg:p-8 rounded-2xl border border-emerald-500/30 space-y-6">
+      <div class="clean-card p-6 lg:p-8 rounded-2xl border border-emerald-200 space-y-6">
         <div>
-          <h3 class="text-lg font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-calculator text-emerald-400"></i>
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-calculator text-emerald-600"></i>
             在宅醫療與居家照護 AI 效益與 ROI 試算器 (Interactive ROI Estimator)
           </h3>
-          <p class="text-xs text-slate-300 mt-1">調整預計管理之在宅個案數與效益參數，即時估算每年避免之非必要住院成本與醫護人力釋放效益。</p>
+          <p class="text-xs text-slate-600 mt-1">調整預計管理之在宅個案數與效益參數，即時估算每年避免之非必要住院成本與醫護人力釋放效益。</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div class="space-y-5 text-xs">
             <div>
-              <div class="flex justify-between text-slate-300 mb-1">
+              <div class="flex justify-between text-slate-700 mb-1">
                 <span>每月在宅管理個案數 (Active Patients)：</span>
-                <span id="val-patients" class="font-bold text-cyan-400 font-mono">100 人</span>
+                <span id="val-patients" class="font-bold text-sky-700 font-mono">100 人</span>
               </div>
-              <input type="range" id="slider-patients" min="20" max="500" step="10" value="100" oninput="updateROI()" class="w-full accent-cyan-400">
+              <input type="range" id="slider-patients" min="20" max="500" step="10" value="100" oninput="updateROI()" class="w-full accent-sky-600">
             </div>
 
             <div>
-              <div class="flex justify-between text-slate-300 mb-1">
+              <div class="flex justify-between text-slate-700 mb-1">
                 <span>預估 30 日再住院率降幅 (Reduction in Readmissions)：</span>
-                <span id="val-readmission" class="font-bold text-emerald-400 font-mono">25 %</span>
+                <span id="val-readmission" class="font-bold text-emerald-700 font-mono">25 %</span>
               </div>
-              <input type="range" id="slider-readmission" min="5" max="40" step="1" value="25" oninput="updateROI()" class="w-full accent-emerald-400">
+              <input type="range" id="slider-readmission" min="5" max="40" step="1" value="25" oninput="updateROI()" class="w-full accent-emerald-600">
             </div>
 
             <div>
-              <div class="flex justify-between text-slate-300 mb-1">
+              <div class="flex justify-between text-slate-700 mb-1">
                 <span>每案平均節省行政文書時長 (Documentation Hours Saved)：</span>
-                <span id="val-hours" class="font-bold text-blue-400 font-mono">35 分鐘/訪視</span>
+                <span id="val-hours" class="font-bold text-blue-700 font-mono">35 分鐘/訪視</span>
               </div>
-              <input type="range" id="slider-hours" min="10" max="60" step="5" value="35" oninput="updateROI()" class="w-full accent-blue-400">
+              <input type="range" id="slider-hours" min="10" max="60" step="5" value="35" oninput="updateROI()" class="w-full accent-blue-600">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="p-4 bg-slate-900/90 rounded-xl border border-cyan-500/30 text-center space-y-1">
-              <span class="text-xs text-slate-400">預估全年避免急診/住院人次</span>
-              <div id="calc-avoided-adm" class="text-2xl lg:text-3xl font-extrabold text-cyan-400 font-mono">60 次</div>
+            <div class="p-4 clean-card rounded-xl border border-sky-200 bg-sky-50/40 text-center space-y-1">
+              <span class="text-xs text-slate-500">預估全年避免急診/住院人次</span>
+              <div id="calc-avoided-adm" class="text-2xl lg:text-3xl font-extrabold text-sky-700 font-mono">60 次</div>
               <span class="text-[10px] text-slate-500">降低急診待床壓力</span>
             </div>
-            <div class="p-4 bg-slate-900/90 rounded-xl border border-emerald-500/30 text-center space-y-1">
-              <span class="text-xs text-slate-400">預估每年醫療資源淨節省 (NTD)</span>
-              <div id="calc-cost-saved" class="text-2xl lg:text-3xl font-extrabold text-emerald-400 font-mono">NT$ 4,800,000</div>
+            <div class="p-4 clean-card rounded-xl border border-emerald-200 bg-emerald-50/40 text-center space-y-1">
+              <span class="text-xs text-slate-500">預估每年醫療資源淨節省 (NTD)</span>
+              <div id="calc-cost-saved" class="text-2xl lg:text-3xl font-extrabold text-emerald-700 font-mono">NT$ 4,800,000</div>
               <span class="text-[10px] text-slate-500">以每案住院約 8 萬元估算</span>
             </div>
-            <div class="p-4 bg-slate-900/90 rounded-xl border border-blue-500/30 text-center space-y-1">
-              <span class="text-xs text-slate-400">每年釋放護理行政工時</span>
-              <div id="calc-hours-saved" class="text-2xl lg:text-3xl font-extrabold text-blue-400 font-mono">2,100 小時</div>
+            <div class="p-4 clean-card rounded-xl border border-blue-200 bg-blue-50/40 text-center space-y-1">
+              <span class="text-xs text-slate-500">每年釋放護理行政工時</span>
+              <div id="calc-hours-saved" class="text-2xl lg:text-3xl font-extrabold text-blue-700 font-mono">2,100 小時</div>
               <span class="text-[10px] text-slate-500">相當於 1.2 位全職護理人力</span>
             </div>
-            <div class="p-4 bg-slate-900/90 rounded-xl border border-amber-500/30 text-center space-y-1">
-              <span class="text-xs text-slate-400">護理師個案管理量能倍率</span>
-              <div id="calc-multiplier" class="text-2xl lg:text-3xl font-extrabold text-amber-400 font-mono">1.6x 提升</div>
+            <div class="p-4 clean-card rounded-xl border border-amber-200 bg-amber-50/40 text-center space-y-1">
+              <span class="text-xs text-slate-500">護理師個案管理量能倍率</span>
+              <div id="calc-multiplier" class="text-2xl lg:text-3xl font-extrabold text-amber-700 font-mono">1.6x 提升</div>
               <span class="text-[10px] text-slate-500">每人管理 30 ➔ 48 案</span>
             </div>
           </div>
@@ -1442,47 +1427,47 @@
 
     <!-- TAB 7: GOVERNANCE & SECURITY -->
     <div id="tab-governance" class="dash-tab-content hidden space-y-6">
-      <div class="glass-card p-6 rounded-2xl border border-purple-500/30 space-y-6">
+      <div class="clean-card p-6 rounded-2xl border border-purple-200 space-y-6">
         <div>
-          <h3 class="text-lg font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-shield-halved text-purple-400"></i>
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-purple-600"></i>
             資安與 AI 治理：高風險醫療系統八大必備控制項
           </h3>
-          <p class="text-xs text-slate-300 mt-1">依循 ISO 27001、ISO 42001 與 NIST AI RMF，建構高韌性與可信賴之在宅醫療體系。</p>
+          <p class="text-xs text-slate-600 mt-1">依循 ISO 27001、ISO 42001 與 NIST AI RMF，建構高韌性與可信賴之在宅醫療體系。</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5">
-            <span class="font-bold text-cyan-400">1. 資料最小化 (Data Minimization)</span>
-            <p class="text-slate-300">只蒐集照護直接相關數據；防跌監控優先採毫米波雷達/骨架姿態，預設嚴禁上傳臥室原始畫面。</p>
+          <div class="p-4 clean-card rounded-xl border border-slate-200 space-y-1.5">
+            <span class="font-bold text-sky-700">1. 資料最小化 (Data Minimization)</span>
+            <p class="text-slate-600">只蒐集照護直接相關數據；防跌監控優先採毫米波雷達/骨架姿態，預設嚴禁上傳臥室原始畫面。</p>
           </div>
-          <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 space-y-1.5">
-            <span class="font-bold text-cyan-400">2. 明確同意與可撤回授權</span>
-            <p class="text-slate-300">向病患家屬清楚說明用途、存取人員與期限，並提供一鍵撤銷資料共享管道。</p>
+          <div class="p-4 clean-card rounded-xl border border-slate-200 space-y-1.5">
+            <span class="font-bold text-sky-700">2. 明確同意與可撤回授權</span>
+            <p class="text-slate-600">向病患家屬清楚說明用途、存取人員與期限，並提供一鍵撤銷資料共享管道。</p>
           </div>
-          <div class="p-4 bg-slate-900/80 border border-slate-800 space-y-1.5">
-            <span class="font-bold text-emerald-400">3. 端到端零信任 (Zero Trust Architecture)</span>
-            <p class="text-slate-300">IoT 設備雙向憑證認證、AES-256 加密傳輸與儲存、MDM 遠端管控與 API 存取盤點。</p>
+          <div class="p-4 clean-card rounded-xl border border-emerald-200 space-y-1.5">
+            <span class="font-bold text-emerald-700">3. 端到端零信任 (Zero Trust Architecture)</span>
+            <p class="text-slate-600">IoT 設備雙向憑證認證、AES-256 加密傳輸與儲存、MDM 遠端管控與 API 存取盤點。</p>
           </div>
-          <div class="p-4 bg-slate-900/80 border border-slate-800 space-y-1.5">
-            <span class="font-bold text-emerald-400">4. 第三方供應鏈風險與 SBOM</span>
-            <p class="text-slate-300">要求軟硬體業者提供軟體物料清單 (SBOM)、弱點修補 SLA、DPA 協議與責任邊界。</p>
+          <div class="p-4 clean-card rounded-xl border border-emerald-200 space-y-1.5">
+            <span class="font-bold text-emerald-700">4. 第三方供應鏈風險與 SBOM</span>
+            <p class="text-slate-600">要求軟硬體業者提供軟體物料清單 (SBOM)、弱點修補 SLA、DPA 協議與責任邊界。</p>
           </div>
-          <div class="p-4 bg-slate-900/80 border border-slate-800 space-y-1.5">
-            <span class="font-bold text-amber-400">5. 人類最終決策 (Human-in-the-loop)</span>
-            <p class="text-slate-300">AI 僅為輔助；凡涉及診斷、處方調整、急診轉診均須由合格醫師審核簽章生效。</p>
+          <div class="p-4 clean-card rounded-xl border border-amber-200 space-y-1.5">
+            <span class="font-bold text-amber-700">5. 人類最終決策 (Human-in-the-loop)</span>
+            <p class="text-slate-600">AI 僅為輔助；凡涉及診斷、處方調整、急診轉診均須由合格醫師審核簽章生效。</p>
           </div>
-          <div class="p-4 bg-slate-900/80 border border-slate-800 space-y-1.5">
-            <span class="font-bold text-amber-400">6. 模型可監測性與偏差抑制</span>
-            <p class="text-slate-300">持續監控各年齡、性別、病種資料漂移 (Drift)，確保模型決策之臨床公平性。</p>
+          <div class="p-4 clean-card rounded-xl border border-amber-200 space-y-1.5">
+            <span class="font-bold text-amber-700">6. 模型可監測性與偏差抑制</span>
+            <p class="text-slate-600">持續監控各年齡、性別、病種資料漂移 (Drift)，確保模型決策之臨床公平性。</p>
           </div>
-          <div class="p-4 bg-slate-900/80 border border-slate-800 space-y-1.5">
-            <span class="font-bold text-blue-400">7. 全鏈路可稽核軌跡 (Audit Trail)</span>
-            <p class="text-slate-300">完整留存資料來源、提示詞/規則、輸出、醫護覆核人與最終處置責任軌跡。</p>
+          <div class="p-4 clean-card rounded-xl border border-blue-200 space-y-1.5">
+            <span class="font-bold text-blue-700">7. 全鏈路可稽核軌跡 (Audit Trail)</span>
+            <p class="text-slate-600">完整留存資料來源、提示詞/規則、輸出、醫護覆核人與最終處置責任軌跡。</p>
           </div>
-          <div class="p-4 bg-slate-900/80 border border-slate-800 space-y-1.5">
-            <span class="font-bold text-blue-400">8. 緊急失效模式 (Fail-Safe SOP)</span>
-            <p class="text-slate-300">網路中斷或雲端服務不可用時，即刻無縫回退至傳統電話通報與紙本/離線應變機制。</p>
+          <div class="p-4 clean-card rounded-xl border border-blue-200 space-y-1.5">
+            <span class="font-bold text-blue-700">8. 緊急失效模式 (Fail-Safe SOP)</span>
+            <p class="text-slate-600">網路中斷或雲端服務不可用時，即刻無縫回退至傳統電話通報與紙本/離線應變機制。</p>
           </div>
         </div>
       </div>
@@ -1490,12 +1475,12 @@
 
     <!-- TAB 8: REFERENCES -->
     <div id="tab-references" class="dash-tab-content hidden space-y-4">
-      <div class="glass-card p-6 rounded-2xl border border-slate-700 space-y-4">
-        <h3 class="text-base font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-book-bookmark text-cyan-400"></i>
+      <div class="clean-card p-6 rounded-2xl border border-slate-200 space-y-4">
+        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-book-bookmark text-sky-600"></i>
           政策、標竿案例與學術文獻引用來源
         </h3>
-        <ul class="space-y-2 text-xs text-slate-300">
+        <ul class="space-y-2 text-xs text-slate-600">
           <li>• [1] 行政院 (2025/2026). 《在宅醫療科技願景與行動》. 行政院科技政策推動辦公室.</li>
           <li>• [2] CIO Taiwan (2025/2026). 2026 年智慧醫療趨勢：從生成式 AI 到制度化治理的關鍵拐點. <i>CIO Taiwan</i>.</li>
           <li>• [3] 黃冠凱 (2026). 從醫院到客廳：AI如何重塑在宅照護新模式. <i>AnkeCare 安可人生</i>.</li>
@@ -1513,7 +1498,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-surfaceBorder bg-obsidian py-4 px-6 text-center text-xs text-slate-500">
+  <footer class="border-t border-slate-200 bg-white py-4 px-6 text-center text-xs text-slate-500">
     AI × Hospital at Home & Home Care Decision Framework • by Howard Liao Ph.D. • 2026 All Rights Reserved.
   </footer>
 
@@ -1608,13 +1593,13 @@
       if (mode === 'presentation') {
         presContainer.classList.remove('hidden');
         dashContainer.classList.add('hidden');
-        btnPres.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md";
-        btnDash.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white transition-all";
+        btnPres.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-sky-600 text-white shadow-sm";
+        btnDash.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-600 hover:text-slate-900 transition-all";
       } else {
         presContainer.classList.add('hidden');
         dashContainer.classList.remove('hidden');
-        btnDash.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md";
-        btnPres.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white transition-all";
+        btnDash.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-sky-600 text-white shadow-sm";
+        btnPres.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-600 hover:text-slate-900 transition-all";
       }
     }
 
@@ -1632,8 +1617,8 @@
     function switchDashTab(tabId) {
       document.querySelectorAll('.dash-tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.dash-tab-btn').forEach(btn => {
-        btn.classList.remove('bg-cyan-950/80', 'text-cyan-400', 'border-cyan-800/60');
-        btn.classList.add('bg-surfaceCard', 'text-slate-400', 'border-transparent');
+        btn.classList.remove('bg-sky-600', 'text-white', 'border-sky-600');
+        btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
       });
 
       const targetTab = document.getElementById(tabId);
@@ -1641,8 +1626,8 @@
 
       const targetBtn = document.querySelector(`.dash-tab-btn[data-tab="${tabId}"]`);
       if (targetBtn) {
-        targetBtn.classList.remove('bg-surfaceCard', 'text-slate-400', 'border-transparent');
-        targetBtn.classList.add('bg-cyan-950/80', 'text-cyan-400', 'border-cyan-800/60');
+        targetBtn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+        targetBtn.classList.add('bg-sky-600', 'text-white', 'border-sky-600');
       }
     }
 
@@ -1650,21 +1635,21 @@
     const simCases = {
       hf: {
         badge: "🚨 高風險 (Red Tier)",
-        badgeClass: "bg-red-950 border-red-500 text-red-300",
+        badgeClass: "bg-rose-50 border-rose-300 text-rose-800",
         title: "心衰竭急症惡化預警 (Heart Failure Decompensation)",
         drivers: "48h 體重由 62.0kg 增至 63.9kg (+1.9kg / +3.06%)；夜間平躺靜息心率 96bpm；個人化基線偏離顯著。",
         action: "1. 個管師 1 小時內進行視訊評估<br>2. 責任醫師評估口服利尿劑 (Furosemide) 劑量調整<br>3. 若血氧續跌即刻啟動急診轉送",
       },
       copd: {
         badge: "⚠️ 中度警示 (Yellow Tier)",
-        badgeClass: "bg-amber-950 border-amber-500 text-amber-300",
+        badgeClass: "bg-amber-50 border-amber-300 text-amber-800",
         title: "COPD 慢性呼吸道個人基線滑落 (Baseline Shift)",
         drivers: "病患個人長期血氧基線 95%，近 48h 穩定滑落至 91%，合併呼吸頻率 26 次/分與活動量下降 40%。",
         action: "1. 護理師 2 小時內電話評估呼吸雜音與痰液顏色<br>2. 指導使用支氣管擴張吸入劑<br>3. 排定明日到府居家訪視",
       },
       wound: {
         badge: "🔍 密切追蹤 (Yellow Tier)",
-        badgeClass: "bg-amber-950 border-amber-500 text-amber-300",
+        badgeClass: "bg-amber-50 border-amber-300 text-amber-800",
         title: "骶尾部壓傷邊緣微幅擴大 (Tissue Analytics / Swift Skin)",
         drivers: "手機影像辨識面積 3.2cm × 2.8cm，邊緣紅腫區域較前次擴增 15%，滲液增加但尚未見深層壞死組織。",
         action: "1. 護理師遠端審閱影像並複核分級<br>2. 衛教外籍看護增加每 2 小時翻身次數與減壓氣墊床設定<br>3. 調整泡棉敷料更換頻率",
@@ -1684,23 +1669,23 @@
       document.getElementById('sim-action').innerHTML = data.action;
 
       const statusEl = document.getElementById('sim-status');
-      statusEl.className = "text-amber-400";
+      statusEl.className = "text-amber-700 font-medium";
       statusEl.textContent = "待值班護理師覆核確認...";
 
       const btnApprove = document.getElementById('sim-btn-approve');
       btnApprove.disabled = false;
-      btnApprove.className = "w-full py-1.5 rounded bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition";
+      btnApprove.className = "w-full py-1.5 rounded bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs transition";
       btnApprove.innerHTML = '<i class="fa-solid fa-signature mr-1"></i> 護理師審閱簽核並派工';
     }
 
     function approveSimAction() {
       const statusEl = document.getElementById('sim-status');
-      statusEl.className = "text-emerald-400 font-bold";
+      statusEl.className = "text-emerald-700 font-bold";
       statusEl.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> 護理師已簽核，任務已自動分派至排程！';
 
       const btnApprove = document.getElementById('sim-btn-approve');
       btnApprove.disabled = true;
-      btnApprove.className = "w-full py-1.5 rounded bg-slate-800 text-slate-500 font-bold text-xs cursor-not-allowed";
+      btnApprove.className = "w-full py-1.5 rounded bg-slate-200 text-slate-500 font-bold text-xs cursor-not-allowed";
       btnApprove.innerHTML = '<i class="fa-solid fa-check mr-1"></i> 已完成臨床覆核 (Audit Logged)';
     }
 
