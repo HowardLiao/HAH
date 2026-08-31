@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="light">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI × 在宅醫療與居家照護 (Hospital at Home & Home Care) 智慧落地藍圖 - Howard Liao Ph.D.</title>
+  <title>AI × 在宅醫療與居家照護 (Hospital at Home & Home Care) 智慧決策門戶 - Howard Liao Ph.D.</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -42,17 +41,15 @@
       color: #0f172a;
       font-family: 'Noto Sans TC', 'Inter', sans-serif;
     }
-    .clean-card {
+    .card-clean {
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-    }
-    .clean-card-hover {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
       transition: all 0.2s ease-in-out;
     }
-    .clean-card-hover:hover {
-      border-color: #0284c7;
-      box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.1), 0 2px 4px -2px rgba(2, 132, 199, 0.1);
+    .card-clean:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     }
     /* Custom scrollbar */
     ::-webkit-scrollbar {
@@ -69,26 +66,27 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #0284c7;
     }
-    .slide-active {
-      display: flex !important;
-    }
-    .slide-inactive {
-      display: none !important;
+    .nav-link-active {
+      color: #0284c7;
+      border-bottom: 2px solid #0284c7;
+      font-weight: 600;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white bg-slate-50 text-slate-900">
+<body class="min-h-screen flex flex-col antialiased bg-slate-50 text-slate-900 selection:bg-sky-500 selection:text-white">
 
-  <!-- Top Global Navigation Header -->
-  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4 shadow-sm">
+  <!-- ========================================================================= -->
+  <!-- TOP STICKY ENTERPRISE NAVIGATION BAR -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md px-4 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4 shadow-sm">
     <div class="flex items-center space-x-3">
-      <div class="h-9 w-9 rounded-lg bg-gradient-to-tr from-sky-600 to-teal-500 flex items-center justify-center text-white font-black text-lg shadow-sm">
+      <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-sky-600 to-teal-500 flex items-center justify-center text-white font-black text-xl shadow-sm">
         <i class="fa-solid fa-house-medical"></i>
       </div>
       <div>
         <div class="flex items-center space-x-2">
           <span class="text-xs font-bold tracking-wider uppercase text-sky-700 bg-sky-50 border border-sky-200 px-2 py-0.5 rounded">Hospital at Home & Home Care</span>
-          <span class="text-xs text-slate-500 font-mono">決策者簡報｜臨床 × AI × FHIR × 資安治理</span>
+          <span class="text-xs text-slate-500 font-mono">決策者專用架構門戶</span>
         </div>
         <h1 class="text-base lg:text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
           AI × 在宅醫療與居家照護智慧落地藍圖 <span class="text-xs font-normal text-slate-500">by Howard Liao Ph.D.</span>
@@ -96,1084 +94,398 @@
       </div>
     </div>
 
-    <!-- View Mode Switcher & Actions -->
-    <div class="flex items-center flex-wrap gap-2.5">
-      <!-- Mode Toggle -->
-      <div class="bg-slate-100 p-1 rounded-xl border border-slate-200 flex items-center text-xs">
-        <button id="btn-mode-presentation" onclick="setAppMode('presentation')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-sky-600 text-white shadow-sm">
-          <i class="fa-solid fa-person-chalkboard"></i>
-          <span>15頁 簡報投影模式</span>
-        </button>
-        <button id="btn-mode-dashboard" onclick="setAppMode('dashboard')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-600 hover:text-slate-900 transition-all">
-          <i class="fa-solid fa-chart-pie"></i>
-          <span>全景互動儀表板</span>
-        </button>
-      </div>
+    <!-- Quick Navigation Anchor Links -->
+    <nav class="hidden xl:flex items-center space-x-5 text-xs font-medium text-slate-600">
+      <a href="#section-vision" class="hover:text-sky-600 transition">戰略願景</a>
+      <a href="#section-homecare" class="text-sky-700 font-bold hover:text-sky-800 transition flex items-center gap-1"><i class="fa-solid fa-house-user"></i> 居家照護專區</a>
+      <a href="#section-architecture" class="hover:text-sky-600 transition">四層架構</a>
+      <a href="#section-scenarios" class="hover:text-sky-600 transition">五大場景</a>
+      <a href="#section-simulator" class="hover:text-sky-600 transition">決策模擬器</a>
+      <a href="#section-roadmap" class="hover:text-sky-600 transition">落地藍圖</a>
+      <a href="#section-roi" class="hover:text-sky-600 transition">ROI 試算</a>
+      <a href="#section-governance" class="hover:text-sky-600 transition">資安治理</a>
+      <a href="#section-references" class="hover:text-sky-600 transition">文獻來源</a>
+    </nav>
 
-      <!-- PPTX Download Link Bound Directly to Howard Liao's Source Deck -->
-      <a href="AI_Hospital_at_Home_HaH_智慧在宅醫療藍圖_Howard_Liao.pptx" download="AI_Hospital_at_Home_HaH_智慧在宅醫療藍圖_Howard_Liao.pptx" class="flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all">
-        <i class="fa-solid fa-file-powerpoint text-emerald-600"></i>
+    <!-- Action Buttons -->
+    <div class="flex items-center gap-2.5">
+      <a href="AI_Hospital_at_Home_HaH_智慧在宅醫療藍圖_Howard_Liao.pptx" download="AI_Hospital_at_Home_HaH_智慧在宅醫療藍圖_Howard_Liao.pptx" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all">
+        <i class="fa-solid fa-file-powerpoint"></i>
         <span>下載 PPTX 簡報</span>
       </a>
-      
       <button onclick="window.print()" class="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-300 transition-all">
         <i class="fa-solid fa-print"></i>
-        <span>列印 / 匯出</span>
-      </button>
-
-      <button id="btn-fullscreen" onclick="toggleFullscreen()" title="切換全螢幕 (快速鍵: F)" class="h-8 w-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center border border-slate-300 transition-all">
-        <i class="fa-solid fa-expand"></i>
+        <span>列印報告</span>
       </button>
     </div>
   </header>
 
   <!-- ========================================================================= -->
-  <!-- VIEW MODE 1: 簡報投影模式 (Slide Deck Presentation Mode - Clean Light Theme) -->
+  <!-- MAIN CONTENT CONTAINER (PROFESSIONAL INTERACTIVE WEB PORTAL) -->
   <!-- ========================================================================= -->
-  <main id="presentation-container" class="flex-1 flex flex-col items-center justify-center p-4 lg:p-6 max-w-7xl mx-auto w-full">
-    
-    <!-- Slide Box -->
-    <div class="w-full aspect-[16/9] max-h-[82vh] min-h-[530px] rounded-2xl clean-card relative overflow-hidden flex flex-col shadow-lg border border-slate-200">
-      
-      <!-- Slide Content Viewport -->
-      <div id="slides-viewport" class="flex-1 p-6 lg:p-10 flex flex-col justify-between overflow-y-auto relative bg-white">
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 lg:px-8 py-8 space-y-12">
 
-        <!-- SLIDE 1: Title Slide -->
-        <div class="slide slide-active flex flex-col justify-between h-full" data-slide="1">
-          <div class="space-y-4">
-            <div class="inline-flex items-center space-x-2 bg-sky-50 border border-sky-200 px-3.5 py-1 rounded-full">
-              <span class="w-2 h-2 rounded-full bg-sky-600 animate-ping"></span>
-              <span class="text-xs font-bold uppercase tracking-wider text-sky-800">決策者簡報｜臨床 × AI × FHIR × 資安治理</span>
-            </div>
-            <h2 class="text-3xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              AI × 在宅醫療與居家照護<br>
-              <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-600 via-teal-600 to-blue-700">
-                Hospital at Home（HaH）智慧落地藍圖
-              </span>
-            </h2>
-            <p class="text-base lg:text-lg text-slate-600 max-w-3xl leading-relaxed">
-              把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環。聚焦失能長者、慢性病患及術後返家者之日常照護與訪視減負。
-            </p>
+    <!-- 1. HERO SECTION: Strategic Vision & Core Mission -->
+    <section id="section-vision" class="space-y-6">
+      <div class="card-clean p-6 lg:p-10 rounded-2xl border-l-4 border-l-sky-600 bg-gradient-to-r from-white via-sky-50/30 to-teal-50/20">
+        <div class="max-w-4xl space-y-4">
+          <div class="inline-flex items-center space-x-2 bg-sky-100 border border-sky-200 px-3 py-1 rounded-full text-xs font-bold text-sky-800">
+            <i class="fa-solid fa-shield-heart text-sky-600"></i>
+            <span>2026 智慧醫療與在宅急症照護 (Hospital at Home) 決策者藍圖</span>
           </div>
-
-          <!-- Presenter Footer -->
-          <div class="flex items-center justify-between border-t border-slate-200 pt-4 mt-6">
-            <div class="flex items-center space-x-3">
-              <div class="w-8 h-8 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-xs">HL</div>
-              <div>
-                <div class="text-sm font-bold text-slate-900">Howard Liao Ph.D.</div>
-                <div class="text-xs text-slate-500">AI × Hospital at Home & Home Care 策略全景</div>
-              </div>
-            </div>
-            <div class="flex space-x-2 text-xs">
-              <span class="px-2.5 py-1 rounded bg-sky-50 border border-sky-200 text-sky-700 font-medium">可預警</span>
-              <span class="px-2.5 py-1 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-medium">可分流</span>
-              <span class="px-2.5 py-1 rounded bg-blue-50 border border-blue-200 text-blue-700 font-medium">可協作</span>
-              <span class="px-2.5 py-1 rounded bg-amber-50 border border-amber-200 text-amber-700 font-medium">可追蹤</span>
-            </div>
-          </div>
+          <h2 class="text-2xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            AI 在在宅醫療最有價值的角色：<br>
+            <span class="text-sky-700">把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環</span>
+          </h2>
+          <p class="text-slate-600 text-sm lg:text-base leading-relaxed">
+            AI 的核心定位<strong>不是取代醫師或護理師</strong>，而是把居家端零碎、低頻、難以判讀的生理與生活資訊，建立為高可靠度的臨床共照流程。核心目標是：<strong>讓病人更安全地留在家中，同時降低非必要急診、再住院與照護團隊的行政負擔。</strong>
+          </p>
         </div>
 
-        <!-- SLIDE 2: 01｜Executive Summary -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="2">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">01｜Executive Summary</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">AI 的價值不是取代醫護，而是讓照護團隊更早看到、更快行動、更少文書</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
+        <!-- 4 Key Pillars Badge Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 mt-8">
+          <div class="p-3.5 rounded-xl bg-white border border-sky-100 shadow-sm">
+            <div class="text-sky-600 font-bold text-sm flex items-center gap-1.5 mb-1"><i class="fa-solid fa-bell"></i> 可預警</div>
+            <p class="text-xs text-slate-600">從單點量測 ➔ 個人基線＋趨勢異常 ➔ 早期介入處置。</p>
           </div>
-
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 my-auto">
-            <div class="clean-card p-4 rounded-xl border border-sky-200 bg-sky-50/50">
-              <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center text-base mb-2">
-                <i class="fa-solid fa-bell"></i>
-              </div>
-              <h3 class="font-bold text-slate-900 text-sm">可預警</h3>
-              <p class="text-xs text-slate-600 mt-1">從單點量測 ➔ 個人基線＋趨勢異常 ➔ 早期介入。</p>
-            </div>
-            <div class="clean-card p-4 rounded-xl border border-emerald-200 bg-emerald-50/50">
-              <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-base mb-2">
-                <i class="fa-solid fa-filter-circle-dollar"></i>
-              </div>
-              <h3 class="font-bold text-slate-900 text-sm">可分流</h3>
-              <p class="text-xs text-slate-600 mt-1">把有限的醫護訪視資源，優先給真正高風險個案。</p>
-            </div>
-            <div class="clean-card p-4 rounded-xl border border-blue-200 bg-blue-50/50">
-              <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-base mb-2">
-                <i class="fa-solid fa-users-gear"></i>
-              </div>
-              <h3 class="font-bold text-slate-900 text-sm">可協作</h3>
-              <p class="text-xs text-slate-600 mt-1">AI Copilot 串起病人、家屬、護理師、個管師與醫師。</p>
-            </div>
-            <div class="clean-card p-4 rounded-xl border border-amber-200 bg-amber-50/50">
-              <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-base mb-2">
-                <i class="fa-solid fa-shield-halved"></i>
-              </div>
-              <h3 class="font-bold text-slate-900 text-sm">可追蹤</h3>
-              <p class="text-xs text-slate-600 mt-1">FHIR／資料治理／稽核軌跡，形成可持續改善的照護閉環。</p>
-            </div>
+          <div class="p-3.5 rounded-xl bg-white border border-emerald-100 shadow-sm">
+            <div class="text-emerald-600 font-bold text-sm flex items-center gap-1.5 mb-1"><i class="fa-solid fa-filter"></i> 可分流</div>
+            <p class="text-xs text-slate-600">把有限的醫護訪視資源，優先給真正高風險個案。</p>
           </div>
-
-          <div class="p-3 bg-sky-50 border border-sky-200 rounded-lg text-xs text-sky-900 flex items-center justify-between">
-            <span><strong>核心目標：</strong>讓病人更安全地留在家中，同時降低非必要急診、再住院與照護團隊行政負擔。</span>
-            <span class="text-slate-500 font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
+          <div class="p-3.5 rounded-xl bg-white border border-blue-100 shadow-sm">
+            <div class="text-blue-600 font-bold text-sm flex items-center gap-1.5 mb-1"><i class="fa-solid fa-users"></i> 可協作</div>
+            <p class="text-xs text-slate-600">AI Copilot 串聯病人、家屬、護理師、個管師與醫師。</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white border border-amber-100 shadow-sm">
+            <div class="text-amber-600 font-bold text-sm flex items-center gap-1.5 mb-1"><i class="fa-solid fa-shield-halved"></i> 可追蹤</div>
+            <p class="text-xs text-slate-600">FHIR／資料治理／審計軌跡，拒絕黑盒，形成持續改善閉環。</p>
           </div>
         </div>
-
-        <!-- SLIDE 3: 02｜AI 應用全景 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="3">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">02｜AI 應用全景</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">四層架構：從感知資料，到臨床行動，再回饋治理</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="space-y-2.5 my-auto text-xs">
-            <div class="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200 flex items-center justify-between">
-              <div class="flex items-center space-x-3">
-                <span class="px-2.5 py-1 rounded bg-blue-100 text-blue-700 font-mono font-bold">協作層</span>
-                <span class="font-bold text-slate-900 text-sm">AI Copilot / Agent</span>
-              </div>
-              <div class="text-slate-600 flex-1 px-6">
-                摘要、交班、衛教、任務派工、排程與照護紀錄自動化 (Abridge / DAX / NIS LLM)
-              </div>
-              <span class="text-blue-700 bg-blue-100 px-2 py-0.5 rounded font-medium">串聯共照網絡</span>
-            </div>
-
-            <div class="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 flex items-center justify-between">
-              <div class="flex items-center space-x-3">
-                <span class="px-2.5 py-1 rounded bg-amber-100 text-amber-800 font-mono font-bold">決策層</span>
-                <span class="font-bold text-slate-900 text-sm">Clinical Decision Support</span>
-              </div>
-              <div class="text-slate-600 flex-1 px-6">
-                分流、優先級排序、建議追蹤／視訊看診／居家訪視／轉診 (Biofourmis / Current Health)
-              </div>
-              <span class="text-amber-800 bg-amber-100 px-2 py-0.5 rounded font-medium">輔助臨床決策</span>
-            </div>
-
-            <div class="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200 flex items-center justify-between">
-              <div class="flex items-center space-x-3">
-                <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 font-mono font-bold">判讀層</span>
-                <span class="font-bold text-slate-900 text-sm">異常與趨勢判讀</span>
-              </div>
-              <div class="text-slate-600 flex-1 px-6">
-                個人基線、異常偵測、風險預測、傷口壓傷 CV 辨識 (Tissue Analytics / Swift Skin)
-              </div>
-              <span class="text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded font-medium">萃取臨床意義</span>
-            </div>
-
-            <div class="p-3.5 rounded-xl bg-sky-50/80 border border-sky-200 flex items-center justify-between">
-              <div class="flex items-center space-x-3">
-                <span class="px-2.5 py-1 rounded bg-sky-100 text-sky-800 font-mono font-bold">感知層</span>
-                <span class="font-bold text-slate-900 text-sm">健康訊號收集</span>
-              </div>
-              <div class="text-slate-600 flex-1 px-6">
-                血壓／血氧／血糖／體溫／體重／ECG／智慧床墊／毫米波雷達防跌 (Vayyar / 工研院)
-              </div>
-              <span class="text-sky-800 bg-sky-100 px-2 py-0.5 rounded font-medium">高品質去雜訊</span>
-            </div>
-          </div>
-
-          <div class="text-slate-500 text-xs flex justify-between">
-            <span>底層資料流貫穿：HL7 FHIR Resource 標準互通</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 4: 03｜真正的核心：資料 → 行動 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="4">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">03｜真正的核心：資料 → 行動</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">居家端真正的挑戰不是沒有資料，而是資料沒有進入臨床工作流</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="grid grid-cols-2 md:grid-cols-6 gap-2.5 my-auto text-xs text-center">
-            <div class="p-3 rounded-xl clean-card border border-sky-200 bg-sky-50/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-sky-700">01 量測</span>
-              <p class="text-slate-600 text-[11px]">裝置／語音／影像／病人回報</p>
-            </div>
-            <div class="p-3 rounded-xl clean-card border border-emerald-200 bg-emerald-50/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-emerald-700">02 整合</span>
-              <p class="text-slate-600 text-[11px]">EMR／HIS／FHIR／用藥／病史</p>
-            </div>
-            <div class="p-3 rounded-xl clean-card border border-blue-200 bg-blue-50/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-blue-700">03 判讀</span>
-              <p class="text-slate-600 text-[11px]">基線＋趨勢＋風險模型</p>
-            </div>
-            <div class="p-3 rounded-xl clean-card border border-amber-200 bg-amber-50/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-amber-700">04 分流</span>
-              <p class="text-slate-600 text-[11px]">紅／黃／綠＋SLA</p>
-            </div>
-            <div class="p-3 rounded-xl clean-card border border-purple-200 bg-purple-50/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-purple-700">05 處置</span>
-              <p class="text-slate-600 text-[11px]">電話／視訊／訪視／急診</p>
-            </div>
-            <div class="p-3 rounded-xl clean-card border border-rose-200 bg-rose-50/40 space-y-1">
-              <span class="text-xs font-bold font-mono text-rose-700">06 追蹤</span>
-              <p class="text-slate-600 text-[11px]">結果回寫＋模型治理</p>
-            </div>
-          </div>
-
-          <div class="p-3.5 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-700">
-            <strong class="text-sky-700"><i class="fa-solid fa-link mr-1"></i> FHIR 的價值：</strong>
-            讓感測、病歷、用藥與照護紀錄形成「可用的共照資訊流」，而不是孤立 App／設備資料。
-          </div>
-        </div>
-
-        <!-- SLIDE 5: 04｜五大高價值 AI 場景 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="5">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">04｜五大高價值 AI 場景</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">聚焦高頻、高風險、高痛點的五大落地應用</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-3 my-auto text-xs">
-            <div class="clean-card p-3.5 rounded-xl border border-sky-200 space-y-2">
-              <span class="text-sky-600 font-bold font-mono">01</span>
-              <h3 class="font-bold text-slate-900">遠距生理監測</h3>
-              <p class="text-slate-600 text-[11px]">Biofourmis / Current Health 時序預警，個人基線監控。</p>
-            </div>
-            <div class="clean-card p-3.5 rounded-xl border border-emerald-200 space-y-2">
-              <span class="text-emerald-600 font-bold font-mono">02</span>
-              <h3 class="font-bold text-slate-900">AI 分流預測</h3>
-              <p class="text-slate-600 text-[11px]">每天排出「誰最需要先處理」與 30 日再住院風險。</p>
-            </div>
-            <div class="clean-card p-3.5 rounded-xl border border-amber-200 space-y-2">
-              <span class="text-amber-600 font-bold font-mono">03</span>
-              <h3 class="font-bold text-slate-900">傷口／皮膚影像</h3>
-              <p class="text-slate-600 text-[11px]">Tissue Analytics / Swift Skin 手機拍攝與分期量測。</p>
-            </div>
-            <div class="clean-card p-3.5 rounded-xl border border-blue-200 space-y-2">
-              <span class="text-blue-600 font-bold font-mono">04</span>
-              <h3 class="font-bold text-slate-900">GenAI 照護 Copilot</h3>
-              <p class="text-slate-600 text-[11px]">Abridge / DAX / NIS 訪視語音轉 SOAP 與巴氏量表。</p>
-            </div>
-            <div class="clean-card p-3.5 rounded-xl border border-purple-200 space-y-2">
-              <span class="text-purple-600 font-bold font-mono">05</span>
-              <h3 class="font-bold text-slate-900">家屬 Agent & 防跌</h3>
-              <p class="text-slate-600 text-[11px]">Vayyar / 工研院毫米波雷達防跌與高風險升級防線。</p>
-            </div>
-          </div>
-
-          <div class="text-slate-500 text-xs flex justify-between">
-            <span>涵蓋生理訊號、環境感知雷達、影像、語音與 LLM 之 Multimodal 臨床賦能</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 6: 05｜場景一：遠距生理監測與早期預警 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="6">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">05｜場景一：遠距生理監測與早期預警</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">不要只問「有沒有超標」，要問「是否偏離這個人的正常狀態」</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
-            <div class="clean-card p-4 rounded-xl border border-sky-200 space-y-2">
-              <h3 class="font-bold text-sky-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-chart-line"></i> 個人化基線</h3>
-              <p class="text-slate-600 leading-relaxed">例如 COPD 病人長期 95% 的血氧，若持續降到 91%，同時呼吸頻率上升，其臨床意義遠高於單一固定閾值。</p>
-            </div>
-            <div class="clean-card p-4 rounded-xl border border-emerald-200 space-y-2">
-              <h3 class="font-bold text-emerald-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-network-wired"></i> 多訊號融合 (RPM)</h3>
-              <p class="text-slate-600 leading-relaxed">整合 HRV、血氧、呼吸、體重與活動量，在心衰竭復發、COPD 急性惡化前 <strong>24~48 小時</strong> 發出預警 (Biofourmis / Current Health)。</p>
-            </div>
-            <div class="clean-card p-4 rounded-xl border border-amber-200 space-y-2">
-              <h3 class="font-bold text-amber-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-truck-medical"></i> 臨床行動與成效</h3>
-              <p class="text-slate-600 leading-relaxed">紅／黃／綠分級 ➔ 護理師電話 ➔ 視訊 ➔ 居家訪視 ➔ 處方調整。成大智慧安寧在宅善終率高達 <strong>83%</strong>。</p>
-            </div>
-          </div>
-
-          <div class="p-2.5 bg-sky-50 border border-sky-200 rounded-lg text-xs text-sky-900 flex items-center justify-between">
-            <span><strong>實證支持：</strong><i>JMIR mHealth and uHealth</i> 臨床驗證居家心衰竭與 COPD 機器學習預測模型。</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 7: 06｜場景二：AI 分流與再住院風險 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="7">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">06｜場景二：AI 分流與再住院風險</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">風險分數不是答案；「風險＋驅動因子＋建議動作＋證據」才是臨床可用輸出</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
-            <div class="clean-card p-4 rounded-xl border border-blue-200 space-y-2">
-              <h3 class="font-bold text-blue-700 text-sm">輸入特徵</h3>
-              <ul class="space-y-1 text-slate-600">
-                <li>• 生命徵象趨勢與變異</li>
-                <li>• 共病／Frailty 衰弱度</li>
-                <li>• 急診／住院史與再入院紀錄</li>
-                <li>• 用藥變更與多重用藥</li>
-                <li>• 傷口／感染／疼痛／吞嚥</li>
-                <li>• 照顧能力與地理可近性</li>
-              </ul>
-            </div>
-            <div class="clean-card p-4 rounded-xl border border-amber-200 space-y-2">
-              <h3 class="font-bold text-amber-700 text-sm">CDS 可解釋輸出</h3>
-              <div class="space-y-1.5 text-slate-600">
-                <div><strong class="text-amber-800">風險等級：</strong>低／中／高</div>
-                <div><strong class="text-amber-800">驅動因子：</strong>血氧下滑、食慾下降、利尿劑調整後體重仍上升</div>
-                <div><strong class="text-amber-800">建議動作：</strong>2 小時內電訪／今日視訊／醫師評估處方</div>
-              </div>
-            </div>
-            <div class="clean-card p-4 rounded-xl border border-emerald-200 space-y-2">
-              <h3 class="font-bold text-emerald-700 text-sm">治理與原則</h3>
-              <ul class="space-y-1 text-slate-600">
-                <li>• 顯示資料來源與時間戳</li>
-                <li>• 模型版本可追蹤</li>
-                <li>• <strong>Human-in-the-loop：</strong></li>
-                <li class="pl-3 text-sky-700 font-semibold">AI 提醒人，人決定怎麼做</li>
-                <li>• 最終處置留痕與審計</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="text-slate-500 text-xs flex justify-between">
-            <span>絕不以黑盒子風險分數取代專業判斷，保障醫護最終臨床自主權。</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 8: 07｜場景三：GenAI，近期最容易產生 ROI 的地方 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="8">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">07｜場景三：GenAI 行政減負與 Ambient Intelligence</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">先從 Copilot 開始，而不是一開始就讓 AI 自動診斷</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 my-auto text-xs">
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <strong class="text-emerald-700">訪視語音 ➔ SOAP／長照評估</strong>
-              <p class="text-slate-600">對話轉為 ADLs、巴氏量表與護理紀錄初稿 (Abridge / DAX / NIS)。</p>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <strong class="text-emerald-700">今日個案摘要</strong>
-              <p class="text-slate-600">整合病歷、檢驗、用藥與近 7 日生命徵象日報。</p>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <strong class="text-emerald-700">交班與待辦清單</strong>
-              <p class="text-slate-600">自動整理跨班重點與未完成待辦事項。</p>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <strong class="text-emerald-700">多語病人衛教</strong>
-              <p class="text-slate-600">轉成台語、印尼語、越語等易懂通俗單張。</p>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <strong class="text-emerald-700">電話追蹤問題清單</strong>
-              <p class="text-slate-600">依個案狀況產生標準化追問提綱。</p>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <strong class="text-emerald-700">訪視排程輔助</strong>
-              <p class="text-slate-600">AI 輔助排序；個管師依病情確認出訪路線。</p>
-            </div>
-          </div>
-
-          <div class="p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-700 flex items-center justify-between">
-            <span><strong>實證效益：</strong>中山附醫「醫點家」與本土 NIS 系統驗證，文書時長縮減達 <strong>40%</strong>。</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 9: 08｜場景四：家屬 AI Agent 與非接觸感知 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="9">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">08｜場景四：家屬 AI Agent 與環境感知</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">不是「醫療聊天機器人」，而是有邊界的數位照護協作者</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
-            <div class="clean-card p-4 rounded-xl border border-emerald-200 space-y-2">
-              <h3 class="font-bold text-emerald-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-check-circle"></i> 可以做 (Permitted)</h3>
-              <ul class="space-y-1 text-slate-600">
-                <li>• 提醒藥物／量測／回診</li>
-                <li>• 語音／多語操作引導</li>
-                <li>• 依核准照護計畫回答 FAQ</li>
-                <li>• 主動詢問喘、胸痛、跌倒症狀</li>
-                <li>• 自由文字/語音轉結構化紀錄</li>
-              </ul>
-            </div>
-
-            <div class="clean-card p-4 rounded-xl border border-rose-200 space-y-2">
-              <h3 class="font-bold text-rose-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-ban"></i> 不應做 (Prohibited)</h3>
-              <ul class="space-y-1 text-slate-600">
-                <li>• 自行下達臨床診斷</li>
-                <li>• 自行調整藥物處方</li>
-                <li>• 自行判定「不用就醫」</li>
-                <li>• 高風險情境給出模糊安撫</li>
-                <li>• 取代值班醫護的最終判斷</li>
-              </ul>
-            </div>
-
-            <div class="clean-card p-4 rounded-xl border border-amber-200 space-y-2">
-              <h3 class="font-bold text-amber-700 text-sm flex items-center gap-1.5"><i class="fa-solid fa-radar"></i> 毫米波非接觸安全監控</h3>
-              <p class="text-slate-600 leading-relaxed">
-                結合 <strong>Vayyar Care / 工研院毫米波雷達</strong>：無需穿戴設備或隱私攝影機，辨識床邊起身、如廁滯留與突發跌倒，即刻啟動醫療升級。
-              </p>
-            </div>
-          </div>
-
-          <div class="text-slate-500 text-xs flex justify-between">
-            <span>建立清晰安全邊界與隱私保護，保障長者日常安全與尊嚴。</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 10: 09｜落地藍圖：先工作流，後模型；先閉環，後規模化 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="10">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">09｜落地推動藍圖</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">先工作流，後模型；先閉環，後規模化</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto text-xs">
-            <div class="clean-card p-4 rounded-xl border border-sky-200 space-y-2">
-              <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">Phase 1</span>
-                <span class="text-sky-700 font-mono">0–90 天</span>
-              </div>
-              <h3 class="font-bold text-slate-900 text-sm">單病種 MVP 驗證</h3>
-              <ul class="space-y-1 text-slate-600">
-                <li>• 一個族群＋一個臨床問題</li>
-                <li>• 紅黃綠警示＋處置 SLA</li>
-                <li>• 少量高可靠 IoT 設備</li>
-                <li>• 單一視窗 Dashboard</li>
-                <li>• AI 摘要＋風險排序 (人工覆核)</li>
-                <li>• 建立 Baseline KPI</li>
-              </ul>
-            </div>
-
-            <div class="clean-card p-4 rounded-xl border border-emerald-200 space-y-2">
-              <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Phase 2</span>
-                <span class="text-emerald-700 font-mono">3–9 個月</span>
-              </div>
-              <h3 class="font-bold text-slate-900 text-sm">平台化與多模態擴展</h3>
-              <ul class="space-y-1 text-slate-600">
-                <li>• 串接 EMR/HIS 與 HL7 FHIR</li>
-                <li>• 多病種個人化預警模型</li>
-                <li>• Multimodal 多模態 AI (語音/影像)</li>
-                <li>• 建立 24×7 告警中心</li>
-                <li>• 跨院跨機構事件升級機制</li>
-                <li>• 臨床結果連結模型迭代</li>
-              </ul>
-            </div>
-
-            <div class="clean-card p-4 rounded-xl border border-blue-200 space-y-2">
-              <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">Phase 3</span>
-                <span class="text-blue-700 font-mono">9–18 個月</span>
-              </div>
-              <h3 class="font-bold text-slate-900 text-sm">區域生態與制度常態化</h3>
-              <ul class="space-y-1 text-slate-600">
-                <li>• 醫院—診所—居護—長照—藥局共照網</li>
-                <li>• 部署分角色 AI Agent</li>
-                <li>• 標準化病種複製模板</li>
-                <li>• ISO 42001 模型與資料治理</li>
-                <li>• 健保給付與商業保險支付整合</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="text-slate-500 text-xs flex justify-between">
-            <span>從 90 天閉環到 18 個月區域共照生態系</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 11: 10｜Target Architecture -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="11">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">10｜Target Architecture</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">裝置 ➔ 資料平台 ➔ AI ➔ 臨床工作流 ➔ 治理，形成可稽核閉環</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-2.5 my-auto text-xs text-center">
-            <div class="p-3 clean-card border border-sky-200 bg-sky-50/40 space-y-1">
-              <span class="text-sky-700 font-bold">居家端</span>
-              <p class="text-slate-600 text-[11px]">BP／SpO₂／ECG／血糖／體重／影像／語音／雷達</p>
-            </div>
-            <div class="p-3 clean-card border border-emerald-200 bg-emerald-50/40 space-y-1">
-              <span class="text-emerald-700 font-bold">資料與互通</span>
-              <p class="text-slate-600 text-[11px]">FHIR／API／EMR／HIS／Identity</p>
-            </div>
-            <div class="p-3 clean-card border border-amber-200 bg-amber-50/40 space-y-1">
-              <span class="text-amber-700 font-bold">AI Layer</span>
-              <p class="text-slate-600 text-[11px]">異常偵測／預測／CV／LLM／Agent</p>
-            </div>
-            <div class="p-3 clean-card border border-blue-200 bg-blue-50/40 space-y-1">
-              <span class="text-blue-700 font-bold">Clinical Workflow</span>
-              <p class="text-slate-600 text-[11px]">Dashboard／SLA／派工／視訊／訪視／轉診</p>
-            </div>
-            <div class="p-3 clean-card border border-purple-200 bg-purple-50/40 space-y-1">
-              <span class="text-purple-700 font-bold">Governance</span>
-              <p class="text-slate-600 text-[11px]">ISO 27001／ISO 42001／NIST AI RMF／Audit</p>
-            </div>
-          </div>
-
-          <div class="p-3 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-700">
-            <strong class="text-sky-700">關鍵審計原則：</strong>每一次 AI 輸出，都必須能回到「資料來源 ➔ 模型版本 ➔ 人工覆核 ➔ 最終處置 ➔ 臨床結果」完整追溯。
-          </div>
-        </div>
-
-        <!-- SLIDE 12: 11｜KPI：不要只看 AI Accuracy -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="12">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">11｜KPI 價值衡量</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">真正的成功，是高風險個案更早被正確處置，同時降低人工作業</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-3"></div>
-          </div>
-
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 my-auto text-xs">
-            <div class="p-3 clean-card border border-rose-200 space-y-1">
-              <strong class="text-rose-700">臨床品質</strong>
-              <p class="text-slate-600 text-[11px]">30 日再住院率、非計畫急診率、平均住院日、跌倒、壓傷、感染升級率。</p>
-            </div>
-            <div class="p-3 clean-card border border-amber-200 space-y-1">
-              <strong class="text-amber-700">即時性</strong>
-              <p class="text-slate-600 text-[11px]">異常➔人工覆核時間、警示➔首次聯繫時間、紅色緊急警示 SLA。</p>
-            </div>
-            <div class="p-3 clean-card border border-sky-200 space-y-1">
-              <strong class="text-sky-700">照護效率</strong>
-              <p class="text-slate-600 text-[11px]">每位護理師管理個案數 (1.5x~2x)、每案文書時間 (-40%)、無效警示率。</p>
-            </div>
-            <div class="p-3 clean-card border border-emerald-200 space-y-1">
-              <strong class="text-emerald-700">病人／家屬</strong>
-              <p class="text-slate-600 text-[11px]">滿意度 (>90%)、照顧者負荷、居家療養天數、數據主動回報依從性。</p>
-            </div>
-            <div class="p-3 clean-card border border-yellow-200 space-y-1">
-              <strong class="text-yellow-700">財務／價值</strong>
-              <p class="text-slate-600 text-[11px]">單案照護成本 (-20%~30%)、避免住院/急診淨節省、設備使用率。</p>
-            </div>
-            <div class="p-3 clean-card border border-purple-200 space-y-1">
-              <strong class="text-purple-700">AI 治理</strong>
-              <p class="text-slate-600 text-[11px]">模型漂移 (Drift)、偏差、人工覆核率 (100%)、錯誤建議率、資安事件零違規。</p>
-            </div>
-          </div>
-
-          <div class="text-slate-500 text-xs flex justify-between">
-            <span>多維度平衡計分卡：兼顧臨床、營運、體驗、財務與資安</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 13: 12｜資安與 AI 治理：高風險系統要預設安全 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="13">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">12｜資安與 AI 治理</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">高風險系統要預設安全：四大標準 × 六大控制面向</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-3"></div>
-          </div>
-
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 my-auto text-xs">
-            <div class="p-3 clean-card border border-slate-200 space-y-1">
-              <strong class="text-sky-700">資料最小化</strong>
-              <p class="text-slate-600 text-[11px]">只蒐集直接相關資料；居家影像優先採 Edge／毫米波／非辨識性骨架。</p>
-            </div>
-            <div class="p-3 clean-card border border-slate-200 space-y-1">
-              <strong class="text-sky-700">同意與可撤回</strong>
-              <p class="text-slate-600 text-[11px]">用途、保存期間、存取對象、模型訓練用途透明且可隨時撤銷授權。</p>
-            </div>
-            <div class="p-3 clean-card border border-emerald-200 space-y-1">
-              <strong class="text-emerald-700">端到端資安</strong>
-              <p class="text-slate-600 text-[11px]">裝置身分、加密傳輸儲存、MDM、韌體、Zero Trust、API Security。</p>
-            </div>
-            <div class="p-3 clean-card border border-emerald-200 space-y-1">
-              <strong class="text-emerald-700">第三方風險 SBOM</strong>
-              <p class="text-slate-600 text-[11px]">供應商責任分界、DPA、SBOM、弱點修補 SLA、模型資料聲明。</p>
-            </div>
-            <div class="p-3 clean-card border border-amber-200 space-y-1">
-              <strong class="text-amber-700">可監測／可稽核</strong>
-              <p class="text-slate-600 text-[11px]">模型版本、資料來源、輸出、人工覆核、處置軌跡、偏差與漂移。</p>
-            </div>
-            <div class="p-3 clean-card border border-amber-200 space-y-1">
-              <strong class="text-amber-700">失效安全 (Fail-Safe)</strong>
-              <p class="text-slate-600 text-[11px]">網路／裝置／模型故障時自動回到人工電話、離線紙本 SOP。</p>
-            </div>
-          </div>
-
-          <div class="p-2 bg-sky-50 border border-sky-200 rounded-lg text-xs text-sky-900 flex justify-between">
-            <span><strong>治理底座：</strong>ISO 27001 × ISO 42001 (AI 管理系統) × NIST AI RMF × Privacy by Design</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 14: 13｜給決策者的五個優先順序 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="14">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">13｜決策者戰略建議</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">給決策者的五個投資優先順序</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-4"></div>
-          </div>
-
-          <div class="space-y-2.5 my-auto text-xs lg:text-sm">
-            <div class="p-2.5 clean-card border border-sky-200 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold font-mono">01</span>
-              <span><strong>先把資料與照護閉環做對：</strong>量測 ➔ 警示 ➔ 覆核 ➔ 處置 ➔ 回寫。</span>
-            </div>
-            <div class="p-2.5 clean-card border border-emerald-200 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold font-mono">02</span>
-              <span><strong>先投資高頻、可量化、高風險場景：</strong>心衰竭、COPD、傷口、術後、安寧、高齡衰弱。</span>
-            </div>
-            <div class="p-2.5 clean-card border border-blue-200 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold font-mono">03</span>
-              <span><strong>先用 Copilot 提升醫護產能，</strong>再逐步導入預測模型與 Agent。</span>
-            </div>
-            <div class="p-2.5 clean-card border border-amber-200 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold font-mono">04</span>
-              <span><strong>FHIR、身分驗證、資料治理與 AI 治理，</strong>是核心基礎設施，不是事後補強。</span>
-            </div>
-            <div class="p-2.5 clean-card border border-purple-200 flex items-center gap-3">
-              <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold font-mono">05</span>
-              <span><strong>ROI 以「避免一次再住院／急診、縮短處置時間、降低每案人工作業」衡量。</strong></span>
-            </div>
-          </div>
-
-          <div class="p-3 bg-gradient-to-r from-sky-50 to-slate-100 border border-sky-200 rounded-lg text-xs text-slate-800 flex justify-between items-center">
-            <span class="font-bold text-sky-800">「AI 不替醫師做決定；AI 讓醫療團隊更早看見、更加精準地行動。」</span>
-            <span class="font-mono text-slate-500">Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
-        <!-- SLIDE 15: 14｜參考來源 -->
-        <div class="slide slide-inactive flex flex-col justify-between h-full" data-slide="15">
-          <div>
-            <span class="text-xs font-bold tracking-wider text-sky-600 uppercase">14｜參考來源與政策鏈結</span>
-            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-1">文獻、政策與標竿案例索引</h2>
-            <div class="h-1 w-20 bg-gradient-to-r from-sky-500 to-teal-500 rounded mt-2 mb-3"></div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 my-auto text-[11px] text-slate-600">
-            <div class="p-2 clean-card rounded border border-slate-200">• [1] 行政院｜在宅醫療科技願景與行動｜ey.gov.tw</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [2] CIO Taiwan｜2026 智慧醫療趨勢：生成式 AI 到制度化治理</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [3] 安可醫療｜從醫院到客廳：AI 如何重塑在宅照護新模式</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [4] 安可醫療｜在宅醫療的智慧轉向：以科技賦能社區照護</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [5] 成大/奇美醫院｜無牆化遠距醫療：智慧安寧與傷口影像</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [6] 高醫／HST｜手機影像 AI 傷口辨識與在宅照護應用</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [7] 臺北醫學大學 AI 中心｜MEDICA 到 CES: 物理 AI 與穿戴數據</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [8] <i>Journal of Wound Care</i> & <i>JMIR</i>｜智慧傷口辨識與心衰竭/COPD 預測</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [9] 工研院 (ITRI) & IEEE｜智慧感測照護白皮書與毫米波都卜勒防跌</div>
-            <div class="p-2 clean-card rounded border border-slate-200">• [10] 數位時代｜北台灣醫界領袖共論 AI 醫療落地三大趨勢</div>
-          </div>
-
-          <div class="text-slate-500 text-xs flex justify-between">
-            <span>正式對外簡報前建議再次核對政策與案例最新法規版本</span>
-            <span class="font-mono text-[11px]">AI × Hospital at Home | Howard Liao Ph.D.</span>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Presentation Bottom Navigation Bar -->
-      <div class="h-14 border-t border-slate-200 bg-slate-50 px-6 flex items-center justify-between">
+      <!-- Bento KPI Metrics Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="card-clean p-5 rounded-xl bg-white border border-slate-200">
+          <div class="text-xs text-slate-500 font-medium">預估 30 日再住院率降幅</div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-sky-700 mt-1">20% ~ 30%</div>
+          <div class="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
+            <i class="fa-solid fa-arrow-trend-down"></i> 阻斷慢性病急性惡化
+          </div>
+        </div>
+        <div class="card-clean p-5 rounded-xl bg-white border border-slate-200">
+          <div class="text-xs text-slate-500 font-medium">醫護每案文書時長減降</div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-emerald-700 mt-1">-40%</div>
+          <div class="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
+            <i class="fa-solid fa-clock"></i> 訪視語音轉 SOAP/長照評估
+          </div>
+        </div>
+        <div class="card-clean p-5 rounded-xl bg-white border border-slate-200">
+          <div class="text-xs text-slate-500 font-medium">成大智慧安寧在宅善終率</div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-blue-700 mt-1">83%</div>
+          <div class="text-[11px] text-sky-700 mt-1 flex items-center gap-1 font-medium">
+            <i class="fa-solid fa-house-chimney-medical"></i> 呼吸異常預警與安寧期別預測
+          </div>
+        </div>
+        <div class="card-clean p-5 rounded-xl bg-white border border-slate-200">
+          <div class="text-xs text-slate-500 font-medium">HL7 FHIR 標準互通支援</div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-amber-700 mt-1">100%</div>
+          <div class="text-[11px] text-amber-700 mt-1 flex items-center gap-1 font-medium">
+            <i class="fa-solid fa-link"></i> 健保雲端與跨院共照生態
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 🏡 居家照護 (HOME CARE) 專屬四大核心場景與國際/台灣標竿案例 -->
+    <section id="section-homecare" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
         <div class="flex items-center space-x-3">
-          <button onclick="prevSlide()" class="p-2 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition">
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          <span id="slide-indicator" class="text-xs font-mono font-bold text-sky-800 bg-sky-100 border border-sky-200 px-2.5 py-1 rounded">
-            01 / 15
-          </span>
-          <button onclick="nextSlide()" class="p-2 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
+          <span class="h-7 w-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-house-user"></i></span>
+          <h3 class="text-xl font-extrabold text-slate-900">居家照護（Home Care）場域 AI 落地與標竿案例</h3>
         </div>
-
-        <!-- Jump to Slide Select -->
-        <div class="hidden sm:flex items-center space-x-2">
-          <label for="slide-select" class="text-xs text-slate-600 font-medium">跳轉章節：</label>
-          <select id="slide-select" onchange="goToSlide(parseInt(this.value))" class="bg-white text-xs text-slate-700 border border-slate-300 rounded-lg px-2 py-1 outline-none focus:border-sky-500 max-w-[240px]">
-            <option value="1">01. 封面：AI × 在宅醫療落地藍圖</option>
-            <option value="2">02. 01｜Executive Summary</option>
-            <option value="3">03. 02｜AI 應用全景（四層架構）</option>
-            <option value="4">04. 03｜真正的核心：資料 ➔ 行動</option>
-            <option value="5">05. 04｜五大高價值 AI 場景</option>
-            <option value="6">06. 05｜場景一：遠距生理監測預警</option>
-            <option value="7">07. 06｜場景二：AI 分流與再住院</option>
-            <option value="8">08. 07｜場景三：GenAI 行政減負</option>
-            <option value="9">09. 08｜場景四：家屬 AI Agent</option>
-            <option value="10">10. 09｜落地藍圖 (三階段策略)</option>
-            <option value="11">11. 10｜Target Architecture</option>
-            <option value="12">12. 11｜KPI：不要只看 Accuracy</option>
-            <option value="13">13. 12｜資安與 AI 治理 (預設安全)</option>
-            <option value="14">14. 13｜給決策者的五個優先順序</option>
-            <option value="15">15. 14｜參考來源與政策鏈結</option>
-          </select>
-        </div>
-
-        <div class="flex items-center space-x-2 text-xs text-slate-600">
-          <button onclick="toggleNotes()" class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition flex items-center gap-1">
-            <i class="fa-regular fa-comment-dots"></i>
-            <span>演講備忘</span>
-          </button>
-          <span class="hidden md:inline text-slate-500">| 鍵盤: ← / → 切換, F 全螢幕</span>
-        </div>
+        <span class="text-xs font-mono text-slate-500">失能長者・慢性病患・術後返家訪視減負</span>
       </div>
 
-      <!-- Slide Progress Bar -->
-      <div class="w-full h-1 bg-slate-200">
-        <div id="slide-progress" class="h-full bg-gradient-to-r from-sky-500 to-teal-500 transition-all duration-300 w-[6.66%]"></div>
-      </div>
-
-      <!-- Speaker Notes Drawer (Togglable) -->
-      <div id="speaker-notes-drawer" class="hidden absolute bottom-14 left-0 right-0 max-h-48 bg-white border-t border-sky-200 p-4 text-xs text-slate-700 overflow-y-auto shadow-xl z-30">
-        <div class="flex items-center justify-between mb-1.5">
-          <span class="font-bold text-sky-800 flex items-center gap-1.5">
-            <i class="fa-solid fa-microphone"></i> 演講者備忘錄 (Speaker Notes)
-          </span>
-          <button onclick="toggleNotes()" class="text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <p id="speaker-notes-text" class="leading-relaxed text-slate-700">
-          AI 不是取代醫護，而是將碎片化居家訊號轉化為高可靠臨床閉環，減輕行政負擔並降低再住院率。
-        </p>
-      </div>
-
-    </div>
-  </main>
-
-
-  <!-- ========================================================================= -->
-  <!-- VIEW MODE 2: 全景互動儀表板模式 (Executive Dashboard View - Clean Light Theme) -->
-  <!-- ========================================================================= -->
-  <section id="dashboard-container" class="hidden flex-1 max-w-7xl mx-auto w-full p-4 lg:p-8 space-y-8">
-    
-    <!-- Hero Banner -->
-    <div class="clean-card p-6 lg:p-8 rounded-2xl border border-sky-200 bg-gradient-to-br from-white via-sky-50/40 to-teal-50/30 relative overflow-hidden shadow-sm">
-      <div class="relative z-10 max-w-4xl space-y-3">
-        <div class="inline-flex items-center space-x-2 bg-sky-100 border border-sky-200 px-3 py-1 rounded-full text-xs font-bold text-sky-800">
-          <i class="fa-solid fa-network-wired text-sky-600"></i>
-          <span>Hospital at Home (HaH) & Home Care AI Decision Architecture</span>
-        </div>
-        <h2 class="text-2xl lg:text-4xl font-extrabold text-slate-900">
-          AI × 在宅醫療與居家照護智慧落地藍圖
-        </h2>
-        <p class="text-slate-600 text-sm lg:text-base leading-relaxed">
-          把居家端零碎資訊，轉成「可預警、可分流、可協作、可追蹤」的臨床閉環。聚焦失能長者、慢性病患及術後返家者日常照護與訪視減負。
-        </p>
-      </div>
-    </div>
-
-    <!-- Top Bento KPI Metrics -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="clean-card p-5 rounded-xl border border-slate-200 hover:border-sky-300 transition">
-        <div class="text-xs text-slate-500 font-medium">預估降低 30 日再住院率</div>
-        <div class="text-2xl lg:text-3xl font-extrabold text-sky-600 mt-1">20% ~ 30%</div>
-        <div class="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
-          <i class="fa-solid fa-arrow-trend-down"></i> 阻斷急性惡化再入院
-        </div>
-      </div>
-      <div class="clean-card p-5 rounded-xl border border-slate-200 hover:border-emerald-300 transition">
-        <div class="text-xs text-slate-500 font-medium">醫護每案文書耗時減降</div>
-        <div class="text-2xl lg:text-3xl font-extrabold text-emerald-600 mt-1">-40%</div>
-        <div class="text-[11px] text-emerald-700 mt-1 flex items-center gap-1 font-medium">
-          <i class="fa-solid fa-clock"></i> GenAI 自動 SOAP/交班初稿
-        </div>
-      </div>
-      <div class="clean-card p-5 rounded-xl border border-slate-200 hover:border-blue-300 transition">
-        <div class="text-xs text-slate-500 font-medium">成大智慧安寧在宅善終率</div>
-        <div class="text-2xl lg:text-3xl font-extrabold text-blue-600 mt-1">83%</div>
-        <div class="text-[11px] text-sky-700 mt-1 flex items-center gap-1 font-medium">
-          <i class="fa-solid fa-house-chimney-medical"></i> 呼吸異常預警與安寧期別預測
-        </div>
-      </div>
-      <div class="clean-card p-5 rounded-xl border border-slate-200 hover:border-amber-300 transition">
-        <div class="text-xs text-slate-500 font-medium">HL7 FHIR 互通支援</div>
-        <div class="text-2xl lg:text-3xl font-extrabold text-amber-600 mt-1">100%</div>
-        <div class="text-[11px] text-amber-700 mt-1 flex items-center gap-1 font-medium">
-          <i class="fa-solid fa-link"></i> 健保雲端與跨機構生態串接
-        </div>
-      </div>
-    </div>
-
-    <!-- Dashboard Tabs -->
-    <div class="border-b border-slate-200 flex space-x-2 overflow-x-auto pb-2 text-xs font-semibold">
-      <button onclick="switchDashTab('tab-homecare-cases')" class="dash-tab-btn px-4 py-2 rounded-lg bg-sky-600 text-white border border-sky-600" data-tab="tab-homecare-cases">
-        <i class="fa-solid fa-house-user mr-1.5"></i> 🏡 居家照護專屬四大場景與標竿案例
-      </button>
-      <button onclick="switchDashTab('tab-layers')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-layers">
-        <i class="fa-solid fa-layer-group mr-1.5"></i> 四層架構與數據行動流
-      </button>
-      <button onclick="switchDashTab('tab-simulator')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-simulator">
-        <i class="fa-solid fa-flask-vial mr-1.5"></i> 臨床分流互動模擬器
-      </button>
-      <button onclick="switchDashTab('tab-scenarios')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-scenarios">
-        <i class="fa-solid fa-stethoscope mr-1.5"></i> 五大高價值場景矩陣
-      </button>
-      <button onclick="switchDashTab('tab-target-arch')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-target-arch">
-        <i class="fa-solid fa-sitemap mr-1.5"></i> Target Architecture 目標架構
-      </button>
-      <button onclick="switchDashTab('tab-roadmap')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-roadmap">
-        <i class="fa-solid fa-timeline mr-1.5"></i> 三階段落地藍圖
-      </button>
-      <button onclick="switchDashTab('tab-calculator')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-calculator">
-        <i class="fa-solid fa-calculator mr-1.5"></i> ROI 價值計算器
-      </button>
-      <button onclick="switchDashTab('tab-governance')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-governance">
-        <i class="fa-solid fa-shield-halved mr-1.5"></i> 資安與治理檢核
-      </button>
-      <button onclick="switchDashTab('tab-references')" class="dash-tab-btn px-4 py-2 rounded-lg bg-white text-slate-600 hover:text-slate-900 border border-slate-200" data-tab="tab-references">
-        <i class="fa-solid fa-book-medical mr-1.5"></i> 政策與文獻來源
-      </button>
-    </div>
-
-    <!-- TAB 0: 居家照護 (HOME CARE) 專屬四大核心場景與國際/台灣標竿案例 -->
-    <div id="tab-homecare-cases" class="dash-tab-content space-y-6">
-      <div class="clean-card p-6 rounded-2xl border border-sky-200 bg-sky-50/40 space-y-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <span class="px-2.5 py-1 rounded bg-sky-100 text-sky-800 font-bold text-xs">Home Care Focus</span>
-            <h3 class="text-lg font-bold text-slate-900">居家照護場域：失能長者、慢性病患與術後返家者之日常賦能</h3>
-          </div>
-          <span class="text-xs font-mono text-slate-500">4大技術領域 × 國際標竿產品 × 臨床文獻實證</span>
-        </div>
-        <p class="text-xs text-slate-600 leading-relaxed">
-          針對失能長者、長期臥床壓瘡高風險、多重慢性病及術後返家個案，整合電腦視覺 (CV)、環境雷達感知 (mmWave)、時序生理預測 (RPM) 與生成式語音病歷 (Ambient Clinical Intelligence)，落實第一線居護與照服團隊的實質減負。
-        </p>
-      </div>
-
-      <!-- 4 Core Home Care Scenario Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        
-        <!-- HC 1: 傷口照護與壓瘡預防 -->
-        <div class="clean-card p-5 rounded-xl border border-amber-200 space-y-3.5 clean-card-hover">
+        <!-- Home Care 1: 傷口照護與壓瘡預防 -->
+        <div class="card-clean p-6 rounded-2xl border border-amber-200 bg-white space-y-4">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
               <i class="fa-solid fa-camera mr-1"></i> 電腦視覺 (Computer Vision)
             </span>
-            <span class="text-[11px] text-slate-500 font-mono">壓瘡・糖尿病足・術後傷口</span>
+            <span class="text-xs text-slate-400 font-mono">壓瘡・糖尿病足・術後傷口</span>
           </div>
-          <h4 class="font-bold text-slate-900 text-base">傷口照護與壓瘡預防（手機 AI 傷口辨識系統）</h4>
+          <h4 class="text-base font-bold text-slate-900">1. 手機 AI 傷口辨識系統與壓瘡預防</h4>
           
-          <div class="p-3 bg-amber-50/50 rounded-lg border border-amber-100 space-y-1.5 text-xs text-slate-700">
-            <div class="text-amber-800 font-semibold"><i class="fa-solid fa-cubes mr-1"></i> 代表產品與研究：</div>
-            <p>• <strong>Tissue Analytics</strong> (Net Health)、<strong>Swift Skin and Wound</strong><br>• 台灣成大醫院／奇美醫療體系居家傷口影像分析系統</p>
+          <div class="p-3.5 bg-amber-50/60 rounded-xl border border-amber-100 text-xs space-y-1 text-slate-700">
+            <div class="font-bold text-amber-900"><i class="fa-solid fa-cubes mr-1"></i> 代表產品與研究：</div>
+            <p>• 國際標竿：<strong>Tissue Analytics</strong> (Net Health)、<strong>Swift Skin and Wound</strong><br>• 台灣標竿：<strong>成大醫院／奇美醫療體系</strong> 居家傷口影像分析系統</p>
           </div>
 
-          <div class="text-xs text-slate-600 space-y-1.5">
-            <div class="text-slate-900 font-semibold"><i class="fa-solid fa-wand-magic-sparkles text-amber-600 mr-1"></i> 核心功能：</div>
-            <p class="leading-relaxed">
-              居家訪視護理師或居服員直接使用智慧型手機拍攝壓瘡、糖尿病足，AI 自動校正光源與拍攝角度、高精準量測長寬面積與邊界、辨識組織分期（壞死組織 Necrosis、肉芽組織比例），自動產出前後癒合時序曲線。
-            </p>
+          <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+            <div class="font-bold text-slate-900">核心功能：</div>
+            <p>居家訪視護理師或居服員直接使用智慧型手機拍攝壓瘡、糖尿病足，AI 自動校正光線與拍攝角度、高精度量測長寬面積與邊界、辨識組織分期（壞死組織 Necrosis、肉芽組織百分比），自動生成時序序列曲線供遠端醫師覆核。</p>
           </div>
 
-          <div class="p-2.5 bg-amber-50 border border-amber-200 rounded text-[11px] text-amber-800 flex items-center justify-between">
-            <span><strong>查閱方向：</strong><i>Journal of Wound Care</i> 智慧手機傷口辨識效能臨床驗證</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] text-slate-600 flex items-center justify-between">
+            <span><strong>查閱文獻：</strong><i>Journal of Wound Care</i> 智慧手機傷口辨識效能臨床驗證</span>
+            <i class="fa-solid fa-book-bookmark text-amber-600"></i>
           </div>
         </div>
 
-        <!-- HC 2: 非接觸式安全監控與跌倒偵測 -->
-        <div class="clean-card p-5 rounded-xl border border-sky-200 space-y-3.5 clean-card-hover">
+        <!-- Home Care 2: 非接觸式安全監控與跌倒偵測 -->
+        <div class="card-clean p-6 rounded-2xl border border-sky-200 bg-white space-y-4">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-200">
               <i class="fa-solid fa-radar mr-1"></i> 環境感知 (Environmental Sensing)
             </span>
-            <span class="text-[11px] text-slate-500 font-mono">毫米波雷達・隱私保護・防跌</span>
+            <span class="text-xs text-slate-400 font-mono">毫米波雷達・高隱私・防跌</span>
           </div>
-          <h4 class="font-bold text-slate-900 text-base">非接觸式安全監控與跌倒偵測（mmWave 雷達步態）</h4>
+          <h4 class="text-base font-bold text-slate-900">2. 毫米波雷達（mmWave）非接觸安全監控</h4>
           
-          <div class="p-3 bg-sky-50/50 rounded-lg border border-sky-100 space-y-1.5 text-xs text-slate-700">
-            <div class="text-sky-800 font-semibold"><i class="fa-solid fa-microchip mr-1"></i> 代表技術與案例：</div>
-            <p>• <strong>Vayyar Care</strong>、<strong>Origin Wireless</strong> (WiFi 擾動感知)<br>• <strong>工研院 (ITRI)</strong> 智慧居家照護雷達系統</p>
+          <div class="p-3.5 bg-sky-50/60 rounded-xl border border-sky-100 text-xs space-y-1 text-slate-700">
+            <div class="font-bold text-sky-900"><i class="fa-solid fa-microchip mr-1"></i> 代表技術與案例：</div>
+            <p>• 國際標竿：<strong>Vayyar Care</strong>、<strong>Origin Wireless</strong> (WiFi 擾動感知)<br>• 台灣標竿：<strong>工研院 (ITRI)</strong> 智慧居家照護雷達系統</p>
           </div>
 
-          <div class="text-xs text-slate-600 space-y-1.5">
-            <div class="text-slate-900 font-semibold"><i class="fa-solid fa-shield-halved text-sky-600 mr-1"></i> 核心功能：</div>
-            <p class="leading-relaxed">
-              長者在家<strong>無需配戴手環或安裝有隱私疑慮的攝影機</strong>，透過無線微都卜勒訊號反射，精準辨識床邊起身、如廁滯留、步態不穩及突發跌倒，0 秒延遲即時告警家屬或居服管理中心。
-            </p>
+          <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+            <div class="font-bold text-slate-900">核心功能：</div>
+            <p>長者居家<strong>無需配戴手環或安裝有隱私疑慮的攝影機</strong>，透過無線訊號微都卜勒反射，精準辨識床邊起身、如廁滯留、步態不穩及突發跌倒，0 秒延遲即時告警家屬或居服機構，兼顧安全與長者尊嚴。</p>
           </div>
 
-          <div class="p-2.5 bg-sky-50 border border-sky-200 rounded text-[11px] text-sky-800 flex items-center justify-between">
-            <span><strong>查閱方向：</strong>工研院智慧感測照護白皮書、IEEE 微都卜勒雷達演算法論文</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] text-slate-600 flex items-center justify-between">
+            <span><strong>查閱文獻：</strong>工研院 (ITRI) 智慧感測照護技術白皮書、IEEE 微都卜勒雷達跌倒偵測論文</span>
+            <i class="fa-solid fa-book-bookmark text-sky-600"></i>
           </div>
         </div>
 
-        <!-- HC 3: 日常連續生理數據監測與惡化預警 -->
-        <div class="clean-card p-5 rounded-xl border border-emerald-200 space-y-3.5 clean-card-hover">
+        <!-- Home Care 3: 日常連續生理數據監測與惡化預警 -->
+        <div class="card-clean p-6 rounded-2xl border border-emerald-200 bg-white space-y-4">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
-              <i class="fa-solid fa-chart-line mr-1"></i> 時序預測 (Time-Series RPM + AI)
+              <i class="fa-solid fa-chart-line mr-1"></i> 時序預測 (Time-Series RPM + ML)
             </span>
-            <span class="text-[11px] text-slate-500 font-mono">心衰竭・COPD・感染預警</span>
+            <span class="text-xs text-slate-400 font-mono">心衰竭・COPD・感染預警</span>
           </div>
-          <h4 class="font-bold text-slate-900 text-base">日常連續生理監測與早期惡化預警（RPM + ML）</h4>
+          <h4 class="text-base font-bold text-slate-900">3. 居家連續生命徵象與慢性病惡化預警 (RPM)</h4>
           
-          <div class="p-3 bg-emerald-50/50 rounded-lg border border-emerald-100 space-y-1.5 text-xs text-slate-700">
-            <div class="text-emerald-800 font-semibold"><i class="fa-solid fa-heart-pulse mr-1"></i> 代表技術與架構：</div>
+          <div class="p-3.5 bg-emerald-50/60 rounded-xl border border-emerald-100 text-xs space-y-1 text-slate-700">
+            <div class="font-bold text-emerald-900"><i class="fa-solid fa-heart-pulse mr-1"></i> 代表技術與架構：</div>
             <p>• <strong>Current Health</strong> (Best Buy Health 旗下 RPM 平台)<br>• <strong>Biofourmis</strong> 數位生物標記與機器學習預警引擎</p>
           </div>
 
-          <div class="text-xs text-slate-600 space-y-1.5">
-            <div class="text-slate-900 font-semibold"><i class="fa-solid fa-bell-slash text-emerald-600 mr-1"></i> 核心功能：</div>
-            <p class="leading-relaxed">
-              整合心率變異度 (HRV)、連續血氧、呼吸頻率、體溫與活動量，運用 ML 計算早期惡化指標，在心衰竭復發、COPD 急性發作或感染前 <strong>24~48 小時</strong> 發出視訊看診或緊急訪視提醒。
-            </p>
+          <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+            <div class="font-bold text-slate-900">核心功能：</div>
+            <p>將長者在家的連續心率變異度 (HRV)、血氧、呼吸頻率與活動量整合，利用機器學習計算早期惡化指標，在心衰竭復發、肺阻塞 (COPD) 急性發作或感染前 <strong>24~48 小時</strong> 發出回診或訪視提醒。</p>
           </div>
 
-          <div class="p-2.5 bg-emerald-50 border border-emerald-200 rounded text-[11px] text-emerald-800 flex items-center justify-between">
-            <span><strong>查閱方向：</strong><i>JMIR mHealth and uHealth</i> 居家心衰竭與 COPD 預測臨床實證</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] text-slate-600 flex items-center justify-between">
+            <span><strong>查閱文獻：</strong><i>JMIR mHealth and uHealth</i> 關於居家心衰竭與 COPD 預測模型臨床實證</span>
+            <i class="fa-solid fa-book-bookmark text-emerald-600"></i>
           </div>
         </div>
 
-        <!-- HC 4: 訪視減負與照護計畫生成 -->
-        <div class="clean-card p-5 rounded-xl border border-blue-200 space-y-3.5 clean-card-hover">
+        <!-- Home Care 4: 訪視減負與照護計畫生成 -->
+        <div class="card-clean p-6 rounded-2xl border border-blue-200 bg-white space-y-4">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
-              <i class="fa-solid fa-microphone-lines mr-1"></i> 語音與 GenAI (Ambient Clinical Intelligence)
+              <i class="fa-solid fa-microphone-lines mr-1"></i> 語音環境智慧 (Ambient Intelligence)
             </span>
-            <span class="text-[11px] text-slate-500 font-mono">巴氏量表・ADLs・SOAP 紀錄</span>
+            <span class="text-xs text-slate-400 font-mono">ADLs・巴氏量表・SOAP 紀錄</span>
           </div>
-          <h4 class="font-bold text-slate-900 text-base">訪視減負與照護計畫生成（語音環境智慧）</h4>
+          <h4 class="text-base font-bold text-slate-900">4. 訪視語音病歷與照護紀錄自動化（減負 40%）</h4>
           
-          <div class="p-3 bg-blue-50/50 rounded-lg border border-blue-100 space-y-1.5 text-xs text-slate-700">
-            <div class="text-blue-800 font-semibold"><i class="fa-solid fa-comments mr-1"></i> 代表應用與系統：</div>
-            <p>• <strong>Abridge</strong>、<strong>Nuance DAX Copilot</strong> (微軟醫療環境智慧)<br>• 本土居家護理資訊系統 (NIS) 導入之 Whisper / 醫學 LLM 套件</p>
+          <div class="p-3.5 bg-blue-50/60 rounded-xl border border-blue-100 text-xs space-y-1 text-slate-700">
+            <div class="font-bold text-blue-900"><i class="fa-solid fa-comments mr-1"></i> 代表應用與系統：</div>
+            <p>• 國際標竿：<strong>Abridge</strong>、<strong>Nuance DAX Copilot</strong> (微軟醫療環境智慧)<br>• 台灣標竿：<strong>本土居家護理資訊系統 (NIS)</strong> 導入之 Whisper / 醫學 LLM 套件</p>
           </div>
 
-          <div class="text-xs text-slate-600 space-y-1.5">
-            <div class="text-slate-900 font-semibold"><i class="fa-solid fa-file-signature text-blue-600 mr-1"></i> 核心功能：</div>
-            <p class="leading-relaxed">
-              居家護理師訪視時將對話<strong>即時轉為長照評估表（如 ADLs、巴氏量表描述）</strong>或結構化居家護理紀錄 (SOAP)，徹底根治居家護理師每天下班耗費 2~3 小時繕打文書的痛點。
-            </p>
+          <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+            <div class="font-bold text-slate-900">核心功能：</div>
+            <p>居家護理師訪視時將對話即時轉為長照評估表（如 <strong>ADLs、巴氏量表描述</strong>）或結構化居家護理紀錄 (SOAP)，徹底根治居家護理師每天下班耗費 2~3 小時繕打文書的沉重行政負擔。</p>
           </div>
 
-          <div class="p-2.5 bg-blue-50 border border-blue-200 rounded text-[11px] text-blue-800 flex items-center justify-between">
-            <span><strong>查閱方向：</strong>長照資訊系統商 (HIS/NIS) 與生成式 AI 自動摘要照護計畫落地案例</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] text-slate-600 flex items-center justify-between">
+            <span><strong>查閱文獻：</strong>各大長照資訊系統商 (HIS/NIS) 與生成式 AI 自動摘要照護計畫落地案例</span>
+            <i class="fa-solid fa-book-bookmark text-blue-600"></i>
           </div>
         </div>
-
       </div>
-    </div>
+    </section>
 
-    <!-- TAB 1: 4 LAYERS & DATA-TO-ACTION WORKFLOW -->
-    <div id="tab-layers" class="dash-tab-content hidden space-y-6">
-      <div class="clean-card p-6 rounded-2xl border border-sky-200 space-y-4">
-        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+    <!-- 3. ARCHITECTURE & 6-STEP DATA FLOW -->
+    <section id="section-architecture" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div class="flex items-center space-x-3">
+          <span class="h-7 w-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-layer-group"></i></span>
+          <h3 class="text-xl font-extrabold text-slate-900">四層 AI 架構與 6 步數據行動閉環</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-500">HL7 FHIR R4 資料互通基石</span>
+      </div>
+
+      <!-- 6 Steps Clinical Loop -->
+      <div class="card-clean p-6 rounded-2xl border border-sky-200 bg-white space-y-4">
+        <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
           <i class="fa-solid fa-arrow-right-arrow-left text-sky-600"></i>
-          核心流程：從「居家端量測」到「臨床可行動處置」的 6 步閉環
-        </h3>
+          臨床行動閉環：從「居家端量測」到「處置追蹤」的 6 步標準流程
+        </h4>
         <div class="grid grid-cols-2 md:grid-cols-6 gap-3 text-xs text-center">
-          <div class="p-3 rounded-xl clean-card border border-sky-200 bg-sky-50/40">
+          <div class="p-3.5 rounded-xl bg-sky-50/70 border border-sky-200">
             <span class="font-bold font-mono text-sky-700 text-sm">01 量測</span>
             <p class="text-slate-600 mt-1">裝置／語音／影像／病人回報</p>
           </div>
-          <div class="p-3 rounded-xl clean-card border border-emerald-200 bg-emerald-50/40">
+          <div class="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200">
             <span class="font-bold font-mono text-emerald-700 text-sm">02 整合</span>
             <p class="text-slate-600 mt-1">EMR／HIS／FHIR／用藥／病史</p>
           </div>
-          <div class="p-3 rounded-xl clean-card border border-blue-200 bg-blue-50/40">
+          <div class="p-3.5 rounded-xl bg-blue-50/70 border border-blue-200">
             <span class="font-bold font-mono text-blue-700 text-sm">03 判讀</span>
             <p class="text-slate-600 mt-1">個人基線＋趨勢＋風險模型</p>
           </div>
-          <div class="p-3 rounded-xl clean-card border border-amber-200 bg-amber-50/40">
+          <div class="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200">
             <span class="font-bold font-mono text-amber-700 text-sm">04 分流</span>
             <p class="text-slate-600 mt-1">紅／黃／綠分級＋處置 SLA</p>
           </div>
-          <div class="p-3 rounded-xl clean-card border border-purple-200 bg-purple-50/40">
+          <div class="p-3.5 rounded-xl bg-purple-50/70 border border-purple-200">
             <span class="font-bold font-mono text-purple-700 text-sm">05 處置</span>
             <p class="text-slate-600 mt-1">電話／視訊／訪視／急診</p>
           </div>
-          <div class="p-3 rounded-xl clean-card border border-rose-200 bg-rose-50/40">
+          <div class="p-3.5 rounded-xl bg-rose-50/70 border border-rose-200">
             <span class="font-bold font-mono text-rose-700 text-sm">06 追蹤</span>
             <p class="text-slate-600 mt-1">結果回寫＋模型治理稽核</p>
           </div>
         </div>
       </div>
 
-      <!-- 4 Layers Cards -->
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div class="clean-card p-5 rounded-xl border border-sky-200 space-y-3">
+      <!-- 4 Layers Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+        <div class="card-clean p-5 rounded-xl border border-sky-200 bg-white space-y-2.5">
           <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold text-xs">Layer 1</span>
+            <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">Layer 1</span>
             <i class="fa-solid fa-wave-square text-sky-600"></i>
           </div>
-          <h3 class="font-bold text-slate-900 text-base">感知層 (Perception)</h3>
-          <p class="text-xs text-slate-600">收集高信噪比居家生理與環境訊號。</p>
-          <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-            <div><strong>能力：</strong>設備資料品質檢查、去雜訊。</div>
-            <div><strong>訊號：</strong>血壓、血氧、心率、血糖、體溫、體重、智慧床墊、毫米波防跌 (Vayyar)。</div>
+          <h4 class="font-bold text-slate-900 text-sm">感知層 (Perception)</h4>
+          <p class="text-slate-600">健康訊號收集與設備資料去雜訊。</p>
+          <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-slate-600">
+            血壓、血氧、心率、血糖、體溫、體重、智慧床墊、毫米波雷達 (Vayyar)。
           </div>
         </div>
 
-        <div class="clean-card p-5 rounded-xl border border-emerald-200 space-y-3">
+        <div class="card-clean p-5 rounded-xl border border-emerald-200 bg-white space-y-2.5">
           <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-xs">Layer 2</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Layer 2</span>
             <i class="fa-solid fa-chart-line text-emerald-600"></i>
           </div>
-          <h3 class="font-bold text-slate-900 text-base">判讀層 (Interpretation)</h3>
-          <p class="text-xs text-slate-600">從多維時間序列資料找出異常與惡化趨勢。</p>
-          <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-            <div><strong>能力：</strong>個人化基線偏離分析、風險預測。</div>
-            <div><strong>場景：</strong>心衰竭體液滯留預警、呼吸惡化、壓傷傷口 CV (Tissue Analytics)。</div>
+          <h4 class="font-bold text-slate-900 text-sm">判讀層 (Interpretation)</h4>
+          <p class="text-slate-600">從多維時序資料萃取異常與惡化趨勢。</p>
+          <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-slate-600">
+            個人基線偏離、心衰竭體液滯留預警、呼吸惡化、壓傷 CV 辨識 (Tissue Analytics)。
           </div>
         </div>
 
-        <div class="clean-card p-5 rounded-xl border border-amber-200 space-y-3">
+        <div class="card-clean p-5 rounded-xl border border-amber-200 bg-white space-y-2.5">
           <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-xs">Layer 3</span>
+            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold">Layer 3</span>
             <i class="fa-solid fa-clipboard-check text-amber-600"></i>
           </div>
-          <h3 class="font-bold text-slate-900 text-base">決策層 (CDS & Triage)</h3>
-          <p class="text-xs text-slate-600">臨床決策支援，排序優先級並給出建議處置。</p>
-          <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-            <div><strong>能力：</strong>Explainable CDS、再住院風險分級。</div>
-            <div><strong>動作：</strong>電話追蹤、視訊會診、到府訪視、啟動轉急診 (Biofourmis)。</div>
+          <h4 class="font-bold text-slate-900 text-sm">決策層 (CDS & Triage)</h4>
+          <p class="text-slate-600">臨床決策支援，優先級排序與處置建議。</p>
+          <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-slate-600">
+            Explainable CDS、再住院風險分級、電訪/視訊/訪視/轉急診建議 (Biofourmis)。
           </div>
         </div>
 
-        <div class="clean-card p-5 rounded-xl border border-blue-200 space-y-3">
+        <div class="card-clean p-5 rounded-xl border border-blue-200 bg-white space-y-2.5">
           <div class="flex items-center justify-between">
-            <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-xs">Layer 4</span>
+            <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">Layer 4</span>
             <i class="fa-solid fa-users-viewfinder text-blue-600"></i>
           </div>
-          <h3 class="font-bold text-slate-900 text-base">協作層 (Collaboration)</h3>
-          <p class="text-xs text-slate-600">串聯病人、家屬、看護與跨專業醫護團隊。</p>
-          <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-            <div><strong>能力：</strong>AI Copilot、語音轉 SOAP、交班摘要。</div>
-            <div><strong>工具：</strong>多語衛教生成、訪視排程優化、照顧者 Agent (Abridge / DAX)。</div>
+          <h4 class="font-bold text-slate-900 text-sm">協作層 (Collaboration)</h4>
+          <p class="text-slate-600">串聯病人、家屬、看護與跨專業醫護團隊。</p>
+          <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-slate-600">
+            AI Copilot、訪視語音轉 SOAP、交班日報、多語衛教、家屬 Agent (Abridge)。
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB 2: LIVE CLINICAL SIMULATOR -->
-    <div id="tab-simulator" class="dash-tab-content hidden space-y-6">
-      <div class="clean-card p-6 rounded-2xl border border-sky-200 space-y-6">
-        <div>
-          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-laptop-medical text-sky-600"></i>
-            在宅臨床 AI 分流與決策支援模擬器 (Live CDS Simulator)
-          </h3>
-          <p class="text-xs text-slate-600 mt-1">選擇臨床案例，即時體驗 AI 如何辨識個人基線、輸出 CDS 建議並進行 Human-in-the-loop 覆核。</p>
+    <!-- 4. 5 CLINICAL AI SCENARIOS -->
+    <section id="section-scenarios" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div class="flex items-center space-x-3">
+          <span class="h-7 w-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-stethoscope"></i></span>
+          <h3 class="text-xl font-extrabold text-slate-900">最具效益的五大多元臨床場景</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-500">高頻・高風險・可量化</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-xs">
+        <div class="card-clean p-5 rounded-2xl bg-white border border-sky-200 space-y-3">
+          <span class="text-xs font-bold text-sky-700 flex items-center gap-1.5"><i class="fa-solid fa-heart-pulse"></i> 場景 1：遠距生理監測與早期預警</span>
+          <p class="text-slate-600 leading-relaxed">採「個人化基線 (Personal Baseline)」而非固定閾值。例如 COPD 病人血氧從長期 95% 滑落至 91% 且呼吸頻率上升，代表高度危急意義。</p>
+          <div class="p-2 bg-sky-50 rounded border border-sky-100 text-sky-900 font-medium">成大智慧安寧遠距照護在宅善終率達 83%。</div>
         </div>
 
-        <!-- Case Selector Buttons -->
+        <div class="card-clean p-5 rounded-2xl bg-white border border-emerald-200 space-y-3">
+          <span class="text-xs font-bold text-emerald-700 flex items-center gap-1.5"><i class="fa-solid fa-filter"></i> 場景 2：AI 分流與再住院預測</span>
+          <p class="text-slate-600 leading-relaxed">輸入多維生理變異、共病 Frailty、用藥異動，輸出具備<strong>等級、驅動因子、動作與審計</strong>的透明 CDS。堅持 Human-in-the-loop 原則。</p>
+          <div class="p-2 bg-emerald-50 rounded border border-emerald-100 text-emerald-900 font-medium">每天早晨排出「誰最需要先處理」。</div>
+        </div>
+
+        <div class="card-clean p-5 rounded-2xl bg-white border border-amber-200 space-y-3">
+          <span class="text-xs font-bold text-amber-700 flex items-center gap-1.5"><i class="fa-solid fa-camera"></i> 場景 3：傷口、皮膚與 CV 影像照護</span>
+          <p class="text-slate-600 leading-relaxed">手機拍攝引導、品質檢核、面積深度量測、壞死感染識別，以時序前後序列呈現癒合軌跡。嚴守臨床輔助安全紅線，需護理師複核。</p>
+          <div class="p-2 bg-amber-50 rounded border border-amber-100 text-amber-900 font-medium">高醫在宅手機傷口 AI 追蹤實踐。</div>
+        </div>
+
+        <div class="card-clean p-5 rounded-2xl bg-white border border-blue-200 space-y-3">
+          <span class="text-xs font-bold text-blue-700 flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles"></i> 場景 4：生成式 AI 照護行政減負</span>
+          <p class="text-slate-600 leading-relaxed">訪視語音轉 SOAP 護理紀錄初稿、個案日報、跨班交接、客製多語衛教（台語/印尼語/越語）。必須經專業人員審閱簽核後生效。</p>
+          <div class="p-2 bg-blue-50 rounded border border-blue-100 text-blue-900 font-medium">中山附醫「醫點家」縮減文書時長 40%。</div>
+        </div>
+
+        <div class="card-clean p-5 rounded-2xl bg-white border border-purple-200 space-y-3">
+          <span class="text-xs font-bold text-purple-700 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> 場景 5：家屬 AI Agent & 毫米波防跌</span>
+          <p class="text-slate-600 leading-relaxed">提醒用藥量測、多語照護步驟指引、非結構對話轉臨床症狀。建立高風險 Escalation 防線：偵測呼吸喘/胸痛即刻推播 24/7 值班團隊。</p>
+          <div class="p-2 bg-purple-50 rounded border border-purple-100 text-purple-900 font-medium">Vayyar Care / 工研院毫米波雷達防跌。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. INTERACTIVE LIVE CDS SIMULATOR -->
+    <section id="section-simulator" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div class="flex items-center space-x-3">
+          <span class="h-7 w-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-flask-vial"></i></span>
+          <h3 class="text-xl font-extrabold text-slate-900">臨床決策分流與人機協作模擬器 (Live CDS Simulator)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-500">即時體驗 AI 判讀 ➔ 建議動作 ➔ 人工簽核</span>
+      </div>
+
+      <div class="card-clean p-6 rounded-2xl border border-sky-200 bg-white space-y-6">
+        <div>
+          <h4 class="text-base font-bold text-slate-900">請選擇臨床測試案例：</h4>
+          <p class="text-xs text-slate-600 mt-0.5">觀察 AI 如何比對個人基線、輸出具備可解釋性的驅動因子，並由值班護理師進行 Human-in-the-loop 簽核。</p>
+        </div>
+
+        <!-- Case Buttons -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <button onclick="runSimulation('hf')" class="sim-case-btn p-3.5 rounded-xl text-left clean-card hover:bg-sky-50 border border-sky-200 transition">
-            <div class="text-xs font-bold text-sky-700">案例 A：心衰竭 (HF) 出院個案</div>
-            <div class="text-xs text-slate-600 mt-1">連續 3 日體重上升 1.9kg，夜間心率 96bpm，自述平躺呼吸喘。</div>
+          <button onclick="runSimulation('hf')" class="sim-btn p-4 rounded-xl text-left border border-sky-300 bg-sky-50/70 hover:bg-sky-100 transition">
+            <div class="text-xs font-bold text-sky-800">案例 A：心衰竭 (HF) 出院個案</div>
+            <div class="text-xs text-slate-600 mt-1">48h 體重 +1.9kg，夜間靜息心率 96bpm，自述平躺呼吸急促。</div>
           </button>
-          <button onclick="runSimulation('copd')" class="sim-case-btn p-3.5 rounded-xl text-left clean-card hover:bg-emerald-50 border border-slate-200 transition">
-            <div class="text-xs font-bold text-emerald-700">案例 B：COPD 慢性呼吸道病患</div>
+          <button onclick="runSimulation('copd')" class="sim-btn p-4 rounded-xl text-left border border-slate-200 bg-white hover:bg-slate-50 transition">
+            <div class="text-xs font-bold text-emerald-800">案例 B：COPD 慢性呼吸道病患</div>
             <div class="text-xs text-slate-600 mt-1">長期基線血氧 95%，近 48h 降至 91%，呼吸頻率 26 次/分。</div>
           </button>
-          <button onclick="runSimulation('wound')" class="sim-case-btn p-3.5 rounded-xl text-left clean-card hover:bg-amber-50 border border-slate-200 transition">
-            <div class="text-xs font-bold text-amber-700">案例 C：壓傷時序影像辨識 (Tissue Analytics/Swift)</div>
-            <div class="text-xs text-slate-600 mt-1">手機拍攝影像回傳，CV 辨識邊緣紅腫擴大 15%，滲液增加。</div>
+          <button onclick="runSimulation('wound')" class="sim-btn p-4 rounded-xl text-left border border-slate-200 bg-white hover:bg-slate-50 transition">
+            <div class="text-xs font-bold text-amber-800">案例 C：壓傷時序影像辨識 (Tissue/Swift)</div>
+            <div class="text-xs text-slate-600 mt-1">手機拍攝影像，CV 辨識邊緣紅腫擴大 15%，滲液量增多。</div>
           </button>
         </div>
 
-        <!-- Simulation Output Display -->
-        <div id="sim-output" class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-4">
+        <!-- Simulator Result Panel -->
+        <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-4 text-xs">
           <div class="flex items-center justify-between border-b border-slate-200 pb-3">
             <div class="flex items-center space-x-3">
               <span id="sim-badge" class="px-2.5 py-1 rounded border text-xs font-bold bg-rose-50 border-rose-300 text-rose-800">
@@ -1181,456 +493,256 @@
               </span>
               <span id="sim-title" class="font-bold text-slate-900 text-sm">心衰竭急症惡化預警 (Heart Failure Decompensation)</span>
             </div>
-            <span class="text-xs font-mono text-slate-500">CDS Engine v2.6 • HL7 FHIR Observation Processed</span>
+            <span class="text-slate-500 font-mono">CDS Engine v2.6 • HL7 FHIR Observation Processed</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div class="p-3 bg-white rounded-lg border border-slate-200 space-y-1">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-3.5 bg-white rounded-lg border border-slate-200 space-y-1">
               <span class="text-slate-500 font-semibold">🔍 驅動因子 (Explainable Drivers)：</span>
-              <p id="sim-drivers" class="text-slate-800">48h 體重由 62.0kg 增至 63.9kg (+1.9kg / +3.06%)；夜間平躺靜息心率 96bpm；個人化基線偏離顯著。</p>
+              <p id="sim-drivers" class="text-slate-800 font-medium leading-relaxed">48h 體重由 62.0kg 增至 63.9kg (+1.9kg / +3.06%)；夜間平躺靜息心率 96bpm；個人化基線偏離顯著。</p>
             </div>
-            <div class="p-3 bg-white rounded-lg border border-slate-200 space-y-1">
+            <div class="p-3.5 bg-white rounded-lg border border-slate-200 space-y-1">
               <span class="text-slate-500 font-semibold">📋 建議處置 (CDS Actions)：</span>
-              <p id="sim-action" class="text-sky-700 font-medium">1. 個管師 1 小時內進行視訊評估<br>2. 責任醫師評估口服利尿劑 (Furosemide) 劑量調整<br>3. 若血氧續跌即刻啟動急診轉送</p>
+              <p id="sim-action" class="text-sky-700 font-medium leading-relaxed">1. 個管師 1 小時內進行視訊評估<br>2. 責任醫師評估口服利尿劑 (Furosemide) 劑量調整<br>3. 若血氧續跌即刻啟動急診轉送</p>
             </div>
-            <div class="p-3 bg-white rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
+            <div class="p-3.5 bg-white rounded-lg border border-slate-200 space-y-2.5 flex flex-col justify-between">
               <div>
                 <span class="text-slate-500 font-semibold">✍️ 人機協作 (Human-in-the-Loop)：</span>
-                <p id="sim-status" class="text-amber-700 font-medium">待值班護理師覆核確認...</p>
+                <p id="sim-status" class="text-amber-700 font-bold">待值班護理師覆核確認...</p>
               </div>
-              <button id="sim-btn-approve" onclick="approveSimAction()" class="w-full py-1.5 rounded bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs transition">
+              <button id="sim-btn-approve" onclick="approveSimAction()" class="w-full py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-sm transition">
                 <i class="fa-solid fa-signature mr-1"></i> 護理師審閱簽核並派工
               </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB 3: 5 SCENARIOS DEEP DIVE -->
-    <div id="tab-scenarios" class="dash-tab-content hidden space-y-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="clean-card p-5 rounded-xl border border-sky-200 space-y-3 clean-card-hover">
-          <div class="flex items-center space-x-2 text-sky-700 font-bold text-sm">
-            <i class="fa-solid fa-heart-pulse"></i>
-            <span>01 遠距生理監測與早期預警</span>
+    <!-- 6. 3-PHASE IMPLEMENTATION ROADMAP -->
+    <section id="section-roadmap" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div class="flex items-center space-x-3">
+          <span class="h-7 w-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-timeline"></i></span>
+          <h3 class="text-xl font-extrabold text-slate-900">落地推動藍圖：先工作流後模型、先閉環後規模化</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-500">三階段推動策略</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
+        <div class="card-clean p-6 rounded-2xl bg-white border border-sky-200 space-y-3.5">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-0.5 rounded bg-sky-100 text-sky-800 font-bold font-mono">Phase 1</span>
+            <span class="text-slate-400 font-mono">0 ~ 90 天</span>
           </div>
-          <p class="text-xs text-slate-600">串接血壓、血氧、血糖、智慧床墊與 ECG，以「個人化基線 (Personal Baseline)」偵測偏離趨勢 (Biofourmis)。</p>
-          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
-            <strong>典範案例：</strong>成大醫院智慧安寧遠距照護，在宅善終率達 83%。
-          </div>
+          <h4 class="text-base font-bold text-slate-900">單病種 MVP 概念驗證</h4>
+          <p class="text-slate-600">聚焦心衰竭出院 30 天或壓傷傷口追蹤。</p>
+          <ul class="space-y-1.5 text-slate-600">
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-sky-600 mt-0.5"></i> 建立量測、警示、處置 SLA 與 SOP</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-sky-600 mt-0.5"></i> 選用少量高可靠 IoT 設備</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-sky-600 mt-0.5"></i> 建置單一視窗個案 Dashboard</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-sky-600 mt-0.5"></i> 導入 AI 摘要初稿與風險排序 (人工覆核)</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-sky-600 mt-0.5"></i> 建立 Baseline 成效基準數據</li>
+          </ul>
         </div>
 
-        <div class="clean-card p-5 rounded-xl border border-emerald-200 space-y-3 clean-card-hover">
-          <div class="flex items-center space-x-2 text-emerald-700 font-bold text-sm">
-            <i class="fa-solid fa-filter"></i>
-            <span>02 AI 分流與再住院預測</span>
+        <div class="card-clean p-6 rounded-2xl bg-white border border-emerald-200 space-y-3.5">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold font-mono">Phase 2</span>
+            <span class="text-slate-400 font-mono">3 ~ 9 個月</span>
           </div>
-          <p class="text-xs text-slate-600">整合生命徵象、共病衰弱、用藥與社會支持力，輸出具備驅動因子、動作與審計之透明 CDS。</p>
-          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
-            <strong>核心原則：</strong>AI 提醒人，人決定怎麼做 (Human-in-the-loop)。
-          </div>
+          <h4 class="text-base font-bold text-slate-900">平台化與多模態擴展</h4>
+          <p class="text-slate-600">串接 EMR/HIS 系統與 HL7 FHIR 標準。</p>
+          <ul class="space-y-1.5 text-slate-600">
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> 採用 HL7 FHIR 串接處方與檢驗紀錄</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> 擴展多病種個人化預警模型</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> 導入影像/語音 Multimodal AI</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> 建立 24/7 告警監控中心與升級機制</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-emerald-600 mt-0.5"></i> 臨床結果連結模型迭代</li>
+          </ul>
         </div>
 
-        <div class="clean-card p-5 rounded-xl border border-amber-200 space-y-3 clean-card-hover">
-          <div class="flex items-center space-x-2 text-amber-700 font-bold text-sm">
-            <i class="fa-solid fa-camera"></i>
-            <span>03 傷口／皮膚影像照護</span>
+        <div class="card-clean p-6 rounded-2xl bg-white border border-blue-200 space-y-3.5">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-0.5 rounded bg-blue-100 text-blue-800 font-bold font-mono">Phase 3</span>
+            <span class="text-slate-400 font-mono">9 ~ 18 個月</span>
           </div>
-          <p class="text-xs text-slate-600">手機拍攝指引、品質檢核、面積深度量測、壞死感染識別，以時序前後序列呈現癒合軌跡 (Swift Skin / Tissue Analytics)。</p>
-          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
-            <strong>典範案例：</strong>高醫在宅手機傷口 AI 追蹤，嚴守臨床遠端輔助紅線。
-          </div>
-        </div>
-
-        <div class="clean-card p-5 rounded-xl border border-blue-200 space-y-3 clean-card-hover">
-          <div class="flex items-center space-x-2 text-blue-700 font-bold text-sm">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span>04 GenAI 照護 Copilot</span>
-          </div>
-          <p class="text-xs text-slate-600">訪視語音轉 SOAP、ADLs/巴氏量表、個案日報、跨班交接、多語衛教（台語/印尼語/越語），文書時長減少 40%。</p>
-          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
-            <strong>代表產品：</strong>Abridge / Nuance DAX / 中山附醫「醫點家」。
-          </div>
-        </div>
-
-        <div class="clean-card p-5 rounded-xl border border-purple-200 space-y-3 clean-card-hover">
-          <div class="flex items-center space-x-2 text-purple-700 font-bold text-sm">
-            <i class="fa-solid fa-robot"></i>
-            <span>05 家屬與照顧者 AI Agent & 防跌</span>
-          </div>
-          <p class="text-xs text-slate-600">用藥排程提醒、多語日常照護引導、非接觸式毫米波雷達防跌 (Vayyar / 工研院)，偵測危險關鍵字即刻啟動醫療升級。</p>
-          <div class="p-2 bg-slate-50 rounded text-[11px] text-slate-600 border border-slate-200">
-            <strong>安全防線：</strong>Escalation Guardrail 避免自主診斷，快速連線值班團隊。
-          </div>
+          <h4 class="text-base font-bold text-slate-900">區域生態與制度常態化</h4>
+          <p class="text-slate-600">形成區域共照網與健保商保對接。</p>
+          <ul class="space-y-1.5 text-slate-600">
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-blue-600 mt-0.5"></i> 打造「醫院-診所-居護-長照-藥局」共照網</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-blue-600 mt-0.5"></i> 部署分角色 AI Agent (醫護/家屬/行政)</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-blue-600 mt-0.5"></i> 建立標準化病種複製模板</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-blue-600 mt-0.5"></i> ISO 42001 模型與資料治理常態化</li>
+            <li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-blue-600 mt-0.5"></i> 整合健保給付與商保支付模式</li>
+          </ul>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB 4: TARGET ARCHITECTURE -->
-    <div id="tab-target-arch" class="dash-tab-content hidden space-y-6">
-      <div class="clean-card p-6 rounded-2xl border border-sky-200 space-y-6">
-        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-sitemap text-sky-600"></i>
-          Target Architecture 全鏈路目標架構與資料閉環
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs text-center">
-          <div class="p-4 clean-card rounded-xl border border-sky-200 bg-sky-50/30 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-bed-pulse"></i></div>
-            <span class="font-bold text-slate-900 text-sm">1. 居家端</span>
-            <p class="text-slate-600 text-[11px]">BP／SpO₂／ECG／血糖／體重／影像／語音／雷達</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-emerald-200 bg-emerald-50/30 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-network-wired"></i></div>
-            <span class="font-bold text-slate-900 text-sm">2. 資料與互通</span>
-            <p class="text-slate-600 text-[11px]">HL7 FHIR／API Gateway／EMR／HIS／Identity</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-amber-200 bg-amber-50/30 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-brain"></i></div>
-            <span class="font-bold text-slate-900 text-sm">3. AI Layer</span>
-            <p class="text-slate-600 text-[11px]">異常偵測／預測模型／CV／LLM／Agent</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-blue-200 bg-blue-50/30 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-user-doctor"></i></div>
-            <span class="font-bold text-slate-900 text-sm">4. Clinical Workflow</span>
-            <p class="text-slate-600 text-[11px]">Dashboard／SLA／派工／視訊／訪視／轉診</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-purple-200 bg-purple-50/30 space-y-2">
-            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center mx-auto"><i class="fa-solid fa-gavel"></i></div>
-            <span class="font-bold text-slate-900 text-sm">5. Governance</span>
-            <p class="text-slate-600 text-[11px]">ISO 27001／ISO 42001／NIST AI RMF／Audit</p>
-          </div>
+    <!-- 7. INTERACTIVE ROI CALCULATOR -->
+    <section id="section-roi" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div class="flex items-center space-x-3">
+          <span class="h-7 w-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-calculator"></i></span>
+          <h3 class="text-xl font-extrabold text-slate-900">在宅醫療與居家照護 AI 效益與 ROI 試算器</h3>
         </div>
-
-        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700">
-          <strong class="text-sky-700">關鍵審計閉環：</strong>每一次 AI 輸出，都必須能回到「資料來源 ➔ 模型版本 ➔ 人工覆核 ➔ 最終處置 ➔ 結果」全鏈路審查紀錄。
-        </div>
+        <span class="text-xs font-mono text-slate-500">動態量化財務節省與人力倍率</span>
       </div>
-    </div>
 
-    <!-- TAB 5: 3-PHASE ROADMAP -->
-    <div id="tab-roadmap" class="dash-tab-content hidden space-y-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="clean-card p-6 rounded-2xl border border-sky-200 space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="px-3 py-1 rounded bg-sky-100 text-sky-800 font-bold text-xs">Phase 1</span>
-            <span class="text-xs font-mono text-sky-700">0 ~ 90 天</span>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900">單病種 MVP 驗證</h3>
-          <p class="text-xs text-slate-600">聚焦心衰竭出院 30 天或壓傷追蹤，建立 SLA 與 Dashboard。</p>
-          <div class="space-y-1.5 text-xs text-slate-600">
-            <div>• 一個族群＋一個明確臨床問題</div>
-            <div>• 定義紅黃綠警示與處置 SLA</div>
-            <div>• 少量高可靠 IoT 設備</div>
-            <div>• AI 摘要初稿與風險排序</div>
-            <div>• 建立 Baseline 成效基準</div>
-          </div>
-        </div>
-
-        <div class="clean-card p-6 rounded-2xl border border-emerald-200 space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="px-3 py-1 rounded bg-emerald-100 text-emerald-800 font-bold text-xs">Phase 2</span>
-            <span class="text-xs font-mono text-emerald-700">3 ~ 9 個月</span>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900">平台化與多模態擴展</h3>
-          <p class="text-xs text-slate-600">串接 EMR/HIS 系統與 HL7 FHIR，建立多模態 AI。</p>
-          <div class="space-y-1.5 text-xs text-slate-600">
-            <div>• 採用 HL7 FHIR 串聯處方與檢驗</div>
-            <div>• 擴展多病種個人化預警模型</div>
-            <div>• 導入影像/語音 Multimodal AI</div>
-            <div>• 成立 24/7 告警監控中心</div>
-            <div>• 臨床結果連結模型效能</div>
-          </div>
-        </div>
-
-        <div class="clean-card p-6 rounded-2xl border border-blue-200 space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="px-3 py-1 rounded bg-blue-100 text-blue-800 font-bold text-xs">Phase 3</span>
-            <span class="text-xs font-mono text-blue-700">9 ~ 18 個月</span>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900">生態制度化與健保對接</h3>
-          <p class="text-xs text-slate-600">建立區域共照網與支付模式融合。</p>
-          <div class="space-y-1.5 text-xs text-slate-600">
-            <div>• 醫院—診所—居護—長照—藥局共照網</div>
-            <div>• 部署分角色 AI Agent</div>
-            <div>• 建立可複製病種模板</div>
-            <div>• ISO 42001 模型與資料治理</div>
-            <div>• 對接健保給付與商保長照支付</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 6: ROI CALCULATOR -->
-    <div id="tab-calculator" class="dash-tab-content hidden space-y-6">
-      <div class="clean-card p-6 lg:p-8 rounded-2xl border border-emerald-200 space-y-6">
-        <div>
-          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-calculator text-emerald-600"></i>
-            在宅醫療與居家照護 AI 效益與 ROI 試算器 (Interactive ROI Estimator)
-          </h3>
-          <p class="text-xs text-slate-600 mt-1">調整預計管理之在宅個案數與效益參數，即時估算每年避免之非必要住院成本與醫護人力釋放效益。</p>
-        </div>
-
+      <div class="card-clean p-6 lg:p-8 rounded-2xl border border-emerald-200 bg-white space-y-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div class="space-y-5 text-xs">
             <div>
-              <div class="flex justify-between text-slate-700 mb-1">
+              <div class="flex justify-between text-slate-700 mb-1 font-medium">
                 <span>每月在宅管理個案數 (Active Patients)：</span>
-                <span id="val-patients" class="font-bold text-sky-700 font-mono">100 人</span>
+                <span id="val-patients" class="font-bold text-sky-700 font-mono text-sm">100 人</span>
               </div>
               <input type="range" id="slider-patients" min="20" max="500" step="10" value="100" oninput="updateROI()" class="w-full accent-sky-600">
             </div>
 
             <div>
-              <div class="flex justify-between text-slate-700 mb-1">
+              <div class="flex justify-between text-slate-700 mb-1 font-medium">
                 <span>預估 30 日再住院率降幅 (Reduction in Readmissions)：</span>
-                <span id="val-readmission" class="font-bold text-emerald-700 font-mono">25 %</span>
+                <span id="val-readmission" class="font-bold text-emerald-700 font-mono text-sm">25 %</span>
               </div>
               <input type="range" id="slider-readmission" min="5" max="40" step="1" value="25" oninput="updateROI()" class="w-full accent-emerald-600">
             </div>
 
             <div>
-              <div class="flex justify-between text-slate-700 mb-1">
+              <div class="flex justify-between text-slate-700 mb-1 font-medium">
                 <span>每案平均節省行政文書時長 (Documentation Hours Saved)：</span>
-                <span id="val-hours" class="font-bold text-blue-700 font-mono">35 分鐘/訪視</span>
+                <span id="val-hours" class="font-bold text-blue-700 font-mono text-sm">35 分鐘/訪視</span>
               </div>
               <input type="range" id="slider-hours" min="10" max="60" step="5" value="35" oninput="updateROI()" class="w-full accent-blue-600">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="p-4 clean-card rounded-xl border border-sky-200 bg-sky-50/40 text-center space-y-1">
-              <span class="text-xs text-slate-500">預估全年避免急診/住院人次</span>
-              <div id="calc-avoided-adm" class="text-2xl lg:text-3xl font-extrabold text-sky-700 font-mono">60 次</div>
-              <span class="text-[10px] text-slate-500">降低急診待床壓力</span>
+            <div class="p-4 rounded-xl border border-sky-200 bg-sky-50/50 text-center space-y-1">
+              <span class="text-xs text-slate-500 font-medium">預估全年避免急診/住院人次</span>
+              <div id="calc-avoided-adm" class="text-2xl lg:text-3xl font-extrabold text-sky-800 font-mono">60 次</div>
+              <span class="text-[10px] text-slate-500">降低急診待床與院內感染</span>
             </div>
-            <div class="p-4 clean-card rounded-xl border border-emerald-200 bg-emerald-50/40 text-center space-y-1">
-              <span class="text-xs text-slate-500">預估每年醫療資源淨節省 (NTD)</span>
-              <div id="calc-cost-saved" class="text-2xl lg:text-3xl font-extrabold text-emerald-700 font-mono">NT$ 4,800,000</div>
-              <span class="text-[10px] text-slate-500">以每案住院約 8 萬元估算</span>
+            <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50 text-center space-y-1">
+              <span class="text-xs text-slate-500 font-medium">預估每年醫療資源淨節省 (NTD)</span>
+              <div id="calc-cost-saved" class="text-2xl lg:text-3xl font-extrabold text-emerald-800 font-mono">NT$ 4,800,000</div>
+              <span class="text-[10px] text-slate-500">以每案在宅節省約 8 萬元估算</span>
             </div>
-            <div class="p-4 clean-card rounded-xl border border-blue-200 bg-blue-50/40 text-center space-y-1">
-              <span class="text-xs text-slate-500">每年釋放護理行政工時</span>
-              <div id="calc-hours-saved" class="text-2xl lg:text-3xl font-extrabold text-blue-700 font-mono">2,100 小時</div>
-              <span class="text-[10px] text-slate-500">相當於 1.2 位全職護理人力</span>
+            <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/50 text-center space-y-1">
+              <span class="text-xs text-slate-500 font-medium">每年釋放護理行政工時</span>
+              <div id="calc-hours-saved" class="text-2xl lg:text-3xl font-extrabold text-blue-800 font-mono">2,100 小時</div>
+              <span class="text-[10px] text-slate-500">相當於 1.2 位全職護理產能</span>
             </div>
-            <div class="p-4 clean-card rounded-xl border border-amber-200 bg-amber-50/40 text-center space-y-1">
-              <span class="text-xs text-slate-500">護理師個案管理量能倍率</span>
-              <div id="calc-multiplier" class="text-2xl lg:text-3xl font-extrabold text-amber-700 font-mono">1.6x 提升</div>
-              <span class="text-[10px] text-slate-500">每人管理 30 ➔ 48 案</span>
+            <div class="p-4 rounded-xl border border-amber-200 bg-amber-50/50 text-center space-y-1">
+              <span class="text-xs text-slate-500 font-medium">護理師個案管理量能倍率</span>
+              <div id="calc-multiplier" class="text-2xl lg:text-3xl font-extrabold text-amber-800 font-mono">1.6x 提升</div>
+              <span class="text-[10px] text-slate-500">每位護理師管理 30 ➔ 48 案</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB 7: GOVERNANCE & SECURITY -->
-    <div id="tab-governance" class="dash-tab-content hidden space-y-6">
-      <div class="clean-card p-6 rounded-2xl border border-purple-200 space-y-6">
-        <div>
-          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-shield-halved text-purple-600"></i>
-            資安與 AI 治理：高風險醫療系統八大必備控制項
-          </h3>
-          <p class="text-xs text-slate-600 mt-1">依循 ISO 27001、ISO 42001 與 NIST AI RMF，建構高韌性與可信賴之在宅醫療體系。</p>
+    <!-- 8. SECURITY & AI GOVERNANCE -->
+    <section id="section-governance" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div class="flex items-center space-x-3">
+          <span class="h-7 w-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-shield-halved"></i></span>
+          <h3 class="text-xl font-extrabold text-slate-900">醫療資安與 AI 治理：高風險系統八大必備控制項</h3>
         </div>
+        <span class="text-xs font-mono text-slate-500">ISO 27001 × ISO 42001 × NIST AI RMF</span>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-          <div class="p-4 clean-card rounded-xl border border-slate-200 space-y-1.5">
-            <span class="font-bold text-sky-700">1. 資料最小化 (Data Minimization)</span>
-            <p class="text-slate-600">只蒐集照護直接相關數據；防跌監控優先採毫米波雷達/骨架姿態，預設嚴禁上傳臥室原始畫面。</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-slate-200 space-y-1.5">
-            <span class="font-bold text-sky-700">2. 明確同意與可撤回授權</span>
-            <p class="text-slate-600">向病患家屬清楚說明用途、存取人員與期限，並提供一鍵撤銷資料共享管道。</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-emerald-200 space-y-1.5">
-            <span class="font-bold text-emerald-700">3. 端到端零信任 (Zero Trust Architecture)</span>
-            <p class="text-slate-600">IoT 設備雙向憑證認證、AES-256 加密傳輸與儲存、MDM 遠端管控與 API 存取盤點。</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-emerald-200 space-y-1.5">
-            <span class="font-bold text-emerald-700">4. 第三方供應鏈風險與 SBOM</span>
-            <p class="text-slate-600">要求軟硬體業者提供軟體物料清單 (SBOM)、弱點修補 SLA、DPA 協議與責任邊界。</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-amber-200 space-y-1.5">
-            <span class="font-bold text-amber-700">5. 人類最終決策 (Human-in-the-loop)</span>
-            <p class="text-slate-600">AI 僅為輔助；凡涉及診斷、處方調整、急診轉診均須由合格醫師審核簽章生效。</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-amber-200 space-y-1.5">
-            <span class="font-bold text-amber-700">6. 模型可監測性與偏差抑制</span>
-            <p class="text-slate-600">持續監控各年齡、性別、病種資料漂移 (Drift)，確保模型決策之臨床公平性。</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-blue-200 space-y-1.5">
-            <span class="font-bold text-blue-700">7. 全鏈路可稽核軌跡 (Audit Trail)</span>
-            <p class="text-slate-600">完整留存資料來源、提示詞/規則、輸出、醫護覆核人與最終處置責任軌跡。</p>
-          </div>
-          <div class="p-4 clean-card rounded-xl border border-blue-200 space-y-1.5">
-            <span class="font-bold text-blue-700">8. 緊急失效模式 (Fail-Safe SOP)</span>
-            <p class="text-slate-600">網路中斷或雲端服務不可用時，即刻無縫回退至傳統電話通報與紙本/離線應變機制。</p>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        <div class="card-clean p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
+          <span class="font-bold text-sky-700 flex items-center gap-1"><i class="fa-solid fa-compress"></i> 1. 資料最小化</span>
+          <p class="text-slate-600">防跌優先採毫米波雷達/骨架姿態，預設嚴禁上傳臥室原始畫面。</p>
+        </div>
+        <div class="card-clean p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
+          <span class="font-bold text-sky-700 flex items-center gap-1"><i class="fa-solid fa-file-signature"></i> 2. 明確同意與撤回</span>
+          <p class="text-slate-600">向病患家屬清楚說明用途與存取人員，支援隨時一鍵撤銷授權。</p>
+        </div>
+        <div class="card-clean p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
+          <span class="font-bold text-emerald-700 flex items-center gap-1"><i class="fa-solid fa-shield-virus"></i> 3. 端到端零信任</span>
+          <p class="text-slate-600">IoT 雙向憑證認證、AES-256 加密傳輸儲存、MDM 遠端納管與 API 審計。</p>
+        </div>
+        <div class="card-clean p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
+          <span class="font-bold text-emerald-700 flex items-center gap-1"><i class="fa-solid fa-cubes"></i> 4. 供應鏈風險 SBOM</span>
+          <p class="text-slate-600">要求軟硬體業者提供軟體物料清單 (SBOM)、弱點修補 SLA 與 DPA 協議。</p>
+        </div>
+        <div class="card-clean p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
+          <span class="font-bold text-amber-700 flex items-center gap-1"><i class="fa-solid fa-user-shield"></i> 5. 人類最終決策</span>
+          <p class="text-slate-600">AI 僅為輔助；診斷、處方調整與急診轉送均須由合格醫師審核簽章。</p>
+        </div>
+        <div class="card-clean p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
+          <span class="font-bold text-amber-700 flex items-center gap-1"><i class="fa-solid fa-chart-area"></i> 6. 模型可監測性</span>
+          <p class="text-slate-600">持續監控各年齡、性別、病種資料漂移 (Drift)，確保模型臨床公平性。</p>
+        </div>
+        <div class="card-clean p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
+          <span class="font-bold text-blue-700 flex items-center gap-1"><i class="fa-solid fa-fingerprint"></i> 7. 全鏈路可稽核</span>
+          <p class="text-slate-600">完整留存原始訊號、提示詞、模型版本、覆核人員與最終處置責任軌跡。</p>
+        </div>
+        <div class="card-clean p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
+          <span class="font-bold text-blue-700 flex items-center gap-1"><i class="fa-solid fa-plug-circle-exclamation"></i> 8. 緊急失效 SOP</span>
+          <p class="text-slate-600">網路中斷或雲端服務不可用時，即刻無縫回退至傳統電話通報與紙本 SOP。</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB 8: REFERENCES -->
-    <div id="tab-references" class="dash-tab-content hidden space-y-4">
-      <div class="clean-card p-6 rounded-2xl border border-slate-200 space-y-4">
-        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-book-bookmark text-sky-600"></i>
-          政策、標竿案例與學術文獻引用來源
-        </h3>
-        <ul class="space-y-2 text-xs text-slate-600">
-          <li>• [1] 行政院 (2025/2026). 《在宅醫療科技願景與行動》. 行政院科技政策推動辦公室.</li>
-          <li>• [2] CIO Taiwan (2025/2026). 2026 年智慧醫療趨勢：從生成式 AI 到制度化治理的關鍵拐點. <i>CIO Taiwan</i>.</li>
-          <li>• [3] 黃冠凱 (2026). 從醫院到客廳：AI如何重塑在宅照護新模式. <i>AnkeCare 安可人生</i>.</li>
-          <li>• [4] 黃冠凱 (2025). 在宅醫療的智慧轉向以科技賦能社區照護. <i>AnkeCare 安可人生</i>.</li>
-          <li>• [5] 成大醫院智慧醫院 (2024/2026). 無牆化的遠距醫療照護新模式-建構多元感測融合之智慧安寧照護服務. (善終率 83%)</li>
-          <li>• [6] 高雄醫學大學附設中和紀念醫院 (2025). 不用再跑醫院！高醫用「一支手機」重寫醫療模式在宅照護正式進入 AI 時代. <i>醫策會 HST / 風傳媒</i>.</li>
-          <li>• [7] 臺北醫學大學校級人工智慧醫療研究中心 (2026). 從 MEDICA 到 CES: 在宅醫療、穿戴式數據與物理 AI.</li>
-          <li>• [8] <i>Journal of Wound Care</i> & <i>JMIR mHealth and uHealth</i>: 智慧手機傷口辨識 (Tissue Analytics/Swift) 與居家心衰竭/COPD 機器學習預測臨床實證.</li>
-          <li>• [9] 工研院 (ITRI) 智慧感測照護白皮書 & IEEE 論文: 毫米波 (mmWave) 微都卜勒雷達室內防跌與步態分析技術.</li>
-          <li>• [10] 數位時代 / 臺灣AZ (2025). 從減負到在宅：北台灣醫界領袖共論 AI 醫療落地藍圖三大趨勢.</li>
-        </ul>
+    <!-- 9. EXECUTIVE DECISIONS & CITATIONS -->
+    <section id="section-references" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div class="flex items-center space-x-3">
+          <span class="h-7 w-7 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-book-bookmark"></i></span>
+          <h3 class="text-xl font-extrabold text-slate-900">決策者五大戰略優先序與權威文獻索引</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-500">Howard Liao Ph.D. 總結</span>
       </div>
-    </div>
 
-  </section>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- 5 Priorities -->
+        <div class="card-clean p-6 rounded-2xl bg-white border border-sky-200 space-y-3 text-xs">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-1.5"><i class="fa-solid fa-list-check text-sky-600"></i> 給決策者的五個投資優先順序</h4>
+          <div class="space-y-2 text-slate-700">
+            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200"><strong>01 先把資料與照護閉環做對：</strong>量測 ➔ 警示 ➔ 覆核 ➔ 處置 ➔ 回寫。</div>
+            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200"><strong>02 先投資高頻、可量化、高風險場景：</strong>心衰竭、COPD、傷口、術後、安寧、高齡衰弱。</div>
+            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200"><strong>03 先用 Copilot 提升醫護產能：</strong>再逐步導入預測模型與 Agent。</div>
+            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200"><strong>04 FHIR、身分驗證與資料治理是基石：</strong>確保跨機構生態互通。</div>
+            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200"><strong>05 以「避免一次再住院/急診、降低文書」為 ROI 主軸：</strong>非單看模型 Accuracy。</div>
+          </div>
+        </div>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white py-4 px-6 text-center text-xs text-slate-500">
-    AI × Hospital at Home & Home Care Decision Framework • by Howard Liao Ph.D. • 2026 All Rights Reserved.
+        <!-- 10 Citations -->
+        <div class="card-clean p-6 rounded-2xl bg-white border border-slate-200 space-y-3 text-[11px] text-slate-600">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-1.5"><i class="fa-solid fa-quote-left text-sky-600"></i> 權威政策與研究文獻來源</h4>
+          <ul class="space-y-1.5 leading-relaxed">
+            <li>• [1] 行政院 (2025/2026). 《在宅醫療科技願景與行動》. 行政院科技政策推動辦公室.</li>
+            <li>• [2] CIO Taiwan (2025/2026). 2026 年智慧醫療趨勢：從生成式 AI 到制度化治理的關鍵拐點.</li>
+            <li>• [3] 安可醫療 (2026). 從醫院到客廳：AI如何重塑在宅照護新模式.</li>
+            <li>• [4] 安可醫療 (2025). 在宅醫療的智慧轉向：以科技賦能社區照護.</li>
+            <li>• [5] 成大/奇美醫院 (2024/2026). 無牆化遠距醫療：智慧安寧與傷口影像分析 (在宅善終率 83%).</li>
+            <li>• [6] 高醫／HST (2025). 手機影像 AI 傷口辨識與在宅照護應用.</li>
+            <li>• [7] 臺北醫學大學 AI 中心 (2026). MEDICA 到 CES: 物理 AI 與穿戴數據.</li>
+            <li>• [8] <i>Journal of Wound Care</i> & <i>JMIR</i>: 智慧傷口辨識 (Tissue/Swift) 與心衰竭/COPD 預測臨床實證.</li>
+            <li>• [9] 工研院 (ITRI) & IEEE: 毫米波 (mmWave) 微都卜勒雷達室內防跌白皮書.</li>
+            <li>• [10] 數位時代 (2025). 北台灣醫界領袖共論 AI 醫療落地藍圖三大趨勢.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- GLOBAL FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="border-t border-slate-200 bg-white py-6 px-6 text-center text-xs text-slate-500">
+    AI × Hospital at Home & Home Care Strategic Framework • by Howard Liao Ph.D. • 2026 All Rights Reserved.
   </footer>
 
   <!-- Interactive JavaScript Engine -->
   <script>
-    // Slide Deck State
-    let currentSlide = 1;
-    const totalSlides = 15;
-
-    const speakerNotes = {
-      1: "開場說明：AI 在在宅醫療與居家照護（HaH & Home Care）的核心戰略定位。由 Howard Liao Ph.D. 主筆之決策者架構——將碎片化居家訊號轉化為高可靠臨床閉環。",
-      2: "01 Executive Summary：AI 的價值不是取代醫護，而是讓照護團隊更早看到、更快行動、更少文書。4 大核心能力：可預警、可分流、可協作、可追蹤。",
-      3: "02 AI 應用全景：四層架構由感知層、判讀層、決策層到協作層，底層全面以 HL7 FHIR 貫通數據流。",
-      4: "03 資料到行動：居家端真正挑戰不是沒有資料，而是資料沒有進入臨床工作流。透過 6 步閉環：量測 ➔ 整合 ➔ 判讀 ➔ 分流 ➔ 處置 ➔ 追蹤。",
-      5: "04 五大高價值場景：遠距生理監測 (Biofourmis/Current Health)、AI分流預測、傷口影像CV (Swift/Tissue)、GenAI照護Copilot (Abridge/DAX)、家屬AI Agent (Vayyar雷達)。",
-      6: "05 場景一：不要只問有沒有超標，要問是否偏離個人正常狀態（個人化基線）。RPM 在心衰竭/COPD 惡化前 24-48h 預警，成大智慧安寧在宅善終率達 83%。",
-      7: "06 場景二：風險分數不是答案，風險＋驅動因子＋建議動作＋證據才是可用 CDS。堅持 Human-in-the-loop 原則。",
-      8: "07 場景三：GenAI 近期最高 ROI 在行政減負（語音即時轉 SOAP、ADLs/巴氏量表描述），所有草稿須經專業人員簽核覆核。",
-      9: "08 場景四：家屬 AI Agent 是有邊界的數位協作者，結合毫米波雷達防跌 (Vayyar/工研院)，建立高風險 Escalation 智慧升級防線。",
-      10: "09 落地藍圖：推動三階段策略——0-90天單病種MVP ➔ 3-9個月平台化與FHIR ➔ 9-18個月制度化共照網。",
-      11: "10 Target Architecture：居家端 ➔ 資料與互通 ➔ AI Layer ➔ Clinical Workflow ➔ Governance，形成完整可稽核閉環。",
-      12: "11 KPI 衡量：不可單看 AI Accuracy，應從臨床品質、即時性、照護效率、病人體驗、財務價值與治理指標全面評估。",
-      13: "12 資安與治理：高風險系統預設安全，以 ISO 27001、ISO 42001 與 NIST AI RMF 為底座，落實 8 大控制項與斷網失效安全。",
-      14: "13 決策者優先序：照護閉環做對、高頻高風險場景優先、Copilot先行、FHIR治理為基石、以再住院減少量為 ROI 主軸。",
-      15: "14 參考來源：彙整行政院、CIO Taiwan、Journal of Wound Care、JMIR、工研院、IEEE、成大、高醫、北醫等前瞻文獻。"
-    };
-
-    function showSlide(index) {
-      if (index < 1) index = 1;
-      if (index > totalSlides) index = totalSlides;
-      currentSlide = index;
-
-      document.querySelectorAll('.slide').forEach(el => {
-        el.classList.remove('slide-active');
-        el.classList.add('slide-inactive');
-      });
-
-      const activeEl = document.querySelector(`.slide[data-slide="${index}"]`);
-      if (activeEl) {
-        activeEl.classList.remove('slide-inactive');
-        activeEl.classList.add('slide-active');
-      }
-
-      // Update Controls
-      document.getElementById('slide-indicator').textContent = `${String(index).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
-      document.getElementById('slide-select').value = index;
-      document.getElementById('slide-progress').style.width = `${(index / totalSlides) * 100}%`;
-      
-      // Update Speaker Notes
-      document.getElementById('speaker-notes-text').textContent = speakerNotes[index] || "";
-    }
-
-    function prevSlide() {
-      if (currentSlide > 1) showSlide(currentSlide - 1);
-    }
-
-    function nextSlide() {
-      if (currentSlide < totalSlides) showSlide(currentSlide + 1);
-    }
-
-    function goToSlide(num) {
-      showSlide(num);
-    }
-
-    function toggleNotes() {
-      const drawer = document.getElementById('speaker-notes-drawer');
-      drawer.classList.toggle('hidden');
-    }
-
-    // Keyboard Navigation
-    document.addEventListener('keydown', (e) => {
-      if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
-
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-        nextSlide();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-        prevSlide();
-      } else if (e.key === 'f' || e.key === 'F') {
-        toggleFullscreen();
-      } else if (e.key === 'n' || e.key === 'N') {
-        toggleNotes();
-      }
-    });
-
-    // Mode Toggle
-    function setAppMode(mode) {
-      const presContainer = document.getElementById('presentation-container');
-      const dashContainer = document.getElementById('dashboard-container');
-      const btnPres = document.getElementById('btn-mode-presentation');
-      const btnDash = document.getElementById('btn-mode-dashboard');
-
-      if (mode === 'presentation') {
-        presContainer.classList.remove('hidden');
-        dashContainer.classList.add('hidden');
-        btnPres.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-sky-600 text-white shadow-sm";
-        btnDash.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-600 hover:text-slate-900 transition-all";
-      } else {
-        presContainer.classList.add('hidden');
-        dashContainer.classList.remove('hidden');
-        btnDash.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all bg-sky-600 text-white shadow-sm";
-        btnPres.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-600 hover:text-slate-900 transition-all";
-      }
-    }
-
-    function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
-      }
-    }
-
-    // Dashboard Tabs Switcher
-    function switchDashTab(tabId) {
-      document.querySelectorAll('.dash-tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.dash-tab-btn').forEach(btn => {
-        btn.classList.remove('bg-sky-600', 'text-white', 'border-sky-600');
-        btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
-      });
-
-      const targetTab = document.getElementById(tabId);
-      if (targetTab) targetTab.classList.remove('hidden');
-
-      const targetBtn = document.querySelector(`.dash-tab-btn[data-tab="${tabId}"]`);
-      if (targetBtn) {
-        targetBtn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-        targetBtn.classList.add('bg-sky-600', 'text-white', 'border-sky-600');
-      }
-    }
-
     // Live CDS Simulation Logic
     const simCases = {
       hf: {
@@ -1669,12 +781,12 @@
       document.getElementById('sim-action').innerHTML = data.action;
 
       const statusEl = document.getElementById('sim-status');
-      statusEl.className = "text-amber-700 font-medium";
+      statusEl.className = "text-amber-700 font-bold";
       statusEl.textContent = "待值班護理師覆核確認...";
 
       const btnApprove = document.getElementById('sim-btn-approve');
       btnApprove.disabled = false;
-      btnApprove.className = "w-full py-1.5 rounded bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs transition";
+      btnApprove.className = "w-full py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-sm transition";
       btnApprove.innerHTML = '<i class="fa-solid fa-signature mr-1"></i> 護理師審閱簽核並派工';
     }
 
@@ -1685,7 +797,7 @@
 
       const btnApprove = document.getElementById('sim-btn-approve');
       btnApprove.disabled = true;
-      btnApprove.className = "w-full py-1.5 rounded bg-slate-200 text-slate-500 font-bold text-xs cursor-not-allowed";
+      btnApprove.className = "w-full py-2 rounded-lg bg-slate-200 text-slate-500 font-bold text-xs cursor-not-allowed";
       btnApprove.innerHTML = '<i class="fa-solid fa-check mr-1"></i> 已完成臨床覆核 (Audit Logged)';
     }
 
@@ -1712,7 +824,6 @@
 
     // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
-      showSlide(1);
       updateROI();
     });
   </script>
